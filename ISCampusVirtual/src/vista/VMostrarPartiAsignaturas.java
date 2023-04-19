@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import control.Controller;
+import control.Events;
 import control.IGUI;
 import model.usuario.TransferAlumno;
 import model.usuario.TransferProfesor;
@@ -168,6 +169,8 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.pack();
 		this.setVisible(true);
+		
+		ctrl.accion(Events.MOSTRAR_ALUMNOS_ASIGNATURA, null);
 		
 	}
 
