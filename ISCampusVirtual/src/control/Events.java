@@ -14,6 +14,8 @@ public class Events {
 	public static final int MOSTRAR_PROFESORES_ASIGNATURA=005;
 	
 	public static final int MOSTRAR_ALUMNOS_ASIGNATURA=006;
+
+	public static final int MOSTRAR_USUARIOS_ASIGNATURA = 007;
 	
 	
 

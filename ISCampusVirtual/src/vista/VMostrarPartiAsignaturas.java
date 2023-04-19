@@ -9,11 +9,15 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import control.Controller;
 import control.IGUI;
 import model.usuario.TransferAlumno;
 import model.usuario.TransferProfesor;
+import model.usuario.TransferUsuario;
 
 public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
+	
+	private Controller ctrl;
 
 	private static String nombreAs = "IS2";
 	private String roles[] = { "TODOS", "ALUMNOS", "PROFESORES" };
@@ -39,6 +43,7 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 	public VMostrarPartiAsignaturas() 
 	{
 		super ("Participantes de " + nombreAs );
+		ctrl=Controller.obtenerInstancia();
 		initGUI();
 		
 	}
@@ -178,7 +183,7 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 	//dependiendo del event, devuelve una lista con alumnos o profesors (datos puede ser null)
 	@Override
 	public void update(int event, Object datos) {
-		
+		List<TransferUsuario> lista=(List<TransferUsuario>) datos;
 		
 		//profesorMostrar = datos;//transferAsigunatura.profesor (Lista de profesores)
 		//alumnosMostrar = datos;//transferAsigunatura.profesor (Lista de profesores)
