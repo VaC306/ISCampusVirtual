@@ -7,8 +7,9 @@ import model.usuario.SAProfesor;
 import model.usuario.SAUsuario;
 import model.usuario.TransferAlumno;
 import model.usuario.TransferProfesor;
+import model.usuario.TransferUsuario;
 import vista.FactoriaVistas;
-
+//siu
 public class ControllerImp extends Controller{
 	
 	private SAUsuario saUsuario;
@@ -18,7 +19,7 @@ public class ControllerImp extends Controller{
 
 	@Override
 	public void accion(int evento, Object datos) {
-		
+		TransferUsuario tUsuarioIniciado = null;
 		TransferAlumno tAlumno;
 		TransferProfesor tProfesor;
 		TransferAsignatura tAsignatura = null;
@@ -30,23 +31,57 @@ public class ControllerImp extends Controller{
 		case Events.INICIAR_SESION:{
 			String[]info=(String[]) datos;
 			
-			if(saUsuario.iniciarSesion(info[0], info[1])) {
-				currentIGUI.update(Events.INICIAR_SESION_CORRECTO, datos);
+			tUsuarioIniciado=saUsuario.iniciarSesion(info[0], info[1]);
+			
+			if(tUsuarioIniciado!=null) {
+				currentIGUI.update(Events.INICIAR_SESION_CORRECTO, tUsuarioIniciado);
+				
 			}else {
-				currentIGUI.update(Events.INICIAR_SESION_FALLIDO, datos);
+				currentIGUI.update(Events.INICIAR_SESION_FALLIDO, null);
 			}
+			break;
 		}
 		case Events.ABRIR_VMOSTRAR_PARTICIPANTES_ASIGNATURA:
 			tAsignatura=(TransferAsignatura) datos;
-			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, tAsignatura);
+			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
+			currentIGUI.update(Events.MOSTRAR_USUARIOS_ASIGNATURA, tAsignatura.getUsuarios());
+			
+			break;
 			
 		case Events.MOSTRAR_ALUMNOS_ASIGNATURA:
-			
-			currentIGUI.update(evento, tAsignatura.getAlumno());
+			if(tAsignatura!=null)
+				currentIGUI.update(evento, tAsignatura.getAlumno());
+			else
+				currentIGUI.update(evento, null);
+
+			break;
 			
 		case Events.MOSTRAR_PROFESORES_ASIGNATURA:
 			
-			currentIGUI.update(evento, tAsignatura.getProfesor());
+			if(tAsignatura!=null)
+				currentIGUI.update(evento, tAsignatura.getProfesor());
+			else
+				currentIGUI.update(evento, null);
+			break;
+			
+		case Events.ABRIR_VISTA_LISTA_ASIGNATURAS:
+			
+			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, tUsuarioIniciado.getAsignaturas());
+			
+			break;
+			
+		case Events.ABRIR_VISTA_ASIGNATURA:
+			tAsignatura=(TransferAsignatura) datos;
+			
+			if(tAsignatura!=null) {
+				currentIGUI=FactoriaVistas.getInstance().crearVista(evento, tAsignatura);
+
+			}
+			else {
+				currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
+
+			}
+			
 		
 		}
 		
