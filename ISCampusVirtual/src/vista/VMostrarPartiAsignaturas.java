@@ -1,9 +1,9 @@
 package vista;
 
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -15,12 +15,19 @@ import model.usuario.TransferProfesor;
 
 public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static String nombreAs = "IS2";
 	private String roles[] = { "TODOS", "ALUMNOS", "PROFESORES" };
 	private JLabel nombre;
 	private JLabel apellidos;
 	private JLabel rol;
 	private JComboBox<String> filtroRoles;
+	private int numUsuarios;
+	private static DefaultTableModel tableModel;
+	private Border _blackBorder = BorderFactory.createLineBorder(Color.black, 2);
 	
 	JPanel centerPanel, leftPanel, rightPanel, topPanel, botPanel;
 	
@@ -33,7 +40,7 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 	private List<TransferAlumno> alumnosMostrar = new ArrayList<> ();
 	
 
-	private String nomnbres[] = { "Alumno 1", "Alumno 2", "Profesor 1" };
+	private String nombres[] = { "Alumno 1", "Alumno 2", "Profesor 1" };
 	
 	
 	public VMostrarPartiAsignaturas() 
@@ -52,113 +59,92 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 		
 		centerPanel = createPanel(Color.red, 50, 50);
 		mainPanel.add(centerPanel, BorderLayout.CENTER);
-		
-	
-		rightPanel = createPanel(Color.yellow, 200, 200);
-		mainPanel.add(rightPanel, BorderLayout.LINE_END);
 
 		topPanel = createPanel(Color.WHITE, 40, 40);
 		mainPanel.add(topPanel, BorderLayout.PAGE_START);
 
-		botPanel = createPanel(Color.gray, 20, 20);
+		botPanel = createPanel(Color.gray, 40, 40);
 		mainPanel.add(botPanel, BorderLayout.PAGE_END);
-
+		
+		
+		JPanel panelInfo = new JPanel();
+		JLabel infoUsuatios = new JLabel("Usuarios: " + numUsuarios);
+		panelInfo.add(infoUsuatios);
+		panelInfo.setAlignmentX(LEFT_ALIGNMENT);
+		botPanel.add(panelInfo);
+		
+		
+		
 		filtroRoles = new JComboBox<String>(roles);
 		filtroRoles.setSelectedIndex(0);
-		//filtroRoles.addActionListener(this);
-
+		
+		JPanel Etiquetas = new JPanel();
 		
 		//Nombre etiqueta
-		nombre = new JLabel("Nombres: ");
+		nombre = new JLabel("Filtros => ");
 		nombre.setAlignmentX(SwingConstants.LEFT);
-
-		topPanel.add(nombre);
+		Etiquetas.add(nombre);
 		
+		topPanel.add(Etiquetas, LEFT_ALIGNMENT);
+		
+		
+		//mainPanel.add(buttonPanel);
+		//mainPanel.add(Box.createRigidArea(new Dimension(20, 0)));
+		//mainPanel.add(Box.createRigidArea(new Dimension(10, 0)));
+		
+		//Rol Label
+		rol = new JLabel("Roles: ");
+		topPanel.add(rol);
 		
 		//COMBOBOX
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(filtroRoles);
 		topPanel.add(buttonPanel);
 		
-		//mainPanel.add(buttonPanel);
-		mainPanel.add(Box.createRigidArea(new Dimension(20, 0)));
-		mainPanel.add(Box.createRigidArea(new Dimension(10, 0)));
-		
-		//Rol Label
-		rol = new JLabel("Roles: ");
-		topPanel.add(rol);
-		
-		String story = "The Internet Foundation Classes (IFC) were a graphics "
-				+ "library for Java originally developed by Netscape Communications "
-				+ "Corporation and first released on December 16, 1996.\n\n"
-				+ "On April 2, 1997, Sun Microsystems and Netscape Communications"
-				+ " Corporation announced their intention to combine IFC with other"
-				+ " technologies to form the Java Foundation Classes. In addition "
-				+ "to the components originally provided by IFC, Swing introduced "
-				+ "a mechanism that allowed the look and feel of every component "
-				+ "in an application to be altered without making substantial "
-				+ "changes to the application code. The introduction of support "
-				+ "for a pluggable look and feel allowed Swing components to "
-				+ "emulate the appearance of native components while still "
-				+ "retaining the benefits of platform independence. This feature "
-				+ "also makes it easy to have an individual application's appearance "
-				+ "look very different from other native programs.\n\n"
-				+ "Originally distributed as a separately downloadable library, "
-				+ "Swing has been included as part of the Java Standard Edition "
-				+ "since release 1.2. The Swing classes are contained in the "
-				+ "javax.swing package hierarchy.\n\n";
-		
-		String story2 = "profe, alumno,profe, alumno "
-				+ "profe, alumno profe, alumno profe, alumno.\n\n";
-		
-		
-		
 		
 		//TextArea Nombres
-		JTextArea nombresArea = new JTextArea(story);
-		nombresArea.setEditable(false);
-		nombresArea.setLineWrap(true);
-		nombresArea.setWrapStyleWord(true);
+		tableModel = new DefaultTableModel(new Object[] { "Nombres: ", "Roles: " }, 10 /*pillar num de columnas de num de usuarios*/);
+        JTable tableAlumnos = new JTable(tableModel);
+        numUsuarios = tableAlumnos.getRowCount();
+		centerPanel.setBorder(BorderFactory.createTitledBorder(_blackBorder, "Usuarios: ", TitledBorder.LEFT, TitledBorder.TOP));
 		
 		
-		//TextArea Roles
-		JTextArea rolessArea = new JTextArea(story2);
-		rolessArea.setEditable(false);
-		rolessArea.setLineWrap(true);
-		rolessArea.setWrapStyleWord(true);
 		
-		JScrollPane area = new JScrollPane(nombresArea,
+		JScrollPane scroll = new JScrollPane(tableAlumnos,
 				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
-		JScrollPane areaRoles = new JScrollPane(rolessArea,
-				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
 		// We then set the preferred size of the scrollpane.
-		area.setPreferredSize(new Dimension(300, 200));
+		scroll.setPreferredSize(new Dimension(600, 400));
 		
 		//Bucle de lista
 		
 		//if seleccionado combobox 0 alumnos 1 profes 2 todos
-		
-		for(int i =0; i< alumnosMostrar.size();i++) 
+		filtroRoles.addActionListener((e) -> 
 		{
-			nombresArea.add(alumnosMostrar.get(i).getNombre_Apellidos(), null);
-			//nombresArea.add("Alumno");
+			if(filtroRoles.getSelectedIndex() == 0)
+			{
+				for(int i =0; i< alumnosMostrar.size();i++)
+				{
+					tableAlumnos.add(alumnosMostrar.get(i).getNombre_Apellidos(), null);
+					
+				}
+			}
+			else if(filtroRoles.getSelectedIndex() == 1)
+			{
+				for(int i =0; i< profesorMostrar.size();i++) 
+				{
+					tableAlumnos.add(profesorMostrar.get(i).getNombre_Apellidos(), null);
+				}
+			}
+			else if(filtroRoles.getSelectedIndex() == 2)
+			{
+				//mostrar todos
+			}
+		});
 
-			
-		}
-		
-		for(int i =0; i< profesorMostrar.size();i++) 
-		{
-			nombresArea.add(profesorMostrar.get(i).getNombre_Apellidos(), null);
-			//rolessArea.add("Profesor");
-		}
-		
-		rightPanel.add(areaRoles);
-		mainPanel.add(area);
-		mainPanel.setOpaque(true);
+		mainPanel.add(scroll);
 		this.setContentPane(mainPanel);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.pack();
