@@ -6,6 +6,7 @@ import java.util.List;
 import model.foro.TransferForo;
 import model.usuario.TransferAlumno;
 import model.usuario.TransferProfesor;
+import model.usuario.TransferUsuario;
 
 public class TransferAsignatura {
 	private String ID;
@@ -65,7 +66,16 @@ public class TransferAsignatura {
 	}
 
 	public void setAvisos(TransferForo avisos) {
+		
 		this.avisos = avisos;
+	}
+	
+	public List<TransferUsuario> getUsuarios(){
+		
+		List<TransferUsuario> ret=new ArrayList(alumno);
+		ret.addAll(profesor);
+		
+		return ret;
 	}
 	
 	

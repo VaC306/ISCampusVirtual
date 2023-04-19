@@ -38,15 +38,21 @@ public class ControllerImp extends Controller{
 		}
 		case Events.ABRIR_VMOSTRAR_PARTICIPANTES_ASIGNATURA:
 			tAsignatura=(TransferAsignatura) datos;
-			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, tAsignatura);
+			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, tAsignatura.getUsuarios());
 			
 		case Events.MOSTRAR_ALUMNOS_ASIGNATURA:
-			
-			currentIGUI.update(evento, tAsignatura.getAlumno());
+			if(tAsignatura!=null)
+				currentIGUI.update(evento, tAsignatura.getAlumno());
+			else
+				currentIGUI.update(evento, null);
+
 			
 		case Events.MOSTRAR_PROFESORES_ASIGNATURA:
 			
-			currentIGUI.update(evento, tAsignatura.getProfesor());
+			if(tAsignatura!=null)
+				currentIGUI.update(evento, tAsignatura.getProfesor());
+			else
+				currentIGUI.update(evento, null);
 		
 		}
 		

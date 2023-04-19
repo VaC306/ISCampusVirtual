@@ -44,7 +44,7 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 	}
 	
 	
-	
+	//en el init recibe un transferusuario con profes y alumnos
 	private void initGUI() {
 
 		setLocationRelativeTo(null);
@@ -174,7 +174,8 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 		panel.setPreferredSize(new Dimension(x, y));
 		return panel;
 	}
-
+	
+	//dependiendo del event, devuelve una lista con alumnos o profesors (datos puede ser null)
 	@Override
 	public void update(int event, Object datos) {
 		
