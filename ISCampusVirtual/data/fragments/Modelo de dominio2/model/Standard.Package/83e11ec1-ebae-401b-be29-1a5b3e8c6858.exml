@@ -1,0 +1,146 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="modelo de dominio2" version="4">
+  <OBJECT>
+    <ID name="modelo de dominio2" mc="Standard.Package" uid="83e11ec1-ebae-401b-be29-1a5b3e8c6858"/>
+    <PID name="Modelo de dominio2" mc="Standard.Project" uid="ea572c30-75d0-4a68-9dae-79e2a1c3298a"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[modelo de dominio2]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Usuario" mc="Standard.Class" uid="06ff338e-fda6-4333-aec2-48019df7de1e"/>
+        <COMPID name="Alumno" mc="Standard.Class" uid="08f9fc1c-e295-47b9-a16b-c5595ba59c2c"/>
+        <COMPID name="Profesor" mc="Standard.Class" uid="8f86eb0d-6f21-4f23-8e4a-ff752290daaf"/>
+        <COMPID name="Archivo" mc="Standard.Class" uid="8c024f6e-43fe-448b-bcee-c73a634018c4"/>
+        <COMPID name="Tareas" mc="Standard.Class" uid="2d59d707-ef8a-437a-a4f1-fe51c5965127"/>
+        <COMPID name="Apuntes" mc="Standard.Class" uid="497d42b8-f806-4c23-84ee-070d9fd71502"/>
+        <COMPID name="Asignaturas" mc="Standard.Class" uid="c39e54ff-12f3-4408-b420-cd84bfe770ba"/>
+        <COMPID name="Temas" mc="Standard.Class" uid="03db6ef5-7312-46e7-ac1b-6b1810a88680"/>
+        <COMPID name="Curso" mc="Standard.Class" uid="31399d3a-3beb-46c0-b887-fa4a9f6e3c43"/>
+        <COMPID name="Clase" mc="Standard.Class" uid="4af8aded-63c4-4e9b-9cea-28bc8006bc74"/>
+        <OBJECT>
+          <ID name="Cursos" mc="Standard.Enumeration" uid="a440b45e-974e-4339-8ad4-8d8724b4f593"/>
+          <ATTRIBUTES>
+            <ATT name="IsElementary">true</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="IsLeaf">false</ATT>
+            <ATT name="IsRoot">false</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="Name"><![CDATA[Cursos]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Value">
+              <OBJECT>
+                <ID name="Primero" mc="Standard.EnumerationLiteral" uid="11775c28-5ad9-4098-88b4-ae35021661a7"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[Primero]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="Segundo" mc="Standard.EnumerationLiteral" uid="49e4c531-6a0d-4e13-8e75-20ed16b9f616"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[Segundo]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="Tercero" mc="Standard.EnumerationLiteral" uid="001e7781-131a-4335-a656-7dbd44ae545d"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[Tercero]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="Cuarto" mc="Standard.EnumerationLiteral" uid="fe81ab0f-7610-4da1-852e-11cfdb6bd5a3"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[Cuarto]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="Quinto" mc="Standard.EnumerationLiteral" uid="3806ec69-8d11-481b-9744-4e7f2bdec786"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[Quinto]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <LINK relation="Extension">
+              <FOREIGNID name="JavaEnumeration" mc="Infrastructure.Stereotype" uid="01ec23a8-0000-0262-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+        <COMPID name="Notas" mc="Standard.Class" uid="c362d8da-c355-4009-add9-bddcc2911362"/>
+        <COMPID name="Foro" mc="Standard.Class" uid="20bf5139-534b-4d72-8460-d46bb6fee44d"/>
+        <COMPID name="Mensaje" mc="Standard.Class" uid="28367ae3-3026-4937-972e-5c06525fee19"/>
+        <OBJECT>
+          <ID name="Tipos_archivo" mc="Standard.Enumeration" uid="254c839d-e05e-4727-ac2a-9629812465cb"/>
+          <ATTRIBUTES>
+            <ATT name="IsElementary">true</ATT>
+            <ATT name="IsAbstract">false</ATT>
+            <ATT name="IsLeaf">false</ATT>
+            <ATT name="IsRoot">false</ATT>
+            <ATT name="Visibility">Public</ATT>
+            <ATT name="Name"><![CDATA[Tipos_archivo]]></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="Value">
+              <OBJECT>
+                <ID name="PDF" mc="Standard.EnumerationLiteral" uid="0d8c4c4a-5ba8-4816-917b-08f4943c4e50"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[PDF]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="DOCX" mc="Standard.EnumerationLiteral" uid="410bdb96-bccb-4b8b-a07c-80a9fdc38fe6"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[DOCX]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="PNG/JPG" mc="Standard.EnumerationLiteral" uid="9dc257ae-19ec-49f2-ba50-4e529cff0852"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[PNG/JPG]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="MP4" mc="Standard.EnumerationLiteral" uid="82a9b0bd-24f9-499f-9b1d-548e4eebf60a"/>
+                <ATTRIBUTES>
+                  <ATT name="Name"><![CDATA[MP4]]></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES></DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+            <LINK relation="Extension">
+              <FOREIGNID name="JavaEnumeration" mc="Infrastructure.Stereotype" uid="01ec23a8-0000-0262-0000-000000000000"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="modelo de dominio2 Class diagram" mc="Standard.ClassDiagram" uid="4195168f-7b5d-4815-b4a4-6ac8c03283ea"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

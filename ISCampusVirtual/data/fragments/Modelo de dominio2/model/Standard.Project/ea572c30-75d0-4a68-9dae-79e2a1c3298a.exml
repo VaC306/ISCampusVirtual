@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Modelo de dominio2" version="4">
+  <OBJECT>
+    <ID name="Modelo de dominio2" mc="Standard.Project" uid="ea572c30-75d0-4a68-9dae-79e2a1c3298a"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[Modelo de dominio2]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Model">
+        <COMPID name="modelo de dominio2" mc="Standard.Package" uid="83e11ec1-ebae-401b-be29-1a5b3e8c6858"/>
+      </COMP>
+      <COMP relation="DiagramRoot">
+        <COMPID name="Modelo de dominio2" mc="Infrastructure.DiagramSet" uid="c8963cbf-32b0-4e47-bc59-45f816649cba"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>
