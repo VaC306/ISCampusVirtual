@@ -2,16 +2,16 @@ package model.usuario;
 
 public abstract class SAUsuario {
 	
-	public boolean iniciarSesion(String password,String id ) {
+	public TransferUsuario iniciarSesion(String password,String id ) {
 		
 		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransfer(id);
 		
 		if(transfer!=null && transfer.getPassword()==password) {
 			
-			return true;
+			return transfer;
 		}
 		
-		return false;
+		return null;
 	}
 	
 	public boolean eliminarUsuario(String id) {

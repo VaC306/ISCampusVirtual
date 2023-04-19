@@ -1,21 +1,23 @@
 package control;
 
 public class Events {
-	public static final int ABRIR_INICIAR_SESION =000;
+	public static final int ABRIR_INICIAR_SESION =0;
 
-	public static final int INICIAR_SESION =001;
+	public static final int INICIAR_SESION =1;
 	
-	public static final int INICIAR_SESION_FALLIDO =002;
+	public static final int INICIAR_SESION_FALLIDO =2;
 	
-	public static final int INICIAR_SESION_CORRECTO =003;
+	public static final int INICIAR_SESION_CORRECTO =3;
 	
-	public static final int ABRIR_VMOSTRAR_PARTICIPANTES_ASIGNATURA=004;
+	public static final int ABRIR_VMOSTRAR_PARTICIPANTES_ASIGNATURA=4;
 	
-	public static final int MOSTRAR_PROFESORES_ASIGNATURA=005;
+	public static final int MOSTRAR_PROFESORES_ASIGNATURA=5;
 	
-	public static final int MOSTRAR_ALUMNOS_ASIGNATURA=006;
+	public static final int MOSTRAR_ALUMNOS_ASIGNATURA=6;
 
-	public static final int MOSTRAR_USUARIOS_ASIGNATURA = 007;
+	public static final int MOSTRAR_USUARIOS_ASIGNATURA = 7;
+
+	public static final int ABRIR_VISTA_ASIGNATURA = 8;
 	
 	
 

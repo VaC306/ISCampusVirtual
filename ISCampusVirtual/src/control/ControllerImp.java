@@ -18,7 +18,7 @@ public class ControllerImp extends Controller{
 
 	@Override
 	public void accion(int evento, Object datos) {
-		
+		Object usuarioIniciado;
 		TransferAlumno tAlumno;
 		TransferProfesor tProfesor;
 		TransferAsignatura tAsignatura = null;
@@ -30,8 +30,11 @@ public class ControllerImp extends Controller{
 		case Events.INICIAR_SESION:{
 			String[]info=(String[]) datos;
 			
-			if(saUsuario.iniciarSesion(info[0], info[1])) {
+			usuarioIniciado=saUsuario.iniciarSesion(info[0], info[1]);
+			
+			if(usuarioIniciado!=null) {
 				currentIGUI.update(Events.INICIAR_SESION_CORRECTO, datos);
+				
 			}else {
 				currentIGUI.update(Events.INICIAR_SESION_FALLIDO, datos);
 			}
@@ -55,6 +58,19 @@ public class ControllerImp extends Controller{
 				currentIGUI.update(evento, tAsignatura.getProfesor());
 			else
 				currentIGUI.update(evento, null);
+			
+		case Events.ABRIR_VISTA_ASIGNATURA:
+			tAsignatura=(TransferAsignatura) datos;
+			
+			if(tAsignatura!=null) {
+				currentIGUI=FactoriaVistas.getInstance().crearVista(evento, tAsignatura);
+
+			}
+			else {
+				currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
+
+			}
+			
 		
 		}
 		
