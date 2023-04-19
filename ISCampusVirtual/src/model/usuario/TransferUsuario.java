@@ -1,5 +1,8 @@
 package model.usuario;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class TransferUsuario {
 	private String NIF;
 
@@ -10,6 +13,9 @@ public abstract class TransferUsuario {
 	private String password;
 	
 	private String id;
+	
+    private List<String> asignaturas = new ArrayList<> ();
+
 
 	public String getNIF() {
 		return NIF;
@@ -52,6 +58,14 @@ public abstract class TransferUsuario {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public List<String> getAsignaturas() {
+		return asignaturas;
+	}
+
+	public void setAsignaturas(List<String> asignaturas) {
+		this.asignaturas = asignaturas;
 	}
 
 }

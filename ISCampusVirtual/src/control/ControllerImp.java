@@ -7,6 +7,7 @@ import model.usuario.SAProfesor;
 import model.usuario.SAUsuario;
 import model.usuario.TransferAlumno;
 import model.usuario.TransferProfesor;
+import model.usuario.TransferUsuario;
 import vista.FactoriaVistas;
 //siu
 public class ControllerImp extends Controller{
@@ -18,7 +19,7 @@ public class ControllerImp extends Controller{
 
 	@Override
 	public void accion(int evento, Object datos) {
-		Object usuarioIniciado;
+		TransferUsuario tUsuarioIniciado = null;
 		TransferAlumno tAlumno;
 		TransferProfesor tProfesor;
 		TransferAsignatura tAsignatura = null;
@@ -30,20 +31,22 @@ public class ControllerImp extends Controller{
 		case Events.INICIAR_SESION:{
 			String[]info=(String[]) datos;
 			
-			usuarioIniciado=saUsuario.iniciarSesion(info[0], info[1]);
+			tUsuarioIniciado=saUsuario.iniciarSesion(info[0], info[1]);
 			
-			if(usuarioIniciado!=null) {
-				currentIGUI.update(Events.INICIAR_SESION_CORRECTO, datos);
+			if(tUsuarioIniciado!=null) {
+				currentIGUI.update(Events.INICIAR_SESION_CORRECTO, tUsuarioIniciado);
 				
 			}else {
-				currentIGUI.update(Events.INICIAR_SESION_FALLIDO, datos);
+				currentIGUI.update(Events.INICIAR_SESION_FALLIDO, null);
 			}
+			break;
 		}
 		case Events.ABRIR_VMOSTRAR_PARTICIPANTES_ASIGNATURA:
 			tAsignatura=(TransferAsignatura) datos;
 			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
 			currentIGUI.update(Events.MOSTRAR_USUARIOS_ASIGNATURA, tAsignatura.getUsuarios());
 			
+			break;
 			
 		case Events.MOSTRAR_ALUMNOS_ASIGNATURA:
 			if(tAsignatura!=null)
@@ -51,6 +54,7 @@ public class ControllerImp extends Controller{
 			else
 				currentIGUI.update(evento, null);
 
+			break;
 			
 		case Events.MOSTRAR_PROFESORES_ASIGNATURA:
 			
@@ -58,6 +62,13 @@ public class ControllerImp extends Controller{
 				currentIGUI.update(evento, tAsignatura.getProfesor());
 			else
 				currentIGUI.update(evento, null);
+			break;
+			
+		case Events.ABRIR_VISTA_LISTA_ASIGNATURAS:
+			
+			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, tUsuarioIniciado.getAsignaturas());
+			
+			break;
 			
 		case Events.ABRIR_VISTA_ASIGNATURA:
 			tAsignatura=(TransferAsignatura) datos;

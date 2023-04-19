@@ -22,11 +22,11 @@ public class VMostrarAsignaturas extends JFrame implements IGUI{
 
 	private Controller ctrl;
 	
-	public VMostrarAsignaturas() {
+	public VMostrarAsignaturas(ArrayList<TransferAsignatura> listaAsig) {
 		super("");
 		ctrl=Controller.obtenerInstancia();
 		listaDeBotones= new ArrayList<>();
-		listaDeAsignaturas= new ArrayList<>();
+		listaDeAsignaturas= listaAsig;
 		initIGUI();
 	}
 	

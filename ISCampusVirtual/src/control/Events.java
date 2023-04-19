@@ -19,6 +19,9 @@ public class Events {
 
 	public static final int ABRIR_VISTA_ASIGNATURA = 8;
 	
+	public static final int ABRIR_VISTA_LISTA_ASIGNATURAS = 9;
+
+	
 	
 
 
