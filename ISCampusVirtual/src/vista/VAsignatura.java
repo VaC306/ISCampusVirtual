@@ -19,8 +19,10 @@ public class VAsignatura implements IGUI {
 	
 	private void initIGUI() {
 		
-		//mostrar temas
+		//mostrar temas (array Jbuttons)
+		
 		//boton para ver participantes
+		anadirBotonEditar();
 	}
 
 	@Override
@@ -28,5 +30,8 @@ public class VAsignatura implements IGUI {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	//al ser vista desde un usuario alumno no se anade el boton de editar
+	protected void anadirBotonEditar() {}
 
 }
