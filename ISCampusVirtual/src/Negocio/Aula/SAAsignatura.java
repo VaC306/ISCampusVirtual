@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Integracion.DAOAsignatura;
+import Negocio.Archivos.TransferTarea;
 import Negocio.Foro.TransferForo;
 import Negocio.Usuario.SAAlumno;
 import Negocio.Usuario.SAProfesor;
@@ -54,4 +55,19 @@ public class SAAsignatura {
 		}
 		return false;
 	}
+	
+	
+	public List<TransferTarea> getTareas(TransferAsignatura aTNew){	
+		
+		List<TransferTarea> ret= new ArrayList<>();
+		
+		for(TransferTema tt: aTNew.getTemas()) {
+			
+			ret.addAll(tt.getTareas());
+		}
+		
+
+		return ret;
+	}
+	
 }

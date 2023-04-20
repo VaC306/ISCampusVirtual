@@ -1,0 +1,12 @@
+-ACABAR INTEGRACION
+
+-VISTA_LISTA_ASIGNATURA: falta añadir botones para cerrar sesion, ver el calendario de tareas, editar el perfil
+
+-VISTA_ASIGNATURA: falta añadir boton para ver participantes ( ns si lo he añadido bn), ver calendario de tareas de la asignatura
+
+-VISTA_TEMA: todo
+
+-VISTA_CALENDARIO_TAREAS: todo
+
+
+

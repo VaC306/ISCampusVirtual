@@ -73,22 +73,6 @@ public abstract class TransferUsuario {
 		this.asignaturas = asignaturas;
 	}
 	
-	/*
-	public List<TransferTarea> getTareas(){
-		
-		DAOAsignatura daoA=new DAOAsignatura();
-		
-		List<TransferTarea> ret= new ArrayList<>();
-		
-		for(String idA : this.asignaturas) {
-			
-			TransferAsignatura ta = daoA.read(idA);
-			ret.addAll(ta.getTemas().)
-		}
-		
-		return ret;
-	}
-	*/
 	
 	public abstract boolean esProfesor() ;
 

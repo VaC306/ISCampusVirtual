@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Negocio.Archivos.TransferArchivo;
+import Negocio.Archivos.TransferTarea;
 
 public class TransferTema {
 	private String Nombre;
@@ -11,7 +12,10 @@ public class TransferTema {
 
     private TransferAsignatura asignatura ;
 
-    private List<TransferArchivo> archivo = new ArrayList<TransferArchivo> ();
+    private List<TransferArchivo> archivo = new ArrayList<> ();
+    
+    private List<TransferTarea> tareas = new ArrayList<> ();
+
 
 	public String getNombre() {
 		return Nombre;
@@ -43,6 +47,14 @@ public class TransferTema {
 
 	public void setArchivo(List<TransferArchivo> archivo) {
 		this.archivo = archivo;
+	}
+
+	public List<TransferTarea> getTareas() {
+		return tareas;
+	}
+
+	public void setTareas(List<TransferTarea> tareas) {
+		this.tareas = tareas;
 	}
     
     

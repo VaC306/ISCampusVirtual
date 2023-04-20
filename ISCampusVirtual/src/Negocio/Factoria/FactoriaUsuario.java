@@ -1,8 +1,10 @@
-package Negocio.Usuario;
+package Negocio.Factoria;
 
 import Integracion.DAOAlumno;
 import Integracion.DAOProfesor;
 import Integracion.DAOUsuario;
+import Negocio.Usuario.TransferAlumno;
+import Negocio.Usuario.TransferUsuario;
 
 public class FactoriaUsuario {
 

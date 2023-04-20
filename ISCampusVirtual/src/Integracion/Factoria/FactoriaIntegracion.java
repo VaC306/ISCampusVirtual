@@ -1,4 +1,6 @@
-package Integracion;
+package Integracion.Factoria;
+
+import Integracion.DAOAsignatura;
 
 public abstract class FactoriaIntegracion {
 	
@@ -13,5 +15,7 @@ public abstract class FactoriaIntegracion {
 		
 		return instancia;
 	}
+
+	public abstract DAOAsignatura generarDAOAsignatura();
 
 }

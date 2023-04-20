@@ -1,6 +1,15 @@
 package Negocio.Usuario;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import Integracion.DAOAsignatura;
 import Integracion.DAOUsuario;
+import Integracion.Factoria.FactoriaIntegracion;
+import Negocio.Archivos.TransferTarea;
+import Negocio.Aula.TransferAsignatura;
+import Negocio.Aula.TransferTema;
+import Negocio.Factoria.FactoriaUsuario;
 
 public class SAUsuario {
 	
@@ -62,4 +71,25 @@ public class SAUsuario {
 		}
 		return false;
 	}	
+	
+	public List<TransferTarea> getTareas(TransferUsuario aTNew){	
+		
+		List<TransferTarea> ret= new ArrayList<>();
+		
+		DAOAsignatura daoAsignatura= FactoriaIntegracion.getInstancia().generarDAOAsignatura();
+		TransferAsignatura tAsignatura;
+		
+		for(String idAsignatura: aTNew.getAsignaturas()) {
+			
+			tAsignatura=daoAsignatura.read(idAsignatura);
+			
+			for(TransferTema tt: tAsignatura.getTemas()) {
+				
+				ret.addAll(tt.getTareas());
+			}
+		}
+		
+
+		return ret;
+	}
 }
