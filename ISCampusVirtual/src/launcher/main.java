@@ -1,8 +1,8 @@
 package launcher;
 
-import control.Controller;
-import control.Events;
-import vista.ViniciarSesion;
+import Presentacion.ViniciarSesion;
+import Presentacion.Control.Controller;
+import Presentacion.Control.Events;
 
 public class main {
 
