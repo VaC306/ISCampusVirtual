@@ -67,5 +67,7 @@ public abstract class TransferUsuario {
 	public void setAsignaturas(List<String> asignaturas) {
 		this.asignaturas = asignaturas;
 	}
+	
+	public abstract boolean esProfesor() ;
 
 }

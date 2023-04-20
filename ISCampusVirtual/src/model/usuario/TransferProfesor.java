@@ -12,4 +12,9 @@ public class TransferProfesor extends TransferUsuario {
 
 	}
 
+	@Override
+	public boolean esProfesor() {
+		return true;
+	}
+
 }

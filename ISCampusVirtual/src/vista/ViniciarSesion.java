@@ -60,8 +60,12 @@ public class ViniciarSesion extends JFrame implements IGUI {
 			
 			//ok button
 			ok = new JButton("OK");
-			String[] arrayS = { username.getText(), new String(password.getPassword()) };
-			ok.addActionListener((e) -> ctrl.accion(Events.INICIAR_SESION, arrayS));
+			
+			ok.addActionListener((e) -> {
+				String[] arrayS = { username.getText(), new String(password.getPassword()) };
+				ctrl.accion(Events.INICIAR_SESION, arrayS);
+			
+			});
 			panel2.add(ok);
 
 			// cancel button
@@ -85,6 +89,7 @@ public class ViniciarSesion extends JFrame implements IGUI {
 		switch (event) {
 		case Events.INICIAR_SESION_CORRECTO:
 			JOptionPane.showMessageDialog(this, "�Inicio de sesi�n exitoso!");
+			setVisible(false);
 			ctrl.accion(Events.ABRIR_VISTA_LISTA_ASIGNATURAS, datos);
 			break;
 

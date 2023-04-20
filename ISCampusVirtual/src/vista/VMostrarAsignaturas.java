@@ -19,8 +19,10 @@ public class VMostrarAsignaturas extends JFrame implements IGUI{
 	private List<JButton> listaDeBotones;
 	private List<TransferAsignatura> listaDeAsignaturas;
 	private JScrollPane scrollPane;
-
+	private JFrame ventana;
+	private JPanel panelDeBotones;
 	private Controller ctrl;
+	
 	
 	public VMostrarAsignaturas(ArrayList<TransferAsignatura> listaAsig) {
 		super("");
@@ -32,7 +34,7 @@ public class VMostrarAsignaturas extends JFrame implements IGUI{
 	
 	private void initIGUI() {
 		
-        JFrame ventana = new JFrame("Asignaturas");
+        ventana = new JFrame("Asignaturas");
         ventana.setSize(300, 200);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -58,7 +60,7 @@ public class VMostrarAsignaturas extends JFrame implements IGUI{
 	
 	private void updateScrollPane() {
 		
-        JPanel panelDeBotones = new JPanel(new GridLayout(0, 1)); // GridLayout con una columna y filas ilimitadas
+        panelDeBotones = new JPanel(new GridLayout(0, 1)); // GridLayout con una columna y filas ilimitadas
         listaDeBotones.clear();
         
         for (TransferAsignatura tA: listaDeAsignaturas) {

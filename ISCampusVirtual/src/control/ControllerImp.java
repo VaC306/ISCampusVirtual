@@ -12,7 +12,7 @@ import vista.FactoriaVistas;
 //siu
 public class ControllerImp extends Controller{
 	
-	private SAUsuario saUsuario;
+	private SAUsuario saUsuario=new SAUsuario();
 	private SAAsignatura saAsignatura;
 	
 	private IGUI currentIGUI;
@@ -73,12 +73,19 @@ public class ControllerImp extends Controller{
 		case Events.ABRIR_VISTA_ASIGNATURA:
 			tAsignatura=(TransferAsignatura) datos;
 			
-			if(tAsignatura!=null) {
-				currentIGUI=FactoriaVistas.getInstance().crearVista(evento, tAsignatura);
+			if(!tUsuarioIniciado.esProfesor()) {
+				
+				if(tAsignatura!=null) {
+					currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_ASIGNATURA, tAsignatura);
 
+				}
+				else {
+					currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
+				}
 			}
 			else {
-				currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
+				
+				currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_ASIGNATURA_PROFESOR, tAsignatura);
 
 			}
 			

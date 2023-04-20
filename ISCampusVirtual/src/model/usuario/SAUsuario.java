@@ -1,6 +1,6 @@
 package model.usuario;
 
-public abstract class SAUsuario {
+public class SAUsuario {
 	
 	public TransferUsuario iniciarSesion(String password,String id ) {
 		

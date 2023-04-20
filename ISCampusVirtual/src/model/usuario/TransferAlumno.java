@@ -38,4 +38,9 @@ public class TransferAlumno extends TransferUsuario{
 
 	}
 
+	@Override
+	public boolean esProfesor() {
+		return false;
+	}
+
 }
