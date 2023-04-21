@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import Negocio.Usuario.TransferAlumno;
 import Negocio.Usuario.TransferProfesor;
@@ -41,19 +43,32 @@ public class DAOProfesorImpl implements DAOProfesor {
 		TransferProfesor TP =null;
 		try {
 			
-			String s = "SELECT * FROM profesores WHERE IdProfesor = ?;";
+			String s = "SELECT * FROM usuarios WHERE correo_electronico = ?;";
 			
 			Connection connection = DriverManager.getConnection(url, login, password);
 			PreparedStatement ps = connection.prepareStatement(s);
-			
 			ps.setString(1, id);
+			
 			ResultSet r = ps.executeQuery();
 			
 			if(r.next()) {
 				TP = new TransferProfesor();
-				TP.setId(r.getString("IdProfesor"));
+				TP.setNombre_Apellidos(r.getString("Nombre") + " " + r.getString("Apellidos"));
+				TP.setCorreo_electronico(r.getString("Correo_electronico"));
+				TP.setPassword(r.getString("Contrasenia"));
 				TP.setNIF(r.getString("NIF"));
-				TP.setAsignaturas(null);
+			}
+			
+			s = "SELECT * FROM profesores WHERE NIF = ?;";
+			
+			ps = connection.prepareStatement(s);
+			
+			ps.setString(1, TP.getNIF());
+			r = ps.executeQuery();
+			
+			if(r.next()) {
+				TP.setId(r.getString("IdProfesor"));
+				TP.setAsignaturas(new ArrayList<String>());
 			}
 			
 			connection.close();

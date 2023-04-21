@@ -16,11 +16,11 @@ import Negocio.Factoria.FactoriaUsuario;
 
 public class SAUsuario {
 	
-	public TransferUsuario iniciarSesion(String password,String id ) {
+	public TransferUsuario iniciarSesion(String id,String password ) {
 		
 		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransfer(id);
-		
-		if(transfer!=null && transfer.getPassword()==password) {
+
+		if(transfer!=null && transfer.getPassword().equals(password)) {
 			
 			return transfer;
 		}

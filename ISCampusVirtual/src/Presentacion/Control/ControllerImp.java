@@ -31,7 +31,7 @@ public class ControllerImp extends Controller{
 		case Events.INICIAR_SESION:{
 			String[]info=(String[]) datos;
 			
-			tUsuarioIniciado=saUsuario.iniciarSesion(info[0], info[1]);
+			tUsuarioIniciado = saUsuario.iniciarSesion(info[0], info[1]);
 			
 			if(tUsuarioIniciado!=null) {
 				currentIGUI.update(Events.INICIAR_SESION_CORRECTO, tUsuarioIniciado);

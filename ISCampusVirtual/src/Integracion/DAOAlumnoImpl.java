@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import Negocio.Usuario.TransferAlumno;
 import Negocio.Usuario.TransferUsuario;
@@ -40,20 +41,32 @@ public class DAOAlumnoImpl implements DAOAlumno{
 		TransferAlumno TA =null;
 		try {
 			
-			String s = "SELECT * FROM alumnos WHERE IdAlumno = ?;";
-			
+			String s = "SELECT * FROM usuarios WHERE correo_electronico = ?;" ;
 			Connection connection = DriverManager.getConnection(url, login, password);
 			PreparedStatement ps = connection.prepareStatement(s);
+			ps.setString(1,  id);
 			
-			ps.setString(1, id);
 			ResultSet r = ps.executeQuery();
 			
 			if(r.next()) {
 				TA = new TransferAlumno();
-				TA.setId(r.getString("IdAlumno"));
 				TA.setNIF(r.getString("NIF"));
+				TA.setNombre_Apellidos(r.getString("Nombre") + " " + r.getString("Apellidos"));
+				TA.setCorreo_electronico(r.getString("Correo_electronico"));
+				TA.setPassword(r.getString("Contrasenia"));
+			}
+			
+			s = "SELECT * FROM alumnos WHERE NIF = ?;";
+			
+			ps = connection.prepareStatement(s);
+			
+			ps.setString(1, TA.getNIF());
+			r = ps.executeQuery();
+			
+			if(r.next()) {
+				TA.setId(r.getString("IdAlumno"));
 				TA.setDelegado(r.getBoolean("Delegado"));
-				TA.setAsignaturas(null);
+				TA.setAsignaturas(new ArrayList<String>());
 			}
 			
 			connection.close();
@@ -61,7 +74,7 @@ public class DAOAlumnoImpl implements DAOAlumno{
 			r.close();
 			
 		}catch(Exception e) {
-			
+			System.out.println(e.getMessage());
 		}
 		return TA;
 	}
