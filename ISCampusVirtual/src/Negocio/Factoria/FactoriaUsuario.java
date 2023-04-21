@@ -1,7 +1,9 @@
 package Negocio.Factoria;
 
 import Integracion.DAOAlumno;
+import Integracion.DAOAlumnoImpl;
 import Integracion.DAOProfesor;
+import Integracion.DAOProfesorImpl;
 import Integracion.DAOUsuario;
 import Negocio.Usuario.TransferAlumno;
 import Negocio.Usuario.TransferUsuario;
@@ -26,13 +28,13 @@ public class FactoriaUsuario {
 		switch (id.charAt(0)) {
 		case ('a'): {
 
-			dao = new DAOAlumno();
+			dao = new DAOAlumnoImpl();
 			transfer = (TransferAlumno) dao.readById(id);
 			break;
 		}
 		case ('p'): {
 
-			dao = new DAOProfesor();
+			dao = new DAOProfesorImpl();
 			transfer = (TransferUsuario) dao.readById(id);
 			break;
 		}
@@ -47,12 +49,12 @@ public class FactoriaUsuario {
 		switch (id.charAt(0)) {
 		case ('a'): {
 
-			dao = new DAOAlumno();
+			dao = new DAOAlumnoImpl();
 			break;
 		}
 		case ('p'): {
 
-			dao = new DAOProfesor();
+			dao = new DAOProfesorImpl();
 			break;
 		}
 		}
