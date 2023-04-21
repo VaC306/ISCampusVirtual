@@ -13,7 +13,7 @@ import Presentacion.Control.Events;
 import Presentacion.Control.IGUI;
 
 
-public class VMostrarAsignaturas extends JFrame implements IGUI{
+public class VMostrarListaAsignaturas extends JFrame implements IGUI{
 
 	private List<JButton> listaDeBotones;
 	private List<TransferAsignatura> listaDeAsignaturas;
@@ -22,8 +22,10 @@ public class VMostrarAsignaturas extends JFrame implements IGUI{
 	private JPanel panelDeBotones;
 	private Controller ctrl;
 	
+    JButton cerrarSesion;
 	
-	public VMostrarAsignaturas(ArrayList<TransferAsignatura> listaAsig) {
+	
+	public VMostrarListaAsignaturas(ArrayList<TransferAsignatura> listaAsig) {
 		super("");
 		ctrl=Controller.obtenerInstancia();
 		listaDeBotones= new ArrayList<>();
@@ -41,23 +43,38 @@ public class VMostrarAsignaturas extends JFrame implements IGUI{
         
         ventana.add(scrollPane);
         
+        cerrarSesion= new JButton("Cerrar Sesion");
+        cerrarSesion.addActionListener(e->{
+        	
+			setVisible(false);
+			ctrl.accion(Events.ABRIR_INICIAR_SESION, null);
+        });
+        
         // Mostrar la ventana principal
         ventana.setVisible(true);
 	}
 	
 	@Override
 	public void update(int event, Object datos) {
-		listaDeAsignaturas= (List<TransferAsignatura>) datos;
-	
-        updateScrollPane();
-        scrollPane.revalidate();
-        scrollPane.repaint();
+
+		//switch (event) {
+		//case Events.ABRIR_VISTA_LISTA_ASIGNATURAS: {
+			listaDeAsignaturas = (List<TransferAsignatura>) datos;
+
+			updateScrollPane();
+			scrollPane.revalidate();
+			scrollPane.repaint();
+		//}
+
+			
+		//}
 	}
 	
 	
 	
 	
 	private void updateScrollPane() {
+		
 		
         panelDeBotones = new JPanel(new GridLayout(0, 1)); // GridLayout con una columna y filas ilimitadas
         listaDeBotones.clear();

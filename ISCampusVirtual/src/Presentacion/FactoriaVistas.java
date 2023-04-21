@@ -24,7 +24,7 @@ public class FactoriaVistas {
 			return new ViniciarSesion() ;
 			
 		case Events.ABRIR_VISTA_LISTA_ASIGNATURAS:
-			return new VMostrarAsignaturas((ArrayList<TransferAsignatura>) data);
+			return new VMostrarListaAsignaturas((ArrayList<TransferAsignatura>) data);
 			
 		case Events.ABRIR_VISTA_ASIGNATURA:
 			return new VAsignatura((TransferAsignatura) data);
