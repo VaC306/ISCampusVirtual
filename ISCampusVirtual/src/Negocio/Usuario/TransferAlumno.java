@@ -11,10 +11,8 @@ public class TransferAlumno extends TransferUsuario{
 
     private boolean Delegado;
 
-
     private List<TransferNota> notas = new ArrayList<TransferNota> ();
 	
-
 
 	public boolean isDelegado() {
 		return Delegado;
@@ -31,8 +29,6 @@ public class TransferAlumno extends TransferUsuario{
 	public void setNotas(List<TransferNota> notas) {
 		this.notas = notas;
 	}
-
-
 
 	public TransferAlumno() {
 

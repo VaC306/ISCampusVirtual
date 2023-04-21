@@ -1,26 +1,17 @@
 package Integracion;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 import Negocio.Usuario.TransferAlumno;
 import Negocio.Usuario.TransferUsuario;
 
-public class DAOAlumno extends DAOUsuario {
-	@Override
-	public TransferAlumno readById(String id) {
-		// TODO
-		return null;
+public interface DAOAlumno extends DAOUsuario {
+	
+	//public abstract TransferAlumno readById(String id);
 
-	}
-
-	@Override
-	public void create(TransferUsuario aTNew) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void eliminate(String id) {
-		// TODO Auto-generated method stub
-
-	}
-
+	public abstract void create(TransferAlumno aTNew);	
 }

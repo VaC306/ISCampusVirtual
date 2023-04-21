@@ -12,7 +12,7 @@ public class FactoriaIntegracionImp extends FactoriaIntegracion {
 	
 	public DAOAlumno generarDAOAlumno() {
 		
-		return new DAOAlumno();
+		return new DAOAlumnoImpl();
 	}
 	
 	public DAOArchivo generarDAOArchivo() {
@@ -42,7 +42,7 @@ public class FactoriaIntegracionImp extends FactoriaIntegracion {
 	
 	public DAOProfesor generarDAOProfesor() {
 		
-		return new DAOProfesor();
+		return new DAOProfesorImpl();
 	}
 	
 	public DAOTarea generarDAOTarea() {
