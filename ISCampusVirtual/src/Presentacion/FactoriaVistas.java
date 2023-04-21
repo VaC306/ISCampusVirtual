@@ -1,7 +1,9 @@
 package Presentacion;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.TransferAsignatura;
 import Presentacion.Control.Events;
 import Presentacion.Control.IGUI;
@@ -34,7 +36,9 @@ public class FactoriaVistas {
 			
 		case Events.ABRIR_VMOSTRAR_PARTICIPANTES_ASIGNATURA:
 			return new VMostrarPartiAsignaturas();
-			
+		
+		case Events.ABRIR_CALENDARIO:
+			return new VCalendarioTareas((List<TransferTarea>) data);
 		}
 		return null;
 	}

@@ -89,8 +89,12 @@ public class ControllerImp extends Controller{
 
 			}
 			break;
-			
 		
+		case Events.ABRIR_CALENDARIO:
+			
+			
+			currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_CALENDARIO, saUsuario.getTareas(tUsuarioIniciado));
+
 		}
 		
 		
