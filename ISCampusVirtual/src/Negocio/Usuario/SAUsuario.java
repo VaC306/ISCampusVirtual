@@ -1,6 +1,9 @@
 package Negocio.Usuario;
 
+import java.util.HashMap;
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import Integracion.DAOAsignatura;
