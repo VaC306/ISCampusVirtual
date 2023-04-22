@@ -20,7 +20,7 @@ public class ViniciarSesion extends JFrame implements IGUI {
 	private JLabel password_l;
 	private JButton ok;
 	private JButton cancel;
-
+	private JPanel panelMain;
 	private Controller ctrl;
 
 	public ViniciarSesion() {
@@ -33,16 +33,16 @@ public class ViniciarSesion extends JFrame implements IGUI {
 		this.setSize(450, 110);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		JPanel panel1 = new JPanel();
-		panel1.setLayout(new BoxLayout(panel1, BoxLayout.Y_AXIS));
+		 panelMain = new JPanel();
+		panelMain.setLayout(new BoxLayout(panelMain, BoxLayout.Y_AXIS));
 		JPanel panel2 = new JPanel();
 		JPanel panel3 = new JPanel();
 
-		setContentPane(panel1);
+		setContentPane(panelMain);
 		setLocationRelativeTo(getParent());
 		setResizable(false);
 
-		username_l = new JLabel("Username");
+		username_l = new JLabel("Mail");
 		password_l = new JLabel("Password");
 
 		try {
@@ -75,8 +75,8 @@ public class ViniciarSesion extends JFrame implements IGUI {
 				setVisible(false);
 			});
 
-			panel1.add(panel3);
-			panel1.add(panel2);
+			panelMain.add(panel3);
+			panelMain.add(panel2);
 			setVisible(true);
 
 		} catch (Exception e) {
@@ -88,13 +88,17 @@ public class ViniciarSesion extends JFrame implements IGUI {
 	public void update(int event, Object datos) {
 		switch (event) {
 		case Events.INICIAR_SESION_CORRECTO:
-			JOptionPane.showMessageDialog(this, "�Inicio de sesi�n exitoso!");
+			JOptionPane.showMessageDialog(this, "�Inicio de sesion exitoso!");
 			setVisible(false);
 			ctrl.accion(Events.ABRIR_VISTA_LISTA_ASIGNATURAS, datos);
 			break;
 
 		case Events.INICIAR_SESION_FALLIDO:
-			JOptionPane.showMessageDialog(this, "Inicio de sesi�n fallido");
+			
+			username.setText("");
+			password.setText("");
+
+			JOptionPane.showMessageDialog(this, "Inicio de sesion fallido");
 			break;
 		}
 
