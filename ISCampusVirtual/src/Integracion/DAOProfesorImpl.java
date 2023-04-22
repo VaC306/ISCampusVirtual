@@ -39,7 +39,40 @@ public class DAOProfesorImpl implements DAOProfesor {
 
 	@Override
 	public TransferUsuario readById(String id) {
+		return null;
+	}
+
+	@Override
+	public void create(TransferProfesor aTNew) {
+
+		try {
+		String s = "INSERT INTO profesores (IdProfesor, NIF, IdAsignatura) VALUES (?,?,?)";
+
+		Connection connection = DriverManager.getConnection(url, login, password);
+		PreparedStatement ps = connection.prepareStatement(s);
 		
+		ps.setString(1, aTNew.getId());
+		ps.setString(2, aTNew.getNIF());
+		ps.setArray(3, null);
+		ps.executeUpdate();
+		
+		connection.close();
+		ps.close();
+		
+		}catch(Exception e) {
+			
+		}
+		
+	}
+
+	@Override
+	public void create(TransferUsuario aTNew) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public TransferUsuario readByCorreo(String id) {
 		TransferProfesor TP =null;
 		try {
 			
@@ -80,35 +113,6 @@ public class DAOProfesorImpl implements DAOProfesor {
 		}
 		
 		return TP;
-	}
-
-	@Override
-	public void create(TransferProfesor aTNew) {
-
-		try {
-		String s = "INSERT INTO profesores (IdProfesor, NIF, IdAsignatura) VALUES (?,?,?)";
-
-		Connection connection = DriverManager.getConnection(url, login, password);
-		PreparedStatement ps = connection.prepareStatement(s);
-		
-		ps.setString(1, aTNew.getId());
-		ps.setString(2, aTNew.getNIF());
-		ps.setArray(3, null);
-		ps.executeUpdate();
-		
-		connection.close();
-		ps.close();
-		
-		}catch(Exception e) {
-			
-		}
-		
-	}
-
-	@Override
-	public void create(TransferUsuario aTNew) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
