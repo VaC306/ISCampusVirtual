@@ -19,27 +19,50 @@ public class FactoriaUsuario {
 		return instancia;
 	}
 	
-	public TransferUsuario crearTransfer (String id) {
+	public TransferUsuario crearTransferById (String id) {
 		
 		DAOUsuario dao;
 		TransferUsuario transfer=null;
 		
+		if (!id.isEmpty()) {
+
+			switch (id.charAt(0)) {
+			case ('a'): 
+
+				dao = new DAOAlumnoImpl();
+				transfer = (TransferAlumno) dao.readById(id);
+				break;
+			
+			case ('p'): 
+
+				dao = new DAOProfesorImpl();
+				transfer = (TransferUsuario) dao.readById(id);
+				break;
+			}
+			
+		}
+
+		return transfer;
+	}
+	
+	public TransferUsuario crearTransferByCorreo (String correo) {
 		
-		switch (id.charAt(0)) {
-		case ('a'): {
+		DAOUsuario dao;
+		TransferUsuario transfer=null;
+
+		if (!correo.isEmpty()) {
 
 			dao = new DAOAlumnoImpl();
-			transfer = (TransferAlumno) dao.readById(id);
-			break;
-		}
-		case ('p'): {
+			transfer = (TransferAlumno) dao.readByCorreo(correo);
 
-			dao = new DAOProfesorImpl();
-			transfer = (TransferUsuario) dao.readById(id);
-			break;
+			if (transfer == null) {
+
+				dao = new DAOProfesorImpl();
+				transfer = (TransferUsuario) dao.readByCorreo(correo);
+			}
+
 		}
-		}
-		
+
 		return transfer;
 	}
 	

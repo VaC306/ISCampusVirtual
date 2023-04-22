@@ -10,4 +10,6 @@ public interface DAOUsuario {
 
 	public abstract TransferUsuario readById(String id);
 
+	public abstract TransferUsuario readByCorreo(String id);
+
 }

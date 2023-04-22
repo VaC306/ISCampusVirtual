@@ -16,9 +16,9 @@ import Negocio.Factoria.FactoriaUsuario;
 
 public class SAUsuario {
 	
-	public TransferUsuario iniciarSesion(String id,String password ) {
+	public TransferUsuario iniciarSesion(String correo,String password ) {
 		
-		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransfer(id);
+		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransferByCorreo(correo);
 
 		if(transfer!=null && transfer.getPassword().equals(password)) {
 			
@@ -31,7 +31,7 @@ public class SAUsuario {
 	public boolean eliminarUsuario(String id) {
 		
 		DAOUsuario dao= FactoriaUsuario.getInstance().crearDAO(id);
-		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransfer(id);
+		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransferById(id);
 
 		//si no existe no se elimina
 		if(transfer!=null) {
@@ -47,7 +47,7 @@ public class SAUsuario {
 	public boolean crearUsuario (TransferUsuario aTNew) {
 		
 		DAOUsuario dao= FactoriaUsuario.getInstance().crearDAO(aTNew.getId());
-		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransfer(aTNew.getId());
+		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransferById(aTNew.getId());
 
 		//como no existe se añade a la bd
 		if(transfer==null) {
@@ -62,7 +62,7 @@ public class SAUsuario {
 	public boolean editarUsuario (TransferUsuario aTNew) {
 		
 		DAOUsuario dao= FactoriaUsuario.getInstance().crearDAO(aTNew.getId());
-		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransfer(aTNew.getId());
+		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransferById(aTNew.getId());
 
 		//como no existe se edita la bd
 		if(transfer==null) {

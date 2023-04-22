@@ -1,15 +1,17 @@
 package Presentacion;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Negocio.Usuario.TransferUsuario;
 import Presentacion.Control.Controller;
+import Presentacion.Control.Events;
 import Presentacion.Control.IGUI;
 
-public class VPerfil implements IGUI{
+public class VPerfil extends JFrame implements IGUI{
 	
 	protected Controller ctrl;
 	TransferUsuario usuario;
@@ -40,11 +42,25 @@ public class VPerfil implements IGUI{
 		
 		
 		
+		JButton botonEditar= new JButton("Editar");
+		botonEditar.addActionListener(e->{
+			
+			ctrl.accion(Events.ABRIR_VISTA_EDITAR_USUARIO, usuario);
+		});
+		
+		
+		JButton botonCerrar= new JButton("Cerrar");
+		botonCerrar.addActionListener(e->{
+			
+			this.setVisible(false);
+		});
 	}
 	
 	@Override
 	public void update(int event, Object datos) {
 		
+		usuario=(TransferUsuario) datos;
+		initIGUI();
 	}
 	
 	

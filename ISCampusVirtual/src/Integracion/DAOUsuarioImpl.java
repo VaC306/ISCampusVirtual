@@ -45,4 +45,12 @@ public class DAOUsuarioImpl implements DAOUsuario {
 		return null;
 	}
 
+	
+	@Override
+	public TransferUsuario readByCorreo(String id) {
+		
+		return null;
+	}
+
+	
 }

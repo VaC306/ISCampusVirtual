@@ -5,6 +5,7 @@ import java.util.List;
 
 import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.TransferAsignatura;
+import Negocio.Usuario.TransferUsuario;
 import Presentacion.Control.Events;
 import Presentacion.Control.IGUI;
 
@@ -37,8 +38,14 @@ public class FactoriaVistas {
 		case Events.ABRIR_VMOSTRAR_PARTICIPANTES_ASIGNATURA:
 			return new VMostrarPartiAsignaturas();
 		
-		case Events.ABRIR_CALENDARIO:
+		case Events.ABRIR_VISTA_CALENDARIO:
 			return new VCalendarioTareas((List<TransferTarea>) data);
+			
+		case Events.ABRIR_VISTA_USUARIO:
+			return new VPerfil((TransferUsuario) data);
+			
+		case Events.ABRIR_VISTA_EDITAR_USUARIO:
+			return new VPerfilEditar((TransferUsuario) data);
 		}
 		return null;
 	}

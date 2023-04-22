@@ -23,8 +23,11 @@ public class Events {
 
 	public static final int ABRIR_VISTA_ASIGNATURA_PROFESOR = 10;
 	
-	public static final int ABRIR_CALENDARIO = 11;
+	public static final int ABRIR_VISTA_CALENDARIO = 11;
+	
+	public static final int ABRIR_VISTA_USUARIO = 12;
 
+	public static final int ABRIR_VISTA_EDITAR_USUARIO = 13;
 
 	
 	

@@ -17,9 +17,12 @@ public class ControllerImp extends Controller{
 	
 	private IGUI currentIGUI;
 
+	TransferUsuario tUsuarioIniciado = null;
+	
+	
 	@Override
 	public void accion(int evento, Object datos) {
-		TransferUsuario tUsuarioIniciado = null;
+
 		TransferAlumno tAlumno;
 		TransferProfesor tProfesor;
 		TransferAsignatura tAsignatura = null;
@@ -90,19 +93,51 @@ public class ControllerImp extends Controller{
 			}
 			break;
 		
-		case Events.ABRIR_CALENDARIO:
+		case Events.ABRIR_VISTA_CALENDARIO:
 			
 			
-			currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_CALENDARIO, saUsuario.getTareas(tUsuarioIniciado));
+			currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_CALENDARIO, saUsuario.getTareas(tUsuarioIniciado));
+			
+			break;
 
+		case Events.ABRIR_VISTA_USUARIO:
+			
+			if(tUsuarioIniciado.esProfesor() || tUsuarioIniciado==datos) {
+				
+				currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_EDITAR_USUARIO, datos);
+			}
+			else {
+			
+				currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_USUARIO, datos);
+			}
+			
+			break;
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		}
 		
-		
+
 		
 	
 			
 	}
+}
 	
 
 	
-}
+
