@@ -20,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 import Negocio.Archivos.TransferTarea;
+import Negocio.Aula.TransferAsignatura;
 import Presentacion.Control.Controller;
 import Presentacion.Control.IGUI;
 
@@ -27,6 +28,11 @@ public class VCalendarioTareas extends JFrame implements IGUI {
 	private Controller ctrl;
 	private JPanel panelCalendario;
 	private List<TransferTarea> listaTareas;
+	
+	public static void main(String[] args) {
+		
+		new VCalendarioTareas(new ArrayList<TransferTarea>());
+	}
 
 	private static final String[] meses = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
 			"Septiembre", "Octubre", "Noviembre", "Diciembre" };
@@ -51,7 +57,7 @@ public class VCalendarioTareas extends JFrame implements IGUI {
 		setLayout(new BorderLayout());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		JPanel panelCalendario = crearPanelCalendario();
+		panelCalendario = crearPanelCalendario();
 
 		add(panelCalendario, BorderLayout.CENTER);
 
@@ -59,20 +65,30 @@ public class VCalendarioTareas extends JFrame implements IGUI {
 		HashMap<String, Integer> mapaMeses = new HashMap<>();
 		JComboBox<String> comboBox = new JComboBox<>();
 
-		int i = 1;
+		int i = 0;
 		for (String mes : meses) {
 			comboBox.addItem(mes);
 			mapaMeses.put(mes, i);
+			
+			i++;
 		}
-
+		comboBox.setSelectedIndex(mes);
+		
 		comboBox.addActionListener(e -> {
 
 			String mesSeleccionadoString = (String) comboBox.getSelectedItem();
 			mes = mapaMeses.get(mesSeleccionadoString);
+			
+			
+			this.remove(panelCalendario);
+			panelCalendario = crearPanelCalendario();
+			add(panelCalendario, BorderLayout.CENTER);
 
 			initIGUI();
 
 		});
+		
+		add(comboBox, BorderLayout.PAGE_START);
 
 		// TODO añadir boton
 		JButton botonCerrar = new JButton("Cerrar");
@@ -81,6 +97,8 @@ public class VCalendarioTareas extends JFrame implements IGUI {
 			this.setVisible(false);
 		});
 
+		add(botonCerrar,BorderLayout.PAGE_END );
+		
 		pack();
 		setLocationRelativeTo(null);
 		setVisible(true);

@@ -1,5 +1,6 @@
 package Presentacion;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.ScrollPane;
 import java.util.ArrayList;
@@ -41,14 +42,17 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
         
         updateScrollPane();
         
-        ventana.add(scrollPane);
+        ventana.add(scrollPane, BorderLayout.CENTER);
         
         cerrarSesion= new JButton("Cerrar Sesion");
         cerrarSesion.addActionListener(e->{
         	
-			setVisible(false);
+			ventana.setVisible(false);
 			ctrl.accion(Events.ABRIR_INICIAR_SESION, null);
         });
+        
+        
+		ventana.add(cerrarSesion, BorderLayout.PAGE_START);
         
         // Mostrar la ventana principal
         ventana.setVisible(true);
@@ -94,5 +98,9 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
                
 	}
 	
+	public static void main(String[] args) {
+		
+		new VMostrarListaAsignaturas(new ArrayList<TransferAsignatura>());
+	}
 	
 }
