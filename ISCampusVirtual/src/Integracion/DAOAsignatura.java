@@ -2,20 +2,12 @@ package Integracion;
 
 import Negocio.Aula.TransferAsignatura;
 
-public class DAOAsignatura {
+public interface DAOAsignatura {
 
-	public TransferAsignatura read(String id) {
-		return null;
+	public TransferAsignatura read(String id);
 
-	}
+	public void create(TransferAsignatura tAnew);
 
-	public void create(TransferAsignatura tAnew) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void eliminate(String id) {
-		// TODO Auto-generated method stub
-
-	}
+	public void eliminate(String id);
+	
 }

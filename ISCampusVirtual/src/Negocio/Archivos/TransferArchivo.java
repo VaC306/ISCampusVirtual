@@ -7,6 +7,8 @@ import Negocio.Usuario.TransferUsuario;
 public class TransferArchivo {
 	
 	private String Nombre;
+	
+	private String Id;
 
 	private Tipos_archivo tipo_archivo;
 
@@ -44,6 +46,14 @@ public class TransferArchivo {
 
 	public void setTemas(TransferTema temas) {
 		this.temas = temas;
+	}
+	
+	public String getId() {
+		return this.Id;
+	}
+	
+	public void setId(String id) {
+		this.Id = id;
 	}
 	
 	

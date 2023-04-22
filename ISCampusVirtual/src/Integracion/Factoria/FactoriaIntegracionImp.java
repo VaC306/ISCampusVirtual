@@ -17,17 +17,17 @@ public class FactoriaIntegracionImp extends FactoriaIntegracion {
 	
 	public DAOArchivo generarDAOArchivo() {
 		
-		return new DAOArchivo();
+		return new DAOArchivoImpl();
 	}
 	
 	public DAOAsignatura generarDAOAsignatura() {
 		
-		return new DAOAsignatura();
+		return new DAOAsignaturaImpl();
 	}
 	
 	public DAOClase generarDAOClase() {
 		
-		return new DAOClase();
+		return new DAOClaseImpl();
 	}
 	
 	public DAOCurso generarDAOCurso() {

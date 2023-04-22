@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Integracion.DAOAsignatura;
+import Integracion.DAOAsignaturaImpl;
 import Negocio.Archivos.TransferTarea;
 import Negocio.Foro.TransferForo;
 import Negocio.Usuario.SAAlumno;
@@ -12,7 +13,7 @@ public class SAAsignatura {
 	
 	public boolean eliminarAsignatura(String id){
 
-		DAOAsignatura dao = new DAOAsignatura();
+		DAOAsignatura dao = new DAOAsignaturaImpl();
 		TransferAsignatura transfer = dao.read(id);
 
 		// si no existe no se elimina
@@ -28,7 +29,7 @@ public class SAAsignatura {
 
 	public boolean crearAsignatura(TransferAsignatura aTNew) {
 
-		DAOAsignatura dao = new DAOAsignatura();
+		DAOAsignatura dao = new DAOAsignaturaImpl();
 		TransferAsignatura transfer = dao.read(aTNew.getID());
 		// como no existe se añade a la bd
 		if (transfer == null) {
@@ -42,7 +43,7 @@ public class SAAsignatura {
 
 	public boolean editarAsignatura(TransferAsignatura aTNew) {
 
-		DAOAsignatura dao = new DAOAsignatura();
+		DAOAsignatura dao = new DAOAsignaturaImpl();
 		TransferAsignatura transfer = dao.read(aTNew.getID());
 
 		// como no existe se edita la bd

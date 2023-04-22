@@ -1,12 +1,13 @@
 package Negocio.Aula;
 
 import Integracion.DAOClase;
+import Integracion.DAOClaseImpl;
 
 public class SAClase {
 	
-	public boolean eliminarClase(EnumCurso curso, char letra) {
+	public boolean eliminarClase(EnumCurso curso, String letra) {
 
-		DAOClase dao = new DAOClase();
+		DAOClase dao = new DAOClaseImpl();
 		TransferClase transfer = dao.read(curso, letra);
 
 		// si no existe no se elimina
@@ -22,7 +23,7 @@ public class SAClase {
 
 	public boolean crearClase(EnumCurso curso, TransferClase aTNew) {
 
-		DAOClase dao = new DAOClase();
+		DAOClase dao = new DAOClaseImpl();
 		TransferClase transfer = dao.read(curso, aTNew.getGrupo());
 		// como no existe se añade a la bd
 		if (transfer == null) {
@@ -36,7 +37,7 @@ public class SAClase {
 
 	public boolean editarClase(EnumCurso curso,TransferClase aTNew) {
 
-		DAOClase dao = new DAOClase();
+		DAOClase dao = new DAOClaseImpl();
 		TransferClase transfer = dao.read(curso, aTNew.getGrupo());
 
 		// como no existe se edita la bd

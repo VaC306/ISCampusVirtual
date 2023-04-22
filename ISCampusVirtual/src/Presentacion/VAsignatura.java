@@ -65,7 +65,6 @@ public class VAsignatura implements IGUI {
     	});
 
 
-
 		anadirBotonEditar();
         ventana.setVisible(true);
 	}
