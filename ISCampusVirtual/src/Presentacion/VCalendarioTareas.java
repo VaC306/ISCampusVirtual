@@ -114,11 +114,8 @@ public class VCalendarioTareas extends JFrame implements IGUI {
 		JPanel panelCalendario = new JPanel(new GridLayout(0, 7));
 		panelCalendario.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-		String nombreMes = new DateFormatSymbols().getMonths()[mes];
-		JLabel etiquetaMes = new JLabel(nombreMes, JLabel.CENTER);
-		etiquetaMes.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		// panelCalendario.add(etiquetaMes);
-		// panelCalendario.add(new JLabel(""));
+
+
 
 		for (JLabel dia : diasSemana) {
 			dia.setBorder(BorderFactory.createLineBorder(Color.BLACK));
