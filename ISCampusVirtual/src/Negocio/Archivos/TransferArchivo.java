@@ -8,7 +8,7 @@ public class TransferArchivo {
 	
 	private String Nombre;
 	
-	private String Id;
+	protected String Id;
 
 	private Tipos_archivo tipo_archivo;
 

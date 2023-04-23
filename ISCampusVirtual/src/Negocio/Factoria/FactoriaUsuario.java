@@ -55,11 +55,12 @@ public class FactoriaUsuario {
 			dao = new DAOAlumnoImpl();
 			transfer = (TransferAlumno) dao.readByCorreo(correo);
 
-			if (transfer.getId().charAt(0)=='p') {
+			System.out.println(transfer.getNIF());
+			/*if (transfer.getId().charAt(0)=='p') {
 
 				dao = new DAOProfesorImpl();
 				transfer = (TransferUsuario) dao.readByCorreo(correo);
-			}
+			}*/
 
 		}
 

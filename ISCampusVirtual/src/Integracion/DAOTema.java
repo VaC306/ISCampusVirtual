@@ -2,22 +2,11 @@ package Integracion;
 
 import Negocio.Aula.TransferTema;
 
-public class DAOTema {
+public interface DAOTema {
 
-	public TransferTema read(String idAsignatura, int tema) {
+	public TransferTema read(String idTema);
 
-		// TODO
+	public void create(TransferTema aTNew);
 
-		return null;
-	}
-
-	public void create(TransferTema aTNew) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void eliminate(String idAsignatura, int tema) {
-		// TODO Auto-generated method stub
-
-	}
+	public void eliminate(String idTema);
 }

@@ -3,12 +3,13 @@ package Negocio.Foro;
 import java.util.Date;
 
 import Integracion.DAOMensaje;
+import Integracion.DAOMensajeImpl;
 
 public class SAMensaje {
 	
 	public boolean eliminarMensaje (String idUsuario, Date date) {
 
-		DAOMensaje dao = new DAOMensaje();
+		DAOMensaje dao = new DAOMensajeImpl();
 		TransferMensaje transfer = dao.read(idUsuario, date);
 
 		// si no existe no se elimina
@@ -24,7 +25,7 @@ public class SAMensaje {
 	
 	public boolean crearMensaje (TransferMensaje aTNew) {
 		
-		DAOMensaje dao= new DAOMensaje();
+		DAOMensaje dao= new DAOMensajeImpl();
 		TransferMensaje transfer = dao.read(aTNew.getUsuario().getId(), aTNew.getFecha());
 
 		//como no existe se añade a la bd

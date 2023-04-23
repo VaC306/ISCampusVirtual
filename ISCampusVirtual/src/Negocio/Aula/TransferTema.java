@@ -6,6 +6,8 @@ import Negocio.Archivos.TransferArchivo;
 import Negocio.Archivos.TransferTarea;
 
 public class TransferTema {
+	private String Id;
+	
 	private String Nombre;
 
     private int Numero;
@@ -16,6 +18,13 @@ public class TransferTema {
     
     private List<TransferTarea> tareas = new ArrayList<> ();
 
+    public TransferTema(String id, String nombre, int numero, String idAr, String idAs) {
+    	this.Id = id;
+    	this.Nombre = nombre;
+    	this.Numero = numero;
+    	this.archivo = null;
+    	this.asignatura = null;
+    }
 
 	public String getNombre() {
 		return Nombre;
@@ -57,6 +66,12 @@ public class TransferTema {
 		this.tareas = tareas;
 	}
     
+    public String getId() {
+    	return this.Id;
+    }
     
+    public void setId(String id) {
+    	this.Id = id;
+    }
 
 }

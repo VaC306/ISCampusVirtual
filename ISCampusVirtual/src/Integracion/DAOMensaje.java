@@ -4,20 +4,11 @@ import java.util.Date;
 
 import Negocio.Foro.TransferMensaje;
 
-public class DAOMensaje {
+public interface DAOMensaje {
 
-	public TransferMensaje read(String idUsuario, Date date) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public TransferMensaje read(String idUsuario, Date date);
 
-	public void create(TransferMensaje aTNew) {
-		// TODO Auto-generated method stub
+	public void create(TransferMensaje aTNew);
 
-	}
-
-	public void eliminate(String idUsuario, Date date) {
-		// TODO Auto-generated method stub
-
-	}
+	public void eliminate(String idUsuario, Date date);
 }

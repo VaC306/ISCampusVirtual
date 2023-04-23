@@ -8,6 +8,14 @@ public class TransferTarea extends TransferArchivo {
 	private Date Fecha_de_entrega;
 
 	private TransferNota notas;
+	
+	private String IdTarea;
+	
+	public TransferTarea(String IdTarea, String IdArchivo, Date fecha) {
+		this.IdTarea = IdTarea;
+		this.Id = IdArchivo;
+		this.Fecha_de_entrega = fecha;
+	}
 
 	public Date getFecha_de_entrega() {
 		return Fecha_de_entrega;
@@ -25,6 +33,12 @@ public class TransferTarea extends TransferArchivo {
 		this.notas = notas;
 	}
 	
+	public String getIdTarea() {
+		return IdTarea;
+	}
 	
+	public void setIdTarea(String t) {
+		this.IdTarea = t;
+	}
 
 }

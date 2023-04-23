@@ -37,7 +37,7 @@ public class FactoriaIntegracionImp extends FactoriaIntegracion {
 	
 	public DAOMensaje generarDAOMensaje() {
 		
-		return new DAOMensaje();
+		return new DAOMensajeImpl();
 	}
 	
 	public DAOProfesor generarDAOProfesor() {
@@ -47,12 +47,12 @@ public class FactoriaIntegracionImp extends FactoriaIntegracion {
 	
 	public DAOTarea generarDAOTarea() {
 		
-		return new DAOTarea();
+		return new DAOTareaImpl();
 	}
 	
 	public DAOTema generarDAOTema() {
 		
-		return new DAOTema();
+		return new DAOTemaImpl();
 	}
 	
 }

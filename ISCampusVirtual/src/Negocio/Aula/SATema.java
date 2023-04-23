@@ -1,18 +1,19 @@
 package Negocio.Aula;
 
 import Integracion.DAOTema;
+import Integracion.DAOTemaImpl;
 
 public class SATema {
 	
 	public boolean eliminarTema(String idAsignatura, int numTema) {
 
-		DAOTema dao = new DAOTema();
-		TransferTema transfer = dao.read(idAsignatura, numTema);
+		DAOTema dao = new DAOTemaImpl();
+		TransferTema transfer = dao.read(idAsignatura);
 
 		// si no existe no se elimina
 		if (transfer != null) {
 
-			dao.eliminate(idAsignatura, numTema);
+			dao.eliminate(idAsignatura);
 
 			return true;
 		}
@@ -22,8 +23,8 @@ public class SATema {
 
 	public boolean crearTema(TransferTema aTNew) {
 
-		DAOTema dao = new DAOTema();
-		TransferTema transfer = dao.read(aTNew.getAsignaturas().getID(), aTNew.getNumero());
+		DAOTema dao = new DAOTemaImpl();
+		TransferTema transfer = dao.read(aTNew.getAsignaturas().getID());
 		// como no existe se añade a la bd
 		if (transfer == null) {
 
@@ -36,13 +37,13 @@ public class SATema {
 
 	public boolean editarTema(TransferTema aTNew) {
 
-		DAOTema dao = new DAOTema();
-		TransferTema transfer = dao.read(aTNew.getAsignaturas().getID(), aTNew.getNumero());
+		DAOTema dao = new DAOTemaImpl();
+		TransferTema transfer = dao.read(aTNew.getAsignaturas().getID());
 
 		// como no existe se edita la bd
 		if (transfer == null) {
 
-			dao.eliminate(aTNew.getAsignaturas().getID(), aTNew.getNumero());
+			dao.eliminate(aTNew.getAsignaturas().getID());
 			dao.create(aTNew);
 
 			return true;
