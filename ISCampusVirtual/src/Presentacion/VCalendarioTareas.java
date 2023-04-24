@@ -28,7 +28,7 @@ public class VCalendarioTareas extends JFrame implements IGUI {
 	private Controller ctrl;
 	private JPanel panelCalendario;
 	private List<TransferTarea> listaTareas;
-	
+	//a
 	public static void main(String[] args) {
 		
 		new VCalendarioTareas(new ArrayList<TransferTarea>());
