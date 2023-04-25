@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import Negocio.Aula.TransferAsignatura;
+import Negocio.Aula.TransferTema;
 
 public class DAOAsignaturaImpl implements DAOAsignatura{
 	
@@ -29,6 +32,25 @@ public class DAOAsignaturaImpl implements DAOAsignatura{
 				TA = new TransferAsignatura();
 				TA.setID(r.getString("IdAsignatura"));
 				TA.setNombre(r.getString("Nombre"));
+				
+				List<TransferTema> LT = new ArrayList<TransferTema>();
+				
+				String s2 = "SELECT * FROM temas WHERE IdAsignatura = ?;";
+				PreparedStatement ps2 = connection.prepareStatement(s);
+				ps2.setString(1, id);
+				
+				ResultSet r2 = ps2.executeQuery();
+				
+				while(r2.next()) {
+					
+					DAOTema daoT = new DAOTemaImpl();
+					LT.add(daoT.read(id));
+					System.out.println(LT.get(0).getNombre());
+				}
+				
+				TA.setTemas(LT);
+				ps2.close();
+				r2.close();
 			}
 				
 			connection.close();

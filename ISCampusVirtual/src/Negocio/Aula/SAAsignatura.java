@@ -62,10 +62,10 @@ public class SAAsignatura {
 		
 		List<TransferTarea> ret= new ArrayList<>();
 		
-		for(TransferTema tt: aTNew.getTemas()) {
+		/* TODO for(TransferTema tt: aTNew.getTemas()) {
 			
 			ret.addAll(tt.getTareas());
-		}
+		}*/
 		
 
 		return ret;
