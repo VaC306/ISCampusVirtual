@@ -102,6 +102,8 @@ public class ControllerImp extends Controller{
 			currentIGUI.update(evento, saUsuario.getTareas(tUsuarioIniciado));
 			
 			break;
+			
+			//TODO vista calendario para asignatura
 
 		case Events.ABRIR_VISTA_USUARIO:
 			

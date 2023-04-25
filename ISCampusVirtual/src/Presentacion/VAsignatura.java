@@ -26,7 +26,9 @@ public class VAsignatura implements IGUI {
 	protected JScrollPane scrollPane;
 	protected JFrame ventana;
 	protected JPanel panelDeTemas;
-	protected JPanel panelDeBotones;
+	protected JPanel panelDeBotonesSup;
+	protected JPanel panelDeBotonesInf;
+
 
 
 	public VAsignatura() {
@@ -59,8 +61,8 @@ public class VAsignatura implements IGUI {
 		
 		
 		
-		panelDeBotones= new JPanel();
-        panelDeBotones.setLayout(new GridLayout(1, 3));
+		panelDeBotonesSup= new JPanel();
+        panelDeBotonesSup.setLayout(new GridLayout(1, 3));
         
         JButton botonCerrar= new JButton("Cerrar");
         botonCerrar.addActionListener(e->{
@@ -70,19 +72,19 @@ public class VAsignatura implements IGUI {
         });
         
 		//boton para ver participantes TODO
-    	JButton botonParticipantes= new JButton("VER PARTICIPANTES");
+    	JButton botonParticipantes= new JButton("PARTICIPANTES");
     	botonParticipantes.addActionListener(e->{
     		
     		ctrl.accion(Events.ABRIR_VMOSTRAR_PARTICIPANTES_ASIGNATURA, asignatura);
     	});
 
 
-    	panelDeBotones.add(botonParticipantes);
+    	panelDeBotonesSup.add(botonParticipantes);
         anadirBotonEditar();
-        panelDeBotones.add(botonCerrar);
+        panelDeBotonesSup.add(botonCerrar);
 
 		
-		ventana.add(panelDeBotones, BorderLayout.PAGE_START);
+		ventana.add(panelDeBotonesSup, BorderLayout.PAGE_START);
 		
 		
 
@@ -97,6 +99,34 @@ public class VAsignatura implements IGUI {
 		}
         scrollPane = new JScrollPane(panelDeTemas);
         ventana.add(scrollPane, BorderLayout.CENTER);
+        
+        
+        panelDeBotonesInf= new JPanel();
+        panelDeBotonesInf.setLayout(new GridLayout(1, 2));
+        
+        JButton botonForo= new JButton("Foro");
+        botonForo.addActionListener(e->{
+        	
+        	//TODO
+        });
+        panelDeBotonesInf.add(botonForo);
+
+        JButton botonCalendario= new JButton("Calendario");
+        botonCalendario.addActionListener(e->{
+        	
+        	//TODO
+        	
+        	ctrl.accion(Events.ABRIR_VISTA_CALENDARIO, asignatura);
+        });
+        
+        panelDeBotonesInf.add(botonCalendario);
+        ventana.add(panelDeBotonesInf, BorderLayout.PAGE_END);
+        
+        
+        
+        
+        
+        
 
         ventana.setVisible(true);
 	}
@@ -112,7 +142,7 @@ public class VAsignatura implements IGUI {
 	//al ser vista desde un usuario alumno no se anade el boton de editar
 	protected void anadirBotonEditar() {
 		
-    	panelDeBotones.add(new JLabel());
+    	panelDeBotonesSup.add(new JLabel());
 
 	}
 

@@ -21,6 +21,6 @@ public class VAsignaturaProfesor extends VAsignatura{
 			//this.ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, this.asignatura);
 		});
 		
-		panelDeBotones.add(editar);
+		panelDeBotonesSup.add(editar);
 	}
 }
