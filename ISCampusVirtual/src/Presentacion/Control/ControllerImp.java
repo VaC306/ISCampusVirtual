@@ -74,7 +74,7 @@ public class ControllerImp extends Controller{
 		case Events.ABRIR_VISTA_LISTA_ASIGNATURAS:
 			
 			currentIGUI=FactoriaVistas.getInstance().crearVista(evento,null);
-			currentIGUI.update(evento,  tUsuarioIniciado.getAsignaturas());
+			currentIGUI.update(evento,  saUsuario.getAsignaturas(tUsuarioIniciado));
 			
 			break;
 			

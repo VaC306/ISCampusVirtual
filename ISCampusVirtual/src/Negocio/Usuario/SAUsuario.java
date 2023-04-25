@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 import Integracion.DAOAsignatura;
+import Integracion.DAOAsignaturaImpl;
 import Integracion.DAOUsuario;
 import Integracion.Factoria.FactoriaIntegracion;
 import Negocio.Archivos.TransferTarea;
@@ -74,6 +75,16 @@ public class SAUsuario {
 		}
 		return false;
 	}	
+	
+	public List<TransferAsignatura> getAsignaturas(TransferUsuario aTNew){
+		List<TransferAsignatura> LT = new ArrayList();
+		TransferAsignatura TA = new TransferAsignatura();
+		DAOAsignatura dao = new DAOAsignaturaImpl();
+		for (String s: aTNew.getAsignaturas()) {
+			LT.add(dao.read(s));
+		}
+		return LT;
+	}
 	
 	public List<TransferTarea> getTareas(TransferUsuario aTNew){	
 		

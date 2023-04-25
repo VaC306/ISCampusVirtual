@@ -100,7 +100,9 @@ public class DAOAlumnoImpl implements DAOAlumno{
 			if(r.next()) {
 				TA.setId(r.getString("IdAlumno"));
 				TA.setDelegado(r.getBoolean("Delegado"));
-				TA.setAsignaturas(new ArrayList<String>());
+				ArrayList asignaturas = new ArrayList<>();
+				asignaturas.add(r.getString("IdAsignatura"));
+				TA.setAsignaturas(asignaturas);
 			}
 			
 			connection.close();

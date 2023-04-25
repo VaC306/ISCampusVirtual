@@ -16,7 +16,7 @@ public class VPerfilEditar extends JFrame implements IGUI{
 	private JLabel nombre;
 	
 	
-	public VPerfilEditar(TransferUsuario data) {
+	public VPerfilEditar() {
 		super();
 
 		ctrl = Controller.obtenerInstancia();
