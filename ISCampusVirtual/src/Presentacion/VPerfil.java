@@ -20,11 +20,10 @@ public class VPerfil extends JFrame implements IGUI{
 	private JLabel nombre;
 	
 	
-	public VPerfil(TransferUsuario data) {
+	public VPerfil() {
 		super();
 		ctrl = Controller.obtenerInstancia();
-		usuario = data;
-		initIGUI();
+
 	}
 	
 	

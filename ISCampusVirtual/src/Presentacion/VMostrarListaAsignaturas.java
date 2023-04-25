@@ -26,12 +26,10 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
     JButton cerrarSesion;
 	
 	
-	public VMostrarListaAsignaturas(ArrayList<TransferAsignatura> listaAsig) {
+	public VMostrarListaAsignaturas() {
 		super("");
 		ctrl=Controller.obtenerInstancia();
 		listaDeBotones= new ArrayList<>();
-		listaDeAsignaturas= listaAsig;
-		initIGUI();
 	}
 	
 	private void initIGUI() {
@@ -61,17 +59,9 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
 	@Override
 	public void update(int event, Object datos) {
 
-		//switch (event) {
-		//case Events.ABRIR_VISTA_LISTA_ASIGNATURAS: {
-			listaDeAsignaturas = (List<TransferAsignatura>) datos;
+		listaDeAsignaturas = (List<TransferAsignatura>) datos;
+		initIGUI();
 
-			updateScrollPane();
-			scrollPane.revalidate();
-			scrollPane.repaint();
-		//}
-
-			
-		//}
 	}
 	
 	
@@ -97,10 +87,6 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
 
                
 	}
-	
-	public static void main(String[] args) {
-		
-		new VMostrarListaAsignaturas(new ArrayList<TransferAsignatura>());
-	}
+
 	
 }

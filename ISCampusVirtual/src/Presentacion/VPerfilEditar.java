@@ -20,8 +20,7 @@ public class VPerfilEditar extends JFrame implements IGUI{
 		super();
 
 		ctrl = Controller.obtenerInstancia();
-		usuario = data;
-		initIGUI();
+
 	
 	}
 
@@ -32,8 +31,8 @@ public class VPerfilEditar extends JFrame implements IGUI{
 
 	@Override
 	public void update(int event, Object datos) {
-		// TODO Auto-generated method stub
-		
+		usuario = (TransferUsuario) datos;
+		initIGUI();		
 	}
 
 }

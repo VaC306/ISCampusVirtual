@@ -27,25 +27,25 @@ public class FactoriaVistas {
 			return new ViniciarSesion() ;
 			
 		case Events.ABRIR_VISTA_LISTA_ASIGNATURAS:
-			return new VMostrarListaAsignaturas((ArrayList<TransferAsignatura>) data);
+			return new VMostrarListaAsignaturas();
 			
 		case Events.ABRIR_VISTA_ASIGNATURA:
-			return new VAsignatura((TransferAsignatura) data);
+			return new VAsignatura();
 		
 		case Events.ABRIR_VISTA_ASIGNATURA_PROFESOR:
-			return new VAsignaturaProfesor((TransferAsignatura) data);
+			return new VAsignaturaProfesor();
 			
 		case Events.ABRIR_VMOSTRAR_PARTICIPANTES_ASIGNATURA:
 			return new VMostrarPartiAsignaturas();
 		
 		case Events.ABRIR_VISTA_CALENDARIO:
-			return new VCalendarioTareas((List<TransferTarea>) data);
+			return new VCalendarioTareas();
 			
 		case Events.ABRIR_VISTA_USUARIO:
-			return new VPerfil((TransferUsuario) data);
+			return new VPerfil();
 			
 		case Events.ABRIR_VISTA_EDITAR_USUARIO:
-			return new VPerfilEditar((TransferUsuario) data);
+			return new VPerfilEditar();
 		}
 		return null;
 	}

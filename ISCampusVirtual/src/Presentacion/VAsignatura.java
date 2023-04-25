@@ -24,13 +24,11 @@ public class VAsignatura implements IGUI {
 	protected JFrame ventana;
 	protected JPanel panelDeBotones;
 
-	public VAsignatura(TransferAsignatura data) {
+	public VAsignatura() {
 
 		super();
 		ctrl=Controller.obtenerInstancia();
-		asignatura=data;
-		listaDeTemas=data.getTemas();
-		initIGUI();
+
 	
 	}
 	
@@ -70,7 +68,12 @@ public class VAsignatura implements IGUI {
 	}
 
 	@Override
-	public void update(int event, Object datos) {}
+	public void update(int event, Object datos) {
+		
+		asignatura=(TransferAsignatura) datos;
+		listaDeTemas=((TransferAsignatura) datos).getTemas();
+		initIGUI();
+	}
 	
 	//al ser vista desde un usuario alumno no se anade el boton de editar
 	protected void anadirBotonEditar() {}

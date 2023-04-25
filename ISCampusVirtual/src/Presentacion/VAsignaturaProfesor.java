@@ -7,8 +7,8 @@ import Presentacion.Control.Events;
 
 public class VAsignaturaProfesor extends VAsignatura{
 
-	public VAsignaturaProfesor(TransferAsignatura data) {
-		super(data);
+	public VAsignaturaProfesor() {
+		super();
 	}
 	@Override
 	protected void anadirBotonEditar() {

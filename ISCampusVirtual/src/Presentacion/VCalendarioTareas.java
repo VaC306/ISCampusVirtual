@@ -44,13 +44,12 @@ public class VCalendarioTareas extends JFrame implements IGUI {
 
 	int mes;
 
-	public VCalendarioTareas(List<TransferTarea> lista) {
+	public VCalendarioTareas() {
 		super("");
 		Calendar calendar = Calendar.getInstance();
 		mes = calendar.get(Calendar.MONTH);
 		ctrl = Controller.obtenerInstancia();
-		this.listaTareas = lista;
-		initIGUI();
+
 	}
 
 	private void initIGUI() {
@@ -107,6 +106,8 @@ public class VCalendarioTareas extends JFrame implements IGUI {
 
 	@Override
 	public void update(int event, Object datos) {
+		this.listaTareas = (List<TransferTarea>) datos;
+		initIGUI();
 
 	}
 
