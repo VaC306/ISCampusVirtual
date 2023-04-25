@@ -45,7 +45,6 @@ public class DAOAsignaturaImpl implements DAOAsignatura{
 					
 					DAOTema daoT = new DAOTemaImpl();
 					LT.add(daoT.read(id));
-					System.out.println(LT.get(0).getNombre());
 				}
 				
 				TA.setTemas(LT);
