@@ -1,5 +1,7 @@
 package Presentacion;
 
+import java.awt.GridLayout;
+
 import javax.swing.JButton;
 
 import Negocio.Aula.TransferAsignatura;
@@ -19,6 +21,6 @@ public class VAsignaturaProfesor extends VAsignatura{
 			//this.ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, this.asignatura);
 		});
 		
-		ventana.add(editar);
+		panelDeBotones.add(editar);
 	}
 }

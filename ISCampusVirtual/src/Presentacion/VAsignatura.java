@@ -1,10 +1,13 @@
 package Presentacion;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -22,7 +25,9 @@ public class VAsignatura implements IGUI {
 	protected List<TransferTema> listaDeTemas;
 	protected JScrollPane scrollPane;
 	protected JFrame ventana;
+	protected JPanel panelDeTemas;
 	protected JPanel panelDeBotones;
+
 
 	public VAsignatura() {
 
@@ -31,6 +36,16 @@ public class VAsignatura implements IGUI {
 
 	
 	}
+    public static void main(String[] args) {
+    	
+    	TransferAsignatura ta=new TransferAsignatura();
+    	ta.setTemas(new ArrayList<TransferTema> ());
+    	
+    	VAsignaturaProfesor va= new VAsignaturaProfesor();
+    	va.update(0, ta);
+  
+    }
+
 	
 	protected void initIGUI() {
 		
@@ -39,22 +54,21 @@ public class VAsignatura implements IGUI {
 		ventana.setSize(300, 200);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-        panelDeBotones = new JPanel(new GridLayout(0, 1)); // GridLayout con una columna y filas ilimitadas
+        panelDeTemas = new JPanel(new GridLayout(0, 1)); // GridLayout con una columna y filas ilimitadas
 
 		
-		for(TransferTema tt: listaDeTemas) {
-			
-        	JButton boton= new JButton(tt.getNombre());
-        	
-			//ctrl.accion(Events.ABRIR_VISTA_TEMA, tA);
-        	
-        	listaDeBotones.add(boton);
-            panelDeBotones.add(boton);
-		}
-        scrollPane = new JScrollPane(panelDeBotones);
-        ventana.add(scrollPane);
-
 		
+		
+		panelDeBotones= new JPanel();
+        panelDeBotones.setLayout(new GridLayout(1, 3));
+        
+        JButton botonCerrar= new JButton("Cerrar");
+        botonCerrar.addActionListener(e->{
+        	
+        	ventana.setVisible(false);
+        	ctrl.accion(Events.ABRIR_VISTA_LISTA_ASIGNATURAS, null);
+        });
+        
 		//boton para ver participantes TODO
     	JButton botonParticipantes= new JButton("VER PARTICIPANTES");
     	botonParticipantes.addActionListener(e->{
@@ -63,7 +77,27 @@ public class VAsignatura implements IGUI {
     	});
 
 
-		anadirBotonEditar();
+    	panelDeBotones.add(botonParticipantes);
+        anadirBotonEditar();
+        panelDeBotones.add(botonCerrar);
+
+		
+		ventana.add(panelDeBotones, BorderLayout.PAGE_START);
+		
+		
+
+		for(TransferTema tt: listaDeTemas) {
+			
+        	JButton boton= new JButton(tt.getNombre());
+        	
+			//ctrl.accion(Events.ABRIR_VISTA_TEMA, tA);
+        	
+        	listaDeBotones.add(boton);
+            panelDeTemas.add(boton);
+		}
+        scrollPane = new JScrollPane(panelDeTemas);
+        ventana.add(scrollPane, BorderLayout.CENTER);
+
         ventana.setVisible(true);
 	}
 
@@ -76,6 +110,10 @@ public class VAsignatura implements IGUI {
 	}
 	
 	//al ser vista desde un usuario alumno no se anade el boton de editar
-	protected void anadirBotonEditar() {}
+	protected void anadirBotonEditar() {
+		
+    	panelDeBotones.add(new JLabel());
+
+	}
 
 }
