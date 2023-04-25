@@ -86,7 +86,7 @@ public class VAsignatura implements IGUI {
 		
 		ventana.add(panelDeBotonesSup, BorderLayout.PAGE_START);
 		
-		
+		listaDeBotones = new ArrayList<JButton>();
 
 		for(TransferTema tt: listaDeTemas) {
 			

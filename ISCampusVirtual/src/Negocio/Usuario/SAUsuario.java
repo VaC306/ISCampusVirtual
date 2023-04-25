@@ -97,10 +97,10 @@ public class SAUsuario {
 			
 			tAsignatura=daoAsignatura.read(idAsignatura);
 			
-			/* TODO for(TransferTema tt: tAsignatura.getTemas()) {
+			for(TransferTema tt: tAsignatura.getTemas()) {
 				
 				ret.addAll(tt.getTareas());
-			}*/
+			}
 		}
 		
 

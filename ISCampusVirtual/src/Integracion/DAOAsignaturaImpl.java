@@ -36,7 +36,7 @@ public class DAOAsignaturaImpl implements DAOAsignatura{
 				List<TransferTema> LT = new ArrayList<TransferTema>();
 				
 				String s2 = "SELECT * FROM temas WHERE IdAsignatura = ?;";
-				PreparedStatement ps2 = connection.prepareStatement(s);
+				PreparedStatement ps2 = connection.prepareStatement(s2);
 				ps2.setString(1, id);
 				
 				ResultSet r2 = ps2.executeQuery();
@@ -44,7 +44,7 @@ public class DAOAsignaturaImpl implements DAOAsignatura{
 				while(r2.next()) {
 					
 					DAOTema daoT = new DAOTemaImpl();
-					LT.add(daoT.read(id));
+					LT.add(daoT.read(r2.getString("IdTema")));
 				}
 				
 				TA.setTemas(LT);

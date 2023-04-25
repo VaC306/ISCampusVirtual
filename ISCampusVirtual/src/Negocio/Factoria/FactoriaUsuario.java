@@ -55,7 +55,6 @@ public class FactoriaUsuario {
 			dao = new DAOAlumnoImpl();
 			transfer = (TransferAlumno) dao.readByCorreo(correo);
 
-			System.out.println(transfer.getNIF());
 			/*if (transfer.getId().charAt(0)=='p') {
 
 				dao = new DAOProfesorImpl();

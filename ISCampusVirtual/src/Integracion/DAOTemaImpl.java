@@ -15,14 +15,14 @@ public class DAOTemaImpl implements DAOTema{
 	static String url = "jdbc:mysql://localhost/" + bd;
 
 	@Override
-	public TransferTema read(String idAsignatura) {
+	public TransferTema read(String idTema) {
 		TransferTema TT = null;
 		
 		try {
-			String s = "SELECT * FROM temas WHERE IdAsignatura = ?;";
+			String s = "SELECT * FROM temas WHERE IdTema = ?;";
 			Connection connection = DriverManager.getConnection(url, login, password);
 			PreparedStatement ps = connection.prepareStatement(s);
-			ps.setString(1, idAsignatura);
+			ps.setString(1, idTema);
 			
 			ResultSet r = ps.executeQuery();
 			
