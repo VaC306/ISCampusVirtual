@@ -29,10 +29,6 @@ public class VCalendarioTareas extends JFrame implements IGUI {
 	private JPanel panelCalendario;
 	private List<TransferTarea> listaTareas;
 	//a
-	public static void main(String[] args) {
-		
-		new VCalendarioTareas(new ArrayList<TransferTarea>());
-	}
 
 	private static final String[] meses = { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
 			"Septiembre", "Octubre", "Noviembre", "Diciembre" };
