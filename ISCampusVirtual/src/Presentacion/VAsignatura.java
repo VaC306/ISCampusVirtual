@@ -52,7 +52,7 @@ public class VAsignatura implements IGUI {
 	protected void initIGUI() {
 		
 		//mostrar temas (array Jbuttons)
-		ventana = new JFrame("Asignaturas");
+		ventana = new JFrame(asignatura.getNombre());
 		ventana.setSize(300, 200);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		

@@ -1,11 +1,14 @@
 package Integracion;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import Negocio.Archivos.TransferArchivo;
 import Negocio.Archivos.TransferTarea;
+import Negocio.Aula.TransferTema;
 
 public class DAOTareaImpl implements DAOTarea {
 	
@@ -53,7 +56,7 @@ public class DAOTareaImpl implements DAOTarea {
 			
 			ps.setString(1, aTNew.getIdTarea());
 			ps.setString(2, aTNew.getId());
-			//ps.setDate(3, aTNew.getFecha_de_entrega());
+			ps.setDate(3, (Date)aTNew.getFecha_de_entrega());
 			ps.executeUpdate();
 			
 			connection.close();
@@ -81,6 +84,24 @@ public class DAOTareaImpl implements DAOTarea {
 		}catch(Exception e) {
 			
 		}
+	}
+
+	@Override
+	public TransferArchivo read(TransferTema tema, String titulo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void create(TransferArchivo aTNew) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void eliminate(TransferTema tema, String titulo) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

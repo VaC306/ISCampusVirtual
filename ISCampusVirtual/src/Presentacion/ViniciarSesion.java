@@ -88,7 +88,7 @@ public class ViniciarSesion extends JFrame implements IGUI {
 	public void update(int event, Object datos) {
 		switch (event) {
 		case Events.INICIAR_SESION_CORRECTO:
-			JOptionPane.showMessageDialog(this, "�Inicio de sesion exitoso!");
+			JOptionPane.showMessageDialog(this, "¡Inicio de sesion exitoso!");
 			setVisible(false);
 			ctrl.accion(Events.ABRIR_VISTA_LISTA_ASIGNATURAS, datos);
 			break;

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import Negocio.Aula.TransferAsignatura;
 import Negocio.Usuario.TransferAlumno;
 import Negocio.Usuario.TransferProfesor;
 import Negocio.Usuario.TransferUsuario;
@@ -100,8 +101,22 @@ public class DAOProfesorImpl implements DAOProfesor {
 			r = ps.executeQuery();
 			
 			if(r.next()) {
+				
 				TP.setId(r.getString("IdProfesor"));
-				TP.setAsignaturas(new ArrayList<String>());
+				
+				ArrayList<String> asignaturas = new ArrayList<String>();
+				
+				String s2 = "SELECT IdAsignatura FROM profesores WHERE NIF = ?;";
+				PreparedStatement ps2 = connection.prepareStatement(s2);
+				ps2.setString(1, TP.getNIF());
+				
+				ResultSet r2 = ps2.executeQuery();
+				
+				while (r2.next()) {
+					asignaturas.add(r2.getString("IdAsignatura"));
+				}
+				
+				TP.setAsignaturas(asignaturas);
 			}
 			
 			connection.close();
@@ -109,7 +124,7 @@ public class DAOProfesorImpl implements DAOProfesor {
 			r.close();
 			
 		}catch(Exception e) {
-			
+			System.out.println(e.getMessage());
 		}
 		
 		return TP;

@@ -7,7 +7,7 @@ public class FactoriaIntegracionImp extends FactoriaIntegracion {
 	
 	public DAOApuntes generarDAOApuntes() {
 		
-		return new DAOApuntes();
+		return new DAOApuntesImpl();
 	}
 	
 	public DAOAlumno generarDAOAlumno() {

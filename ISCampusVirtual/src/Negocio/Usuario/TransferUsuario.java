@@ -74,6 +74,8 @@ public abstract class TransferUsuario {
 	}
 	
 	
-	public abstract boolean esProfesor() ;
+	public abstract boolean matchUser(String correo);
+	public abstract boolean esProfesor();
+	public abstract TransferUsuario read(String correo);
 
 }

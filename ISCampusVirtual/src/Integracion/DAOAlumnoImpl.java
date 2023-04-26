@@ -101,7 +101,18 @@ public class DAOAlumnoImpl implements DAOAlumno{
 				TA.setId(r.getString("IdAlumno"));
 				TA.setDelegado(r.getBoolean("Delegado"));
 				ArrayList asignaturas = new ArrayList<>();
-				asignaturas.add(r.getString("IdAsignatura"));
+				
+				String s2 = "SELECT IdAsignatura FROM alumnos WHERE NIF = ?;";
+				PreparedStatement ps2 = connection.prepareStatement(s2);
+				ps2.setString(1, TA.getNIF());
+				
+				ResultSet r2 = ps2.executeQuery();
+				
+				while (r2.next()) {
+					DAOAsignatura dao = new DAOAsignaturaImpl();
+					asignaturas.add(r2.getString("IdAsignatura"));
+				}
+				
 				TA.setAsignaturas(asignaturas);
 			}
 			

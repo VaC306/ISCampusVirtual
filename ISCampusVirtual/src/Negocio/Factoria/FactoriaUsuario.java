@@ -1,17 +1,28 @@
 package Negocio.Factoria;
 
+import java.util.Arrays;
+import java.util.List;
+
 import Integracion.DAOAlumno;
 import Integracion.DAOAlumnoImpl;
 import Integracion.DAOProfesor;
 import Integracion.DAOProfesorImpl;
 import Integracion.DAOUsuario;
 import Negocio.Usuario.TransferAlumno;
+import Negocio.Usuario.TransferProfesor;
 import Negocio.Usuario.TransferUsuario;
 
 public class FactoriaUsuario {
 
 	private static FactoriaUsuario instancia;
-
+	
+	private static final List<TransferUsuario> AVAILABLE_USERS = Arrays.asList(
+		
+		new TransferAlumno(),
+		new TransferProfesor()	
+		
+	);
+	
 	public static FactoriaUsuario getInstance() {
 		if (instancia == null) {
 			instancia = new FactoriaUsuario();
@@ -49,20 +60,12 @@ public class FactoriaUsuario {
 		
 		DAOUsuario dao;
 		TransferUsuario transfer=null;
-
-		if (!correo.isEmpty()) {
-
-			dao = new DAOAlumnoImpl();
-			transfer = (TransferAlumno) dao.readByCorreo(correo);
-
-			/*if (transfer.getId().charAt(0)=='p') {
-
-				dao = new DAOProfesorImpl();
-				transfer = (TransferUsuario) dao.readByCorreo(correo);
-			}*/
-
+		for (TransferUsuario TU: AVAILABLE_USERS) {
+			if(TU.matchUser(correo)) {
+				transfer = TU.read(correo);
+			}
 		}
-
+		
 		return transfer;
 	}
 	

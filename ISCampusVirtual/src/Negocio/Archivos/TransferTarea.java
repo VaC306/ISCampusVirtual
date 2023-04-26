@@ -40,5 +40,7 @@ public class TransferTarea extends TransferArchivo {
 	public void setIdTarea(String t) {
 		this.IdTarea = t;
 	}
+	
+	
 
 }

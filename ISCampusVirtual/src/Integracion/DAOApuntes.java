@@ -1,5 +1,5 @@
 package Integracion;
 
-public class DAOApuntes {
+public interface DAOApuntes extends DAOArchivo{
 
 }

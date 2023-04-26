@@ -9,7 +9,7 @@ import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.EnumCurso;
 import Negocio.Aula.TransferCurso;
 
-public interface DAOTarea {
+public interface DAOTarea extends DAOArchivo{
 	
 	public TransferTarea read(String IdTarea);
 	public void create(TransferTarea aTNew);
