@@ -4,7 +4,7 @@ import Negocio.Aula.TransferTema;
 import Negocio.Usuario.SAUsuario;
 import Negocio.Usuario.TransferUsuario;
 
-public class TransferArchivo {
+public abstract class TransferArchivo {
 	
 	private String Nombre;
 	
@@ -55,6 +55,11 @@ public class TransferArchivo {
 	public void setId(String id) {
 		this.Id = id;
 	}
+
+	public abstract boolean matchFile(String idArchivo);
+
+	public abstract TransferArchivo read(String idArchivo);
+	
 	
 	
 }

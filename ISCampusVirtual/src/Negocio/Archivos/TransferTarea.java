@@ -1,6 +1,8 @@
 package Negocio.Archivos;
 import java.util.Date;
 
+import Integracion.DAOTarea;
+import Integracion.DAOTareaImpl;
 import Negocio.Aula.TransferNota;
 
 public class TransferTarea extends TransferArchivo {
@@ -15,6 +17,9 @@ public class TransferTarea extends TransferArchivo {
 		this.IdTarea = IdTarea;
 		this.Id = IdArchivo;
 		this.Fecha_de_entrega = fecha;
+	}
+
+	public TransferTarea() {
 	}
 
 	public Date getFecha_de_entrega() {
@@ -39,6 +44,17 @@ public class TransferTarea extends TransferArchivo {
 	
 	public void setIdTarea(String t) {
 		this.IdTarea = t;
+	}
+
+	@Override
+	public boolean matchFile(String idArchivo) {
+		return idArchivo.charAt(0) == 'P';
+	}
+
+	@Override
+	public TransferArchivo read(String idArchivo) {
+		DAOTarea dao = new DAOTareaImpl();
+		return dao.read(idArchivo);
 	}
 	
 	

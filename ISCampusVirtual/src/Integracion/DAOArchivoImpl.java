@@ -16,7 +16,7 @@ public class DAOArchivoImpl implements DAOArchivo{
 	static String url = "jdbc:mysql://127.0.0.1:3306/" + bd;
 	
 	@Override
-	public TransferArchivo read(TransferTema tema, String titulo) {
+	public TransferArchivo read(String titulo) {
 		TransferArchivo TA = null;
 		
 		try {
@@ -28,7 +28,7 @@ public class DAOArchivoImpl implements DAOArchivo{
 			ResultSet r = ps.executeQuery();
 			
 			if(r.next()) {
-				TA = new TransferArchivo();
+				//TA = new TransferArchivo();
 				TA.setId(r.getString("IdArchivo"));
 				TA.setNombre(r.getString("Nombre"));
 				TA.setTipo_archivo(null);

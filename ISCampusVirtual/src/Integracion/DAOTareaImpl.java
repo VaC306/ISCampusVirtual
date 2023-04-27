@@ -18,13 +18,13 @@ public class DAOTareaImpl implements DAOTarea {
 	static String url = "jdbc:mysql://127.0.0.1:3306/" + bd;
 	
 	@Override
-	public TransferTarea read(String IdTarea) {
-		TransferTarea TT = null;
+	public TransferArchivo read(String titulo) {
+		TransferTarea TT= null;
 		try {
-			String s = "SELECT * FROM tareas WHERE IdTarea = ?;";
+			String s = "SELECT * FROM tareas WHERE IdArchivo = ?;";
 			Connection connection = DriverManager.getConnection(url, login, password);
 			PreparedStatement ps = connection.prepareStatement(s);
-			ps.setString(1, IdTarea);
+			ps.setString(1, titulo);
 			
 			ResultSet r = ps.executeQuery();
 			
@@ -84,12 +84,6 @@ public class DAOTareaImpl implements DAOTarea {
 		}catch(Exception e) {
 			
 		}
-	}
-
-	@Override
-	public TransferArchivo read(TransferTema tema, String titulo) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

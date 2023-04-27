@@ -4,8 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
+import Negocio.Archivos.TransferArchivo;
 import Negocio.Aula.TransferTema;
+import Negocio.Factoria.FactoriaArchivo;
+import Negocio.Factoria.FactoriaUsuario;
 
 public class DAOTemaImpl implements DAOTema{
 	
@@ -27,11 +32,27 @@ public class DAOTemaImpl implements DAOTema{
 			ResultSet r = ps.executeQuery();
 			
 			if(r.next()) {
+				
+				String s2 = "SELECT * FROM archivos WHERE IdTema = ?;";
+				PreparedStatement ps2 = connection.prepareStatement(s2);
+				ps2.setString(1, idTema);
+				
+				ResultSet r2 = ps2.executeQuery();
+				
+				List<TransferArchivo> LT = new ArrayList<TransferArchivo>();
+				
+				while (r2.next()) {
+					LT.add(FactoriaArchivo.getInstance().createTransferById(r2.getString("IdArchivo")));
+				}
+				
+				ps2.close();
+				r2.close();
+				
 				TT = new TransferTema(
 						r.getString("IdTema"),
 						r.getString("Nombre"),
 						r.getInt("Numero"),
-						null, // Archivo
+						LT, // Lista de Archivo
 						r.getString("IdAsignatura") // Asignatura		
 						);
 			}
@@ -41,7 +62,7 @@ public class DAOTemaImpl implements DAOTema{
 			r.close();
 			
 		}catch(Exception e) {
-			
+			System.out.println(e.getMessage());
 		}
 		
 		return TT;
