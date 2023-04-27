@@ -1,5 +1,6 @@
 package Negocio.Factoria;
 
+import Negocio.Aula.SAAsignatura;
 
 public abstract class FactoriaSA {
 	private static FactoriaSAImp instancia;
@@ -13,4 +14,7 @@ public abstract class FactoriaSA {
 		
 		return instancia;
 	}
+	
+	public abstract SAAsignatura generarSAAsignatura();
+
 }

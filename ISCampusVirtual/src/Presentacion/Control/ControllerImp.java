@@ -2,6 +2,7 @@ package Presentacion.Control;
 
 import Negocio.Aula.SAAsignatura;
 import Negocio.Aula.TransferAsignatura;
+import Negocio.Factoria.FactoriaSA;
 import Negocio.Usuario.SAAlumno;
 import Negocio.Usuario.SAProfesor;
 import Negocio.Usuario.SAUsuario;
@@ -12,8 +13,8 @@ import Presentacion.FactoriaVistas;
 //siu
 public class ControllerImp extends Controller{
 	
-	private SAUsuario saUsuario=new SAUsuario();
-	private SAAsignatura saAsignatura;
+	private SAUsuario saUsuario;
+	private SAAsignatura saAsignatura=FactoriaSA.getInstancia().generarSAAsignatura();
 	
 	private IGUI currentIGUI;
 
@@ -22,7 +23,8 @@ public class ControllerImp extends Controller{
 	
 	@Override
 	public void accion(int evento, Object datos) {
-
+		
+		TransferUsuario tUsuario;
 		TransferAlumno tAlumno;
 		TransferProfesor tProfesor;
 		TransferAsignatura tAsignatura = null;
@@ -102,8 +104,13 @@ public class ControllerImp extends Controller{
 			currentIGUI.update(evento, saUsuario.getTareas(tUsuarioIniciado));
 			
 			break;
+						
+		case Events.ABRIR_VISTA_CALENDARIO_ASIGNATURA:
 			
-			//TODO vista calendario para asignatura
+			tAsignatura=(TransferAsignatura) datos;
+			currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_CALENDARIO, null);
+			currentIGUI.update(evento, saAsignatura.getTareas(tAsignatura));
+			
 
 		case Events.ABRIR_VISTA_USUARIO:
 			
@@ -120,14 +127,34 @@ public class ControllerImp extends Controller{
 			break;
 
 			
+		case Events.EDITAR_USUARIO:
 			
+			tUsuario=(TransferUsuario) datos;
+			if(saUsuario.editarUsuario(tUsuario)) {
+				
+				currentIGUI.update(Events.EDITAR_USUARIO_EXITO, tUsuario);
+			}
+			else {
+				currentIGUI.update(Events.EDITAR_USUARIO_ERROR, tUsuario);
+
+			}
 			
+			break;
 			
+		case Events.ABRIR_VISTA_EDITAR_ASIGNATURA: 
 			
+			tAsignatura=(TransferAsignatura) datos;
 			
+			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
+			currentIGUI.update(evento, tAsignatura);
 			
+			break;
 			
+		case Events.ABRIR_VISTA_ANADIR_TAREA:
 			
+			tAsignatura=(TransferAsignatura) datos;
+			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
+			currentIGUI.update(evento, tAsignatura);
 			
 			
 			
