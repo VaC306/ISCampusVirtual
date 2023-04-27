@@ -20,7 +20,7 @@ import Presentacion.Control.IGUI;
 
 public class VTema extends JFrame  implements IGUI{
 	
-	private TransferAsignatura tAsignatura;
+
 	private TransferTema tTema;
 	private Controller ctrl;
 	JPanel mainPanel;
@@ -42,7 +42,7 @@ public class VTema extends JFrame  implements IGUI{
 		
 		JPanel panelSup= new JPanel();
 
-		JLabel temaTitulo = new JLabel(tAsignatura.getNombre() +" : "+ tTema.getNombre(), SwingConstants.CENTER); 
+		JLabel temaTitulo = new JLabel(tTema.getAsignaturas().getNombre() +" : "+ tTema.getNombre(), SwingConstants.CENTER); 
 		temaTitulo.setSize(new Dimension(70, 70));
 		
 		
@@ -59,7 +59,7 @@ public class VTema extends JFrame  implements IGUI{
 		JButton cerrar = new JButton("Cerrar");
 		cerrar.addActionListener((e)-> {
 			setVisible(false);
-			ctrl.accion(Events.ABRIR_VISTA_ASIGNATURA, tAsignatura);
+			ctrl.accion(Events.ABRIR_VISTA_ASIGNATURA, tTema.getAsignaturas());
 		}
 		);
 		panelInf.add(cerrar, BorderLayout.CENTER);
@@ -74,10 +74,8 @@ public class VTema extends JFrame  implements IGUI{
 		
 		case Events.ABRIR_VISTA_TEMA:
 			
-			Pair <TransferTema, TransferAsignatura>info=(Pair<TransferTema, TransferAsignatura>) datos;
-			
-			tAsignatura=info.right;
-			tTema=info.left;
+			tTema=(TransferTema) datos;
+			initIGUI();
 			break;
 		}
 	}

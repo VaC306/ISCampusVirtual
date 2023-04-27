@@ -20,7 +20,6 @@ import Presentacion.Control.IGUI;
 public class VPerfilEditar extends JFrame implements IGUI{
 	
 	protected Controller ctrl;
-	private JFrame ventana;
 	TransferUsuario usuario;
 	private JPanel fieldsPanel;
 	private JPanel buttonsPanel;
@@ -41,7 +40,7 @@ public class VPerfilEditar extends JFrame implements IGUI{
 	}
 
 	private void initIGUI() {
-		ventana = new JFrame();
+		new JFrame();
 		
 		fieldsPanel = new JPanel();
 		fieldsPanel.setLayout(new BoxLayout(fieldsPanel, BoxLayout.Y_AXIS));
