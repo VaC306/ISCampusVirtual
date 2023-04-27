@@ -29,6 +29,8 @@ public class ControllerImp extends Controller{
 		TransferProfesor tProfesor;
 		TransferAsignatura tAsignatura = null;
 		
+		
+		
 		switch(evento) {
 		case Events.ABRIR_INICIAR_SESION:
 			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
@@ -157,10 +159,13 @@ public class ControllerImp extends Controller{
 			currentIGUI.update(evento, tAsignatura);
 			
 			
+			break;
 			
+		case Events.ABRIR_VISTA_ELIMINAR_TAREA:
 			
-			
-			
+			tAsignatura=(TransferAsignatura) datos;
+			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
+			currentIGUI.update(evento, tAsignatura);	
 			
 		}
 		

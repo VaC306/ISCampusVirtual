@@ -46,6 +46,28 @@ public class FactoriaVistas {
 			
 		case Events.ABRIR_VISTA_EDITAR_USUARIO:
 			return new VPerfilEditar();
+			
+		case Events.ABRIR_VISTA_EDITAR_ASIGNATURA:
+			return new VAsignaturaEditar();
+			
+		case Events.ABRIR_VISTA_ANADIR_TAREA:
+			return new VAniadirTarea();
+			
+		case Events.ABRIR_VISTA_ELIMINAR_TAREA:
+			return new VEliminarTareas();
+		
+		case Events.ABRIR_VISTA_ANADIR_USUARIO:
+			return new VAniadirUsuario();
+		
+		case Events.ABRIR_VISTA_ELIMINAR_USUARIO:
+			return new VEliminarUsuario();
+		
+		case Events.ABRIR_VISTA_ANADIR_APUNTES:
+			return new VAniadirApuntes();
+		
+		case Events.ABRIR_VISTA_ELIMINAR_APUNTES:
+			return new VEliminarApuntes();
+			
 		}
 		return null;
 	}

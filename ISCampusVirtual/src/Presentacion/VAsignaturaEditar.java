@@ -18,8 +18,11 @@ import Presentacion.Control.IGUI;
 
 public class VAsignaturaEditar extends JFrame  implements IGUI{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private TransferAsignatura tAsignatura;
-	private JFrame ventana;
 	private JPanel panelDeBotones;
 	private JPanel mainPanel;
 	Controller ctrl;
@@ -28,6 +31,7 @@ public class VAsignaturaEditar extends JFrame  implements IGUI{
 		super("Editar Asignatura");
 		ctrl=Controller.obtenerInstancia();
 		initIGUI();
+
 
 	}
 
@@ -38,7 +42,7 @@ public class VAsignaturaEditar extends JFrame  implements IGUI{
 		mainPanel = new JPanel(new BorderLayout());
 		panelDeBotones = new JPanel(new FlowLayout());
 		setContentPane(mainPanel);
-		JLabel asignatura = new JLabel("MATE", SwingConstants.CENTER); // tAsignatura.getNombre()
+		JLabel asignatura = new JLabel("EDITAR ASIGNATURA", SwingConstants.CENTER); // tAsignatura.getNombre()
 		asignatura.setSize(new Dimension(70, 70));
 		mainPanel.add(asignatura, BorderLayout.NORTH);
 
@@ -104,5 +108,6 @@ public class VAsignaturaEditar extends JFrame  implements IGUI{
 
 	@Override
 	public void update(int event, Object datos) {
+		tAsignatura=(TransferAsignatura) datos;
 	}
 }
