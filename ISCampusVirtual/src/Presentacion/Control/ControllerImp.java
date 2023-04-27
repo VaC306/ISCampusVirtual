@@ -228,7 +228,14 @@ public class ControllerImp extends Controller{
 			
 			break;
 
-		
+		case Events.ANADIR_USUARIO_CREADO:
+			
+			tAsignatura=(TransferAsignatura) datos;
+			
+			currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_EDITAR_USUARIO, datos);
+			currentIGUI.update(Events.ABRIR_VISTA_EDITAR_USUARIO, tAsignatura);
+			
+			break;
 			
 			
 			

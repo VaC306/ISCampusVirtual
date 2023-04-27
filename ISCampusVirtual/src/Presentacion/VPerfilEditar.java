@@ -100,9 +100,10 @@ public class VPerfilEditar extends JFrame implements IGUI{
 		});
 		buttonsPanel.add(ok);
 		cancel = new JButton("Cancel");
-		cancel.addChangeListener((e) -> setVisible(false));
-		buttonsPanel.add(cancel);
+		cancel.addActionListener((e) -> setVisible(false));
+		//buttonsPanel.add(cancel);
 		
+		setVisible(true);;
 	}
 
 
