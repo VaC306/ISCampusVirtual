@@ -8,10 +8,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
 
 import com.mysql.cj.conf.ConnectionUrlParser.Pair;
 
+import Negocio.Archivos.TransferArchivo;
 import Negocio.Aula.TransferAsignatura;
 import Negocio.Aula.TransferTema;
 import Presentacion.Control.Controller;
@@ -41,18 +45,32 @@ public class VTema extends JFrame  implements IGUI{
 		setContentPane(mainPanel);
 		
 		JPanel panelSup= new JPanel();
-
 		JLabel temaTitulo = new JLabel(tTema.getAsignaturas().getNombre() +" : "+ tTema.getNombre(), SwingConstants.CENTER); 
 		temaTitulo.setSize(new Dimension(70, 70));
-		
-		
 		panelSup.add(temaTitulo, BorderLayout.CENTER);
-		mainPanel.add(panelSup, BorderLayout.NORTH);
+		mainPanel.add(panelSup, BorderLayout.PAGE_START);	
 		
 		
 		
 		
+		//tabla archivos
 		
+
+		
+		DefaultTableModel modeloArchivos = new DefaultTableModel();
+		modeloArchivos.addColumn("Archivo");
+		modeloArchivos.addColumn("Usuario");
+		
+		
+		for(TransferArchivo tA:tTema.getArchivo()) {
+		
+			modeloArchivos.addRow(new String[] { tA.getNombre(), tA.getUsuario().getNombre_Apellidos()});	
+		}
+
+		JTable tabla = new JTable(modeloArchivos);
+		JScrollPane scrollPane = new JScrollPane(tabla);
+		
+		add(scrollPane);
 		
 		
 		JPanel panelInf= new JPanel();

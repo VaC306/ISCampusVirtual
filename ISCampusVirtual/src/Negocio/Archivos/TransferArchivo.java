@@ -17,8 +17,7 @@ public abstract class TransferArchivo {
 	private TransferUsuario usuario;
 
 	private TransferTema temas;
-	
-	private File archivo;
+
 
 	public String getNombre() {
 		return Nombre;
@@ -64,13 +63,6 @@ public abstract class TransferArchivo {
 
 	public abstract TransferArchivo read(String idArchivo);
 
-	public File getArchivo() {
-		return archivo;
-	}
-
-	public void setArchivo(File archivo) {
-		this.archivo = archivo;
-	}
 	
 	
 	
