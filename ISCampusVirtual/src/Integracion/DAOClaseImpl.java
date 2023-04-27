@@ -13,7 +13,7 @@ public class DAOClaseImpl implements DAOClase{
 	static String bd = "campus_virtual";
 	static String login = "root";
 	static String password = "grupo7";
-	static String url = "jdbc:mysql://localhost/" + bd;
+	static String url = "jdbc:mysql://127.0.0.1:3306/" + bd;
 
 	@Override
 	public TransferClase read(EnumCurso enumCurso, String letra) {
