@@ -9,11 +9,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Negocio.Archivos.TransferTarea;
+import Negocio.Aula.TransferAsignatura;
 import Presentacion.Control.Controller;
 import Presentacion.Control.IGUI;
 
 public class VEliminarTareas extends JFrame  implements IGUI{
 	private JComboBox<String> tareas;
+	TransferAsignatura tAsignatura;
 	Controller ctrl;
 
 	public VEliminarTareas() {
@@ -49,7 +52,11 @@ public class VEliminarTareas extends JFrame  implements IGUI{
 
 	@Override
 	public void update(int event, Object datos) {
-		// TODO Auto-generated method stub
+		 switch(event) {
+		 
+		 default:
+			 tAsignatura=(TransferAsignatura) datos;
+		 }
 		
 	}
 }

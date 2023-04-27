@@ -1,5 +1,6 @@
 package Presentacion.Control;
 
+import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.SAAsignatura;
 import Negocio.Aula.TransferAsignatura;
 import Negocio.Factoria.FactoriaSA;
@@ -27,7 +28,8 @@ public class ControllerImp extends Controller{
 		TransferUsuario tUsuario;
 		TransferAlumno tAlumno;
 		TransferProfesor tProfesor;
-		TransferAsignatura tAsignatura = null;
+		TransferAsignatura tAsignatura;
+		TransferTarea tTarea;
 		
 		
 		
@@ -161,15 +163,113 @@ public class ControllerImp extends Controller{
 			
 			break;
 			
+		case Events.TAREA_ANADIR:
+			tTarea=(TransferTarea) datos;
+			
+			//TODO añadir tarea mediante sa
+			if(datos!=null) {
+				
+				currentIGUI.update(Events.TAREA_ANADIDA_EXITO, tTarea);
+			}
+			else {
+				
+				currentIGUI.update(Events.TAREA_ANADIDA_ERROR, tTarea);
+
+			}
+			break;
 		case Events.ABRIR_VISTA_ELIMINAR_TAREA:
 			
 			tAsignatura=(TransferAsignatura) datos;
 			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
-			currentIGUI.update(evento, tAsignatura);	
+			currentIGUI.update(evento, tAsignatura);
+			
+			break;
+
+		case Events.TAREA_ELIMINADA:
+			tTarea=(TransferTarea) datos;
+
+			//TODO eliminar tarea sa
+			if(datos!=null) {
+				
+				currentIGUI.update(Events.TAREA_ELIMINADA_EXITO, tTarea);
+			}
+			else {
+				
+				currentIGUI.update(Events.TAREA_ELIMINADA_ERROR, tTarea);
+
+			}
+			break;
+
+		case Events.ABRIR_VISTA_ANADIR_USUARIO:
+			
+			tAsignatura=(TransferAsignatura) datos;
+				
+			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
+			currentIGUI.update(evento, tAsignatura);
+			break;
+
+			
+		case Events.ANADIR_USUARIO:
+			
+			String id= (String) datos;
+			tUsuario=null;
+			
+			
+			//se intenta editar el usuario
+			if(saUsuario.editarUsuario(tUsuario)) {
+				
+				currentIGUI.update(Events.ANADIR_USUARIO_EXITO, tUsuario);
+			}
+			else {
+				
+				if(saUsuario.crearUsuario(tUsuario)) {
+					
+					currentIGUI.update(Events.ANADIR_USUARIO_EXITO, tUsuario);
+				}
+				else {
+					
+					currentIGUI.update(Events.ANADIR_USUARIO_ERROR, tUsuario);
+
+				}
+			}
+			
+			break;
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 		}
 		
 
+			
+			
 		
 	
 			

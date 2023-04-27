@@ -8,11 +8,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Negocio.Aula.TransferAsignatura;
 import Presentacion.Control.Controller;
+import Presentacion.Control.Events;
 import Presentacion.Control.IGUI;
 
 public class VAniadirUsuario extends JFrame  implements IGUI{
 
+	private TransferAsignatura tAsignatura;
 	private JTextField id;
 	private JButton ok;
 	private String id_s;
@@ -21,6 +24,7 @@ public class VAniadirUsuario extends JFrame  implements IGUI{
 	public VAniadirUsuario() {
 		super("A�adir Usuario");
 		ctrl=Controller.obtenerInstancia();
+		
 		initIGUI();
 
 	}
@@ -35,7 +39,10 @@ public class VAniadirUsuario extends JFrame  implements IGUI{
 
 		id = new JTextField(8);
 		ok = new JButton("OK");
-		ok.addActionListener((e) -> valid());
+		ok.addActionListener((e) -> {
+			
+			
+		});
 
 		mainPanel.add(new JLabel("Id del usuario: "));
 		mainPanel.add(id);
@@ -43,14 +50,24 @@ public class VAniadirUsuario extends JFrame  implements IGUI{
 		setVisible(true);
 	}
 
-	void valid() {
-		id_s = id.getText();
-		setVisible(false);
-	}
+
 
 	@Override
 	public void update(int event, Object datos) {
-		// TODO Auto-generated method stub
 		
+		switch(event) {
+		
+		case Events.ANADIR_USUARIO_ERROR:
+			ctrl.accion(Events.ANADIR_USUARIO_CREADO, datos);
+		break;
+		
+		case Events.ANADIR_USUARIO_EXITO:
+			setVisible(false);
+			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, datos);
+			
+		default:
+			tAsignatura=(TransferAsignatura) datos;
+			
+		}		
 	}
 }

@@ -33,11 +33,12 @@ public class Events {
 	
 	public static final int ABRIR_VISTA_EDITAR_ASIGNATURA = 24;
 	
-	
 
 	public static final int ABRIR_VISTA_ANADIR_TAREA = 14;
 
 	public static final int ABRIR_VISTA_ELIMINAR_TAREA = 15;
+	
+	
 
 	public static final int ABRIR_VISTA_ANADIR_USUARIO = 16;
 
@@ -48,11 +49,33 @@ public class Events {
 	public static final int ABRIR_VISTA_ELIMINAR_APUNTES = 19;
 	
 
+	
 	public static final int EDITAR_USUARIO = 20;
 
 	public static final int EDITAR_USUARIO_EXITO = 22;
 
 	public static final int EDITAR_USUARIO_ERROR = 23;
+	
+	public static final int TAREA_ANADIDA_EXITO = 25;
+
+	public static final int TAREA_ANADIDA_ERROR = 26;
+
+	public static final int TAREA_ANADIR = 27;
+	
+	public static final int TAREA_ELIMINADA_EXITO = 28;
+
+	public static final int TAREA_ELIMINADA_ERROR = 29;
+
+	public static final int TAREA_ELIMINADA = 30;
+	
+	public static final int ANADIR_USUARIO = 33;
+	
+	public static final int ANADIR_USUARIO_CREADO = 34;
+	
+	public static final int ANADIR_USUARIO_EXITO = 31;
+
+	public static final int ANADIR_USUARIO_ERROR = 32;
+	
 	
 	
 

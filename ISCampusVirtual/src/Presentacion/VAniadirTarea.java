@@ -13,11 +13,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Negocio.Archivos.TransferTarea;
+import Negocio.Aula.TransferAsignatura;
 import Presentacion.Control.Controller;
+import Presentacion.Control.Events;
 import Presentacion.Control.IGUI;
 
 public class VAniadirTarea extends JFrame  implements IGUI{
-
+	
+	private TransferAsignatura tAsignatura;
 	private JTextField nombre;
 	private JTextField fecha;
 	private JButton load;
@@ -46,7 +50,18 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 		mainPanel.add(file_name);
 		load.addActionListener((e) -> load());
 		ok = new JButton("OK");
-		ok.addActionListener((e) -> valid());
+		ok.addActionListener((e) -> {
+			TransferTarea tt=null;
+					//new TransferTarea;
+			nombre.getText();
+			fecha.getText();
+			ctrl.accion(Events.TAREA_ANADIR, tt);
+		});
+		
+		
+		
+		
+		
 		mainPanel.add(new JLabel("Nombre tarea: "));
 		nombre = new JTextField(8);
 		mainPanel.add(nombre);
@@ -71,14 +86,32 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 	}
 
 	public void valid() {
-		nombre.getText();
-		fecha.getText();
-		setVisible(false);
+		
+		
 	}
 
 	@Override
 	public void update(int event, Object datos) {
-		// TODO Auto-generated method stub
+		
+		switch(event) {
+		
+		case Events.TAREA_ANADIDA_EXITO:
+			
+			setVisible(false);
+			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, datos);
+		break;
+			
+		case Events.TAREA_ANADIDA_ERROR:
+			fecha.setText("");
+			nombre.setText("");	
+		break;
+		
+		default:
+			tAsignatura=(TransferAsignatura) datos;
+			
+		}
+
+		
 		
 	}
 }
