@@ -14,7 +14,7 @@ public class DAOAlumnoImpl implements DAOAlumno{
 	static String bd = "campus_virtual";
 	static String login = "root";
 	static String password = "grupo7";
-	static String url = "jdbc:mysql://127.0.0.1:3306/" + bd +"?useSSL=false";
+	static String url = "jdbc:mysql://127.0.0.1:3306/" + bd ;
 	
 	
 	@Override

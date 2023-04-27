@@ -18,7 +18,7 @@ public class TransferTema {
     
     private List<TransferTarea> tareas = new ArrayList<> ();
 
-    public TransferTema(String id, String nombre, int numero, String idAr, String idAs) {
+    public TransferTema(String id, String nombre, int numero, List<TransferArchivo> idAr, String idAs) {
     	this.Id = id;
     	this.Nombre = nombre;
     	this.Numero = numero;

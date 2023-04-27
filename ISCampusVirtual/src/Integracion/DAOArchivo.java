@@ -5,7 +5,7 @@ import Negocio.Aula.TransferTema;
 
 public interface DAOArchivo {
 	
-	public TransferArchivo read(TransferTema tema, String titulo);
+	public TransferArchivo read(String titulo);
 
 	public void create(TransferArchivo aTNew);
 
