@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.mysql.cj.conf.ConnectionUrlParser.Pair;
 
+import Negocio.Archivos.TransferApuntes;
+import Negocio.Archivos.TransferArchivo;
 import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.SAAsignatura;
 import Negocio.Aula.TransferAsignatura;
@@ -35,6 +37,7 @@ public class ControllerImp extends Controller{
 		TransferProfesor tProfesor;
 		TransferAsignatura tAsignatura;
 		TransferTarea tTarea;
+		TransferApuntes tApuntes;
 		
 		
 		
@@ -285,6 +288,55 @@ public class ControllerImp extends Controller{
 			break;
 
 			
+		case Events.ABRIR_VISTA_ANADIR_APUNTES:
+			
+			tAsignatura=(TransferAsignatura) datos;
+			
+			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
+			currentIGUI.update(evento, tAsignatura);
+
+			
+			break;
+			
+		case Events.ANADIR_APUNTES:
+			
+			
+			String idApuntes=(String) datos;
+			//TODO get tApuntes by id
+			
+			currentIGUI.update(evento, null);
+
+			
+			break;
+			
+		case Events.ABRIR_VISTA_ELIMINAR_APUNTES:
+			
+			
+			tAsignatura=(TransferAsignatura) datos;
+			Pair <TransferAsignatura, List<TransferArchivo>> infoApuntes = new Pair<>(tAsignatura, saAsignatura.getApuntes(tAsignatura));
+
+			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
+			currentIGUI.update(evento, tAsignatura);
+
+			
+			break;
+		case Events.ELIMINAR_APUNTES:
+			
+			String idApuntes1= (String) datos;
+			//TODO eliminarapuntes(idTarea) SAApuntes
+					
+			if(true) {
+				
+				currentIGUI.update(Events.APUNTES_ELIMINADA_EXITO, null);
+
+			}
+			else {
+				
+				currentIGUI.update(Events.APUNTES_ELIMINADA_ERROR, null);
+
+			}
+			
+			break;
 			
 			
 			
@@ -292,6 +344,16 @@ public class ControllerImp extends Controller{
 			
 			
 			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
 		}
 		
 

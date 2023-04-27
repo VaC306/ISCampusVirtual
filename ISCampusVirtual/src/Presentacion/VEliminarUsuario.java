@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -66,7 +67,7 @@ public class VEliminarUsuario extends JFrame  implements IGUI{
 	public void update(int event, Object datos) {
 		switch (event) {
 		case Events.ELIMINAR_USUARIO_ERROR: 
-			
+			JOptionPane.showMessageDialog(this, "Id no valida");
 			id.setText("");
 			break;
 			

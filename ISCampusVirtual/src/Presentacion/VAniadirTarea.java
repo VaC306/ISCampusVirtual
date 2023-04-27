@@ -69,7 +69,14 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 		fecha = new JTextField(8);
 		mainPanel.add(fecha);
 		mainPanel.add(new JLabel("(Formato: dd/mm/yy)"));
-		mainPanel.add(ok, BorderLayout.CENTER);
+		mainPanel.add(ok);
+		JButton cancel= new JButton("Cancelar");
+		cancel.addActionListener(e->{
+			
+			setVisible(false);
+			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA,tAsignatura );
+		});
+		mainPanel.add(cancel);
 		setVisible(true);
 	}
 

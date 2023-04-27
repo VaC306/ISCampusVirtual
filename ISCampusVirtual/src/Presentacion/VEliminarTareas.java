@@ -18,7 +18,6 @@ import Negocio.Aula.TransferAsignatura;
 import Presentacion.Control.Controller;
 import Presentacion.Control.Events;
 import Presentacion.Control.IGUI;
-import Presentacion.Launcher.main;
 
 public class VEliminarTareas extends JFrame  implements IGUI{
 	private JComboBox<String> tareas;

@@ -5,7 +5,9 @@ import java.awt.FlowLayout;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,13 +15,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Negocio.Archivos.TransferTarea;
+import Negocio.Aula.TransferAsignatura;
+import Negocio.Aula.TransferTema;
 import Presentacion.Control.Controller;
+import Presentacion.Control.Events;
 import Presentacion.Control.IGUI;
 
 public class VAniadirApuntes extends JFrame  implements IGUI{
-
+	
+	TransferAsignatura tAsignatura;
 	private JTextField nombre;
-	private JTextField tema;
+	private JComboBox<String> tema;
 	private JButton load;
 	private JButton ok;
 	private JFileChooser fc;
@@ -46,14 +53,38 @@ public class VAniadirApuntes extends JFrame  implements IGUI{
 		mainPanel.add(file_name);
 		load.addActionListener((e) -> load());
 		ok = new JButton("OK");
-		ok.addActionListener((e) -> valid());
+		ok.addActionListener((e) -> {
+			
+			
+			
+		});
 		mainPanel.add(new JLabel("Nombre apuntes: "));
 		nombre = new JTextField(8);
 		mainPanel.add(nombre);
 		mainPanel.add(new JLabel("Tema correspondiente: "));
-		tema = new JTextField(8);
+		
+		
+		DefaultComboBoxModel<String> temas_d = new DefaultComboBoxModel<>();
+		
+		for(TransferTema tt: tAsignatura.getTemas()) {
+			
+			temas_d.addElement(tt.getId());
+
+		}
+		
+		tema = new JComboBox<String>(temas_d);
 		mainPanel.add(tema);
+		
 		mainPanel.add(ok);
+		
+		
+		JButton cancel= new JButton("Cancelar");
+		cancel.addActionListener(e->{
+			
+			setVisible(false);
+			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA,tAsignatura );
+		});
+		mainPanel.add(cancel);
 		setVisible(true);
 	}
 
@@ -69,15 +100,19 @@ public class VAniadirApuntes extends JFrame  implements IGUI{
 		}
 	}
 
-	public void valid() {
-		nombre.getText();
-		tema.getText();
-		setVisible(false);
-	}
-
 	@Override
 	public void update(int event, Object datos) {
-		// TODO Auto-generated method stub
+		switch (event) {
+		case Events.ABRIR_VISTA_ANADIR_APUNTES: 
+			tAsignatura=(TransferAsignatura) datos;
+			
+		break;
 		
+		case Events.ANADIR_APUNTES:
+			JOptionPane.showMessageDialog(this, "Apuntes Añadidos");
+			setVisible(false);
+			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA,tAsignatura );
+		}
+
 	}
 }
