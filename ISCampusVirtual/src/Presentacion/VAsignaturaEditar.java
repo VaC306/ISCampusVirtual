@@ -36,7 +36,7 @@ public class VAsignaturaEditar extends JFrame  implements IGUI{
 	}
 
 	void initIGUI() {
-		setSize(800, 100);
+		setSize(800, 150);
 		setLocationRelativeTo(null);
 		this.setResizable(false);
 		mainPanel = new JPanel(new BorderLayout());
@@ -90,7 +90,7 @@ public class VAsignaturaEditar extends JFrame  implements IGUI{
 		JButton cerrar = new JButton("Cerrar");
 		cerrar.addActionListener((e)-> {
 			setVisible(false);
-			ctrl.accion(Events.ABRIR_VISTA_ASIGNATURA_PROFESOR, tAsignatura);
+			ctrl.accion(Events.ABRIR_VISTA_ASIGNATURA, tAsignatura);
 		}
 		);
 
@@ -101,8 +101,9 @@ public class VAsignaturaEditar extends JFrame  implements IGUI{
 		panelDeBotones.add(eliminarUsuario);
 		panelDeBotones.add(aniadirApuntes);
 		panelDeBotones.add(eliminarApuntes);
-		panelDeBotones.add(cerrar);
-		mainPanel.add(panelDeBotones, BorderLayout.SOUTH);
+	
+		mainPanel.add(panelDeBotones, BorderLayout.CENTER);
+		mainPanel.add(cerrar,BorderLayout.PAGE_END );
 		setVisible(true);
 	}
 

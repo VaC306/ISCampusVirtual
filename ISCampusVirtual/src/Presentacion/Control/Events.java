@@ -86,6 +86,8 @@ public class Events {
 	public static final int ELIMINAR_APUNTES = 41;
 
 	public static final int ANADIR_APUNTES = 42;
+
+	public static final int ABRIR_VISTA_TEMA = 43;
 	
 	
 	

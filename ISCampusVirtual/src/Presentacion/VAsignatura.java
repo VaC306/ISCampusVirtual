@@ -92,7 +92,7 @@ public class VAsignatura implements IGUI {
 			
         	JButton boton= new JButton(tt.getNombre());
         	
-			//ctrl.accion(Events.ABRIR_VISTA_TEMA, tA);
+			ctrl.accion(Events.ABRIR_VISTA_TEMA, tt);
         	
         	listaDeBotones.add(boton);
             panelDeTemas.add(boton);
@@ -114,7 +114,6 @@ public class VAsignatura implements IGUI {
         JButton botonCalendario= new JButton("Calendario");
         botonCalendario.addActionListener(e->{
         	
-        	//TODO
         	
         	ctrl.accion(Events.ABRIR_VISTA_CALENDARIO, asignatura);
         });
