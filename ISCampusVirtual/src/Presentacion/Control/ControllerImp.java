@@ -4,6 +4,7 @@ import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.SAAsignatura;
 import Negocio.Aula.TransferAsignatura;
 import Negocio.Factoria.FactoriaSA;
+import Negocio.Factoria.FactoriaUsuario;
 import Negocio.Usuario.SAAlumno;
 import Negocio.Usuario.SAProfesor;
 import Negocio.Usuario.SAUsuario;
@@ -212,30 +213,22 @@ public class ControllerImp extends Controller{
 		case Events.ANADIR_USUARIO:
 			
 			String id= (String) datos;
-			tUsuario=null;
+			tUsuario=FactoriaUsuario.getInstance().crearTransferById(id);
 			
 			
 			//se intenta editar el usuario
-			if(saUsuario.editarUsuario(tUsuario)) {
+			if(tUsuario!=null && saUsuario.editarUsuario(tUsuario)) {
 				
 				currentIGUI.update(Events.ANADIR_USUARIO_EXITO, tUsuario);
 			}
 			else {
 				
-				if(saUsuario.crearUsuario(tUsuario)) {
-					
-					currentIGUI.update(Events.ANADIR_USUARIO_EXITO, tUsuario);
-				}
-				else {
-					
-					currentIGUI.update(Events.ANADIR_USUARIO_ERROR, tUsuario);
-
-				}
+				currentIGUI.update(Events.ANADIR_USUARIO_ERROR, tUsuario);
 			}
 			
 			break;
 
-			
+		
 			
 			
 			

@@ -41,7 +41,7 @@ public class VAniadirUsuario extends JFrame  implements IGUI{
 		ok = new JButton("OK");
 		ok.addActionListener((e) -> {
 			
-			
+			ctrl.accion(Events.ANADIR_USUARIO, id.getText());
 		});
 
 		mainPanel.add(new JLabel("Id del usuario: "));
@@ -58,7 +58,9 @@ public class VAniadirUsuario extends JFrame  implements IGUI{
 		switch(event) {
 		
 		case Events.ANADIR_USUARIO_ERROR:
+			setVisible(false);
 			ctrl.accion(Events.ANADIR_USUARIO_CREADO, datos);
+
 		break;
 		
 		case Events.ANADIR_USUARIO_EXITO:
