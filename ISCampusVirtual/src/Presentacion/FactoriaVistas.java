@@ -67,7 +67,10 @@ public class FactoriaVistas {
 		
 		case Events.ABRIR_VISTA_ELIMINAR_APUNTES:
 			return new VEliminarApuntes();
-			
+		
+		case Events.ABRIR_VISTA_TEMA:
+			return new VTema();
+
 		}
 		return null;
 	}

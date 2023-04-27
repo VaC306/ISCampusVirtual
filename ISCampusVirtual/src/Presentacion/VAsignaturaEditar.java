@@ -10,11 +10,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 
 import Negocio.Aula.TransferAsignatura;
 import Presentacion.Control.Controller;
 import Presentacion.Control.Events;
 import Presentacion.Control.IGUI;
+import Presentacion.Launcher.main;
 
 public class VAsignaturaEditar extends JFrame  implements IGUI{
 
@@ -42,9 +44,15 @@ public class VAsignaturaEditar extends JFrame  implements IGUI{
 		mainPanel = new JPanel(new BorderLayout());
 		panelDeBotones = new JPanel(new FlowLayout());
 		setContentPane(mainPanel);
-		JLabel asignatura = new JLabel("EDITAR ASIGNATURA", SwingConstants.CENTER); // tAsignatura.getNombre()
+		
+		JPanel panelSup= new JPanel();
+
+		JLabel asignatura = new JLabel("EDITAR ", SwingConstants.CENTER); // + tAsignatura.getNombre() TODO
 		asignatura.setSize(new Dimension(70, 70));
-		mainPanel.add(asignatura, BorderLayout.NORTH);
+		
+		
+		panelSup.add(asignatura, BorderLayout.CENTER);
+		mainPanel.add(panelSup, BorderLayout.NORTH);
 
 		JButton aniadirTarea = new JButton("A�adir Tarea");
 		aniadirTarea.addActionListener((e)-> {
@@ -87,13 +95,15 @@ public class VAsignaturaEditar extends JFrame  implements IGUI{
 		}
 		);
 		
+		JPanel panelInf= new JPanel();
+		
 		JButton cerrar = new JButton("Cerrar");
 		cerrar.addActionListener((e)-> {
 			setVisible(false);
 			ctrl.accion(Events.ABRIR_VISTA_ASIGNATURA, tAsignatura);
 		}
 		);
-
+		panelInf.add(cerrar, BorderLayout.CENTER);
 
 		panelDeBotones.add(aniadirTarea);
 		panelDeBotones.add(eliminarTarea);
@@ -103,7 +113,7 @@ public class VAsignaturaEditar extends JFrame  implements IGUI{
 		panelDeBotones.add(eliminarApuntes);
 	
 		mainPanel.add(panelDeBotones, BorderLayout.CENTER);
-		mainPanel.add(cerrar,BorderLayout.PAGE_END );
+		mainPanel.add(panelInf,BorderLayout.PAGE_END );
 		setVisible(true);
 	}
 
