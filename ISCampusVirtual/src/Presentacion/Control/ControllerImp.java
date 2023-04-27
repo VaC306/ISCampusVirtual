@@ -1,5 +1,11 @@
 package Presentacion.Control;
 
+import java.util.List;
+
+import com.mysql.cj.conf.ConnectionUrlParser.Pair;
+
+import Negocio.Archivos.TransferApuntes;
+import Negocio.Archivos.TransferArchivo;
 import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.SAAsignatura;
 import Negocio.Aula.TransferAsignatura;
@@ -31,6 +37,7 @@ public class ControllerImp extends Controller{
 		TransferProfesor tProfesor;
 		TransferAsignatura tAsignatura;
 		TransferTarea tTarea;
+		TransferApuntes tApuntes;
 		
 		
 		
@@ -181,12 +188,17 @@ public class ControllerImp extends Controller{
 		case Events.ABRIR_VISTA_ELIMINAR_TAREA:
 			
 			tAsignatura=(TransferAsignatura) datos;
+			Pair <TransferAsignatura, List<TransferTarea>> info = new Pair<>(tAsignatura, saAsignatura.getTareas(tAsignatura));
+		
+
 			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
-			currentIGUI.update(evento, tAsignatura);
+			currentIGUI.update(evento, info);
 			
 			break;
 
 		case Events.TAREA_ELIMINADA:
+			
+			
 			tTarea=(TransferTarea) datos;
 
 			//TODO eliminar tarea sa
@@ -228,7 +240,103 @@ public class ControllerImp extends Controller{
 			
 			break;
 
-		
+		case Events.ANADIR_USUARIO_CREADO:
+			
+			tAsignatura=(TransferAsignatura) datos;
+			
+			currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_EDITAR_USUARIO, datos);
+			currentIGUI.update(Events.ABRIR_VISTA_EDITAR_USUARIO, tAsignatura);
+			
+
+			
+			break;
+			
+			
+		case Events.ANADIR_USUARIO_CREADO_NUEVO:
+
+			tUsuario = (TransferUsuario) datos;
+
+			if (saUsuario.crearUsuario(tUsuario)) {
+				currentIGUI.update(Events.EDITAR_USUARIO_EXITO, tUsuario);
+			} else {
+				currentIGUI.update(Events.EDITAR_USUARIO_ERROR, tUsuario);
+
+			}
+			
+			break;
+
+		case Events.ABRIR_VISTA_ELIMINAR_USUARIO:
+			tUsuario = (TransferUsuario) datos;
+
+			
+			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
+			
+			break;
+			
+		case Events.ELIMINAR_USUARIO:
+			
+			String id1= (String) datos;
+			
+			if(saUsuario.eliminarUsuario(id1)) {
+				
+				currentIGUI.update(Events.ELIMINAR_USUARIO_ACIERTO, id1);
+			}else {
+				
+				currentIGUI.update(Events.ELIMINAR_USUARIO_ERROR, id1);
+			}
+			
+			break;
+
+			
+		case Events.ABRIR_VISTA_ANADIR_APUNTES:
+			
+			tAsignatura=(TransferAsignatura) datos;
+			
+			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
+			currentIGUI.update(evento, tAsignatura);
+
+			
+			break;
+			
+		case Events.ANADIR_APUNTES:
+			
+			
+			String idApuntes=(String) datos;
+			//TODO get tApuntes by id
+			
+			currentIGUI.update(evento, null);
+
+			
+			break;
+			
+		case Events.ABRIR_VISTA_ELIMINAR_APUNTES:
+			
+			
+			tAsignatura=(TransferAsignatura) datos;
+			Pair <TransferAsignatura, List<TransferArchivo>> infoApuntes = new Pair<>(tAsignatura, saAsignatura.getApuntes(tAsignatura));
+
+			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
+			currentIGUI.update(evento, tAsignatura);
+
+			
+			break;
+		case Events.ELIMINAR_APUNTES:
+			
+			String idApuntes1= (String) datos;
+			//TODO eliminarapuntes(idTarea) SAApuntes
+					
+			if(true) {
+				
+				currentIGUI.update(Events.APUNTES_ELIMINADA_EXITO, null);
+
+			}
+			else {
+				
+				currentIGUI.update(Events.APUNTES_ELIMINADA_ERROR, null);
+
+			}
+			
+			break;
 			
 			
 			
@@ -245,19 +353,7 @@ public class ControllerImp extends Controller{
 			
 			
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
 		}
 		
 

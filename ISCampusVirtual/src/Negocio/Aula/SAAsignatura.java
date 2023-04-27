@@ -4,6 +4,8 @@ import java.util.List;
 
 import Integracion.DAOAsignatura;
 import Integracion.DAOAsignaturaImpl;
+import Negocio.Archivos.TransferApuntes;
+import Negocio.Archivos.TransferArchivo;
 import Negocio.Archivos.TransferTarea;
 import Negocio.Foro.TransferForo;
 import Negocio.Usuario.SAAlumno;
@@ -68,6 +70,17 @@ public class SAAsignatura {
 		}
 		
 
+		return ret;
+	}
+
+	public List<TransferArchivo> getApuntes(TransferAsignatura tAsignatura) {
+		
+		List<TransferArchivo> ret= new ArrayList<>();
+
+		for(TransferTema tt: tAsignatura.getTemas()) {
+			
+			ret.addAll(tt.getArchivo());
+		}
 		return ret;
 	}
 	
