@@ -1,5 +1,9 @@
 package Presentacion.Control;
 
+import java.util.List;
+
+import com.mysql.cj.conf.ConnectionUrlParser.Pair;
+
 import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.SAAsignatura;
 import Negocio.Aula.TransferAsignatura;
@@ -181,12 +185,17 @@ public class ControllerImp extends Controller{
 		case Events.ABRIR_VISTA_ELIMINAR_TAREA:
 			
 			tAsignatura=(TransferAsignatura) datos;
+			Pair <TransferAsignatura, List<TransferTarea>> info = new Pair<>(tAsignatura, saAsignatura.getTareas(tAsignatura));
+		
+
 			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
-			currentIGUI.update(evento, tAsignatura);
+			currentIGUI.update(evento, info);
 			
 			break;
 
 		case Events.TAREA_ELIMINADA:
+			
+			
 			tTarea=(TransferTarea) datos;
 
 			//TODO eliminar tarea sa
@@ -235,28 +244,46 @@ public class ControllerImp extends Controller{
 			currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_EDITAR_USUARIO, datos);
 			currentIGUI.update(Events.ABRIR_VISTA_EDITAR_USUARIO, tAsignatura);
 			
+
+			
 			break;
 			
 			
+		case Events.ANADIR_USUARIO_CREADO_NUEVO:
+
+			tUsuario = (TransferUsuario) datos;
+
+			if (saUsuario.crearUsuario(tUsuario)) {
+				currentIGUI.update(Events.EDITAR_USUARIO_EXITO, tUsuario);
+			} else {
+				currentIGUI.update(Events.EDITAR_USUARIO_ERROR, tUsuario);
+
+			}
 			
+			break;
+
+		case Events.ABRIR_VISTA_ELIMINAR_USUARIO:
+			tUsuario = (TransferUsuario) datos;
+
 			
+			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
 			
+			break;
 			
+		case Events.ELIMINAR_USUARIO:
 			
+			String id1= (String) datos;
 			
+			if(saUsuario.eliminarUsuario(id1)) {
+				
+				currentIGUI.update(Events.ELIMINAR_USUARIO_ACIERTO, id1);
+			}else {
+				
+				currentIGUI.update(Events.ELIMINAR_USUARIO_ERROR, id1);
+			}
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+			break;
+
 			
 			
 			

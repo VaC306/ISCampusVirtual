@@ -75,6 +75,14 @@ public class Events {
 	public static final int ANADIR_USUARIO_EXITO = 31;
 
 	public static final int ANADIR_USUARIO_ERROR = 32;
+
+	public static final int ANADIR_USUARIO_CREADO_NUEVO = 35;
+
+	public static final int ELIMINAR_USUARIO =36;
+
+	public static final int ELIMINAR_USUARIO_ACIERTO = 37;
+
+	public static final int ELIMINAR_USUARIO_ERROR = 38;
 	
 	
 	

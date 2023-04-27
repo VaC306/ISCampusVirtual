@@ -8,13 +8,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Negocio.Aula.TransferAsignatura;
 import Presentacion.Control.Controller;
+import Presentacion.Control.Events;
 import Presentacion.Control.IGUI;
 
 public class VEliminarUsuario extends JFrame  implements IGUI{
 	private JTextField id;
 	private JButton ok;
-	private String id_s;
+	private JButton cancel;
+	private TransferAsignatura tAsignatura;
+ 
+
 	Controller ctrl;
 
 	public VEliminarUsuario() {
@@ -32,22 +37,49 @@ public class VEliminarUsuario extends JFrame  implements IGUI{
 
 		id = new JTextField(8);
 		ok = new JButton("OK");
-		ok.addActionListener((e) -> valid());
+		ok.addActionListener((e) -> {
+			
+			ctrl.accion(Events.ELIMINAR_USUARIO, id.getText());
+		});
+		
+		cancel= new JButton("Cancelar");
+		cancel.addActionListener(e->{
+			
+			setVisible(false);
+			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, tAsignatura);
+		});
 
 		mainPanel.add(new JLabel("Id del usuario: "));
 		mainPanel.add(id);
 		mainPanel.add(ok);
+		mainPanel.add(cancel);
+
 		setVisible(true);
 	}
 
 	void valid() {
-		id_s = id.getText();
+		id.getText();
 		setVisible(false);
 	}
 
 	@Override
 	public void update(int event, Object datos) {
-		// TODO Auto-generated method stub
-		
+		switch (event) {
+		case Events.ELIMINAR_USUARIO_ERROR: 
+			
+			id.setText("");
+			break;
+			
+		case Events.ELIMINAR_USUARIO_ACIERTO: 
+			
+			setVisible(false);
+			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, datos);
+			
+			break;
+			
+		default:
+			
+			tAsignatura=(TransferAsignatura) datos;			
+		}
 	}
 }

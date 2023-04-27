@@ -98,7 +98,7 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 		case Events.TAREA_ANADIDA_EXITO:
 			
 			setVisible(false);
-			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, datos);
+			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, tAsignatura);
 		break;
 			
 		case Events.TAREA_ANADIDA_ERROR:
