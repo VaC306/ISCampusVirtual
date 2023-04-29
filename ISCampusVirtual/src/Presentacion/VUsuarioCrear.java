@@ -138,9 +138,18 @@ public class VUsuarioCrear extends JFrame implements IGUI{
 		mainPanel.add(buttonsPanel, BorderLayout.PAGE_END);
 		ok = new JButton("OK");
 		ok.addActionListener(e->{
-			Pair <TransferAsignatura, TransferUsuario> info = new Pair<>(tAsignatura,usuario);
+			
+			
+			if(	usuario.getNombre_Apellidos()==null ||usuario.getCorreo_electronico()==null || usuario.getNIF()==null || usuario.getPassword()==null) {
+				
+				JOptionPane.showMessageDialog(this, "Error: pulse intro al introducir cada texto");
 
-			ctrl.accion(Events.CREAR_USUARIO, info);
+			}
+			else {
+				Pair <TransferAsignatura, TransferUsuario> info = new Pair<>(tAsignatura,usuario);
+
+				ctrl.accion(Events.CREAR_USUARIO, info);
+			}
 			
 		});
 		buttonsPanel.add(ok);

@@ -106,6 +106,12 @@ public class VUsuarioEditar extends JFrame implements IGUI{
 		mainPanel.add(buttonsPanel, BorderLayout.PAGE_END);
 		ok = new JButton("OK");
 		ok.addActionListener(e->{
+			if(	nifE.getText().isEmpty() || correoE.getText().isEmpty() || nombreE.getText().isEmpty()) {
+				
+				JOptionPane.showMessageDialog(this, "Error: pulse intro al introducir cada texto");
+
+			}
+			else
 			
 			ctrl.accion(Events.EDITAR_USUARIO, usuario);
 			
