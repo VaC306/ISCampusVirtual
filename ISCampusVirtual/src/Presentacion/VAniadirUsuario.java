@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -67,12 +68,15 @@ public class VAniadirUsuario extends JFrame  implements IGUI{
 		
 		case Events.ANADIR_USUARIO_ERROR:
 			setVisible(false);
-			ctrl.accion(Events.ANADIR_USUARIO_CREADO, datos);
+			JOptionPane.showMessageDialog(this, "Usuario no existente: crear usuario");
+
+			ctrl.accion(Events.ABRIR_VISTA_CREAR_USUARIO, datos);
 
 		break;
 		
 		case Events.ANADIR_USUARIO_EXITO:
 			setVisible(false);
+
 			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, datos);
 			
 		default:

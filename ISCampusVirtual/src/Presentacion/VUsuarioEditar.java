@@ -1,5 +1,7 @@
 package Presentacion;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
@@ -9,6 +11,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -17,7 +20,7 @@ import Presentacion.Control.Controller;
 import Presentacion.Control.Events;
 import Presentacion.Control.IGUI;
 
-public class VPerfilEditar extends JFrame implements IGUI{
+public class VUsuarioEditar extends JFrame implements IGUI{
 	
 	protected Controller ctrl;
 	TransferUsuario usuario;
@@ -34,20 +37,24 @@ public class VPerfilEditar extends JFrame implements IGUI{
 
 	
 	
-	public VPerfilEditar() {
+	public VUsuarioEditar() {
 		super();
 		ctrl = Controller.obtenerInstancia();	
 	}
 
 	private void initIGUI() {
-		new JFrame();
+		JPanel mainPanel = new JPanel(new BorderLayout());
+		this.setContentPane(mainPanel);
 		
 		fieldsPanel = new JPanel();
 		fieldsPanel.setLayout(new BoxLayout(fieldsPanel, BoxLayout.Y_AXIS));
+		mainPanel.add(fieldsPanel);
 		
-		nif = new JLabel("DNI: ");
-		fieldsPanel.add(nif);
+		JPanel nifpanel = new JPanel(new FlowLayout());
+		
+		nifpanel.add(new JLabel("DNI: "));
 		nifE = new JTextField();
+		nifE.setPreferredSize(new Dimension(100, 20));
 		nifE.addActionListener(new ActionListener()
 		{
 			@Override
@@ -55,11 +62,15 @@ public class VPerfilEditar extends JFrame implements IGUI{
 				usuario.setNIF(nifE.getText());
 			}
 		});
-		fieldsPanel.add(nifE);
+		nifpanel.add(nifE);
+		fieldsPanel.add(nifpanel);
 		
-		nombre = new JLabel("Nombre: ");
-		fieldsPanel.add(nombre);
+		
+		JPanel nombrepanel = new JPanel(new FlowLayout());
+		
+		nombrepanel.add(new JLabel("Nombre: "));
 		nombreE = new JTextField();
+		nombreE.setPreferredSize(new Dimension(100, 20));
 		nombreE.addActionListener(new ActionListener()
 		{
 			@Override
@@ -69,13 +80,15 @@ public class VPerfilEditar extends JFrame implements IGUI{
 			}
 		});
 		
-		fieldsPanel.add(nombreE);
+		nombrepanel.add(nombreE);
+		fieldsPanel.add(nombrepanel);
 		
 		
+		JPanel correopanel = new JPanel(new FlowLayout());
 		
-		correo = new JLabel("Correo: ");
-		fieldsPanel.add(correo);
+		correopanel.add(new JLabel("Correo: "));
 		correoE = new JTextField();
+		correoE.setPreferredSize(new Dimension(300, 20));
 		correoE.addActionListener(new ActionListener()
 		{
 			@Override
@@ -85,14 +98,20 @@ public class VPerfilEditar extends JFrame implements IGUI{
 				usuario.setCorreo_electronico(correoE.getText());
 			}
 		});
-		fieldsPanel.add(correoE);
-		//ver si añadir mas campos
+		correopanel.add(correoE);
+		fieldsPanel.add(correopanel);
 		
 		
 		buttonsPanel = new JPanel((LayoutManager) new FlowLayout(FlowLayout.CENTER));
-		add(buttonsPanel);
+		mainPanel.add(buttonsPanel, BorderLayout.PAGE_END);
 		ok = new JButton("OK");
 		ok.addActionListener(e->{
+			if(	nifE.getText().isEmpty() || correoE.getText().isEmpty() || nombreE.getText().isEmpty()) {
+				
+				JOptionPane.showMessageDialog(this, "Error: pulse intro al introducir cada texto");
+
+			}
+			else
 			
 			ctrl.accion(Events.EDITAR_USUARIO, usuario);
 			
@@ -100,9 +119,11 @@ public class VPerfilEditar extends JFrame implements IGUI{
 		buttonsPanel.add(ok);
 		cancel = new JButton("Cancel");
 		cancel.addActionListener((e) -> setVisible(false));
-		//buttonsPanel.add(cancel);
+		buttonsPanel.add(cancel);
 		
-		setVisible(true);;
+		setLocationRelativeTo(null);
+		pack();
+		setVisible(true);
 	}
 
 
@@ -118,13 +139,16 @@ public class VPerfilEditar extends JFrame implements IGUI{
 		
 		case Events.EDITAR_USUARIO_ERROR:
 			
-			//TODO
+			JOptionPane.showMessageDialog(this, "Error al editar");
+			nifE.setText("");
+			correoE.setText("");
+			nombreE.setText("");
 		
 		case Events.EDITAR_USUARIO_EXITO:
 			
 			setVisible(false);
-			//TODO
-			
+			JOptionPane.showMessageDialog(this, "Usuario editado");
+
 		}
 	
 	}
