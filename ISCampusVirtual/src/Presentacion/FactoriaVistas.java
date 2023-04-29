@@ -19,7 +19,7 @@ public class FactoriaVistas {
 		}
 		return instancia;
 	}
-	
+	//prueba
 	public IGUI crearVista(int event, Object data) {
 		
 		switch(event) {
