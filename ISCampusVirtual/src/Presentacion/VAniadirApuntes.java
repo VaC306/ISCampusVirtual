@@ -34,7 +34,7 @@ public class VAniadirApuntes extends JFrame  implements IGUI{
 	Controller ctrl;
 
 	public VAniadirApuntes() {
-		super("A�adir Apuntes");
+		super("Anadir Apuntes");
 		fc = new JFileChooser();
 		ctrl=Controller.obtenerInstancia();
 		initIGUI();

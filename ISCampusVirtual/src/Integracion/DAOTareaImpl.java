@@ -56,13 +56,16 @@ public class DAOTareaImpl implements DAOTarea {
 			
 			ps.setString(1, aTNew.getIdTarea());
 			ps.setString(2, aTNew.getId());
-			ps.setDate(3, (Date)aTNew.getFecha_de_entrega());
+			//ps.setDate(3, aTNew.getFecha_de_entrega());
+			ps.setDate(3,null);
 			ps.executeUpdate();
+			
+			System.out.println("HOLA");
 			
 			connection.close();
 			ps.close();
 		}catch(Exception e) {
-			
+			System.out.println(e.getMessage());
 		}
 	}
 

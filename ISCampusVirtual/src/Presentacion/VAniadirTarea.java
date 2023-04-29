@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -13,6 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Integracion.DAOTarea;
+import Integracion.DAOTareaImpl;
 import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.TransferAsignatura;
 import Presentacion.Control.Controller;
@@ -31,7 +35,7 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 	Controller ctrl;
 
 	public VAniadirTarea() {
-		super("A�adir Tarea");
+		super("Anadir Tarea");
 		fc = new JFileChooser();
 		ctrl=Controller.obtenerInstancia();
 		initIGUI();
@@ -51,10 +55,15 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 		load.addActionListener((e) -> load());
 		ok = new JButton("OK");
 		ok.addActionListener((e) -> {
-			TransferTarea tt=null;
+			TransferTarea tt= new TransferTarea();
 					//new TransferTarea;
-			nombre.getText();
-			fecha.getText();
+			
+			//Primero crear Archivo TODO
+			//tt.setNombre(nombre.getText());
+			tt.setId("AR010");
+			tt.setIdTarea("T004");
+			tt.setFecha_de_entrega(new Date(fecha.getText()));
+			// VER COMO AÑADIR ESTO TODO
 			ctrl.accion(Events.TAREA_ANADIR, tt);
 		});
 		
@@ -103,7 +112,8 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 		switch(event) {
 		
 		case Events.TAREA_ANADIDA_EXITO:
-			
+			DAOTarea dao = new DAOTareaImpl();
+			dao.create((TransferTarea) datos);
 			setVisible(false);
 			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, tAsignatura);
 		break;
