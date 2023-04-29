@@ -340,6 +340,7 @@ public class ControllerImp extends Controller{
 			tUsuario= info2.right;
 			tAsignatura=info2.left;
 			saUsuario.crearUsuarioConAsignatura(tUsuario,tAsignatura );
+			saAsignatura.anadirUsuario(tAsignatura, tUsuario);
 			
 			if(saUsuario.crearUsuario(tUsuario)) {
 				

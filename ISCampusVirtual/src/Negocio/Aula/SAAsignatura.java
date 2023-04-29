@@ -10,6 +10,9 @@ import Negocio.Archivos.TransferTarea;
 import Negocio.Foro.TransferForo;
 import Negocio.Usuario.SAAlumno;
 import Negocio.Usuario.SAProfesor;
+import Negocio.Usuario.TransferAlumno;
+import Negocio.Usuario.TransferProfesor;
+import Negocio.Usuario.TransferUsuario;
 
 public class SAAsignatura {
 	
@@ -82,6 +85,19 @@ public class SAAsignatura {
 			ret.addAll(tt.getArchivo());
 		}
 		return ret;
+	}
+
+	public void anadirUsuario(TransferAsignatura tAsignatura, TransferUsuario tUsuario) {
+		tAsignatura.getUsuarios().add(tUsuario);
+		
+		if(tUsuario.esProfesor()) {
+			
+			tAsignatura.getProfesor().add((TransferProfesor) tUsuario);
+		}
+		else {
+			
+			tAsignatura.getAlumno().add((TransferAlumno) tUsuario);
+		}
 	}
 	
 }

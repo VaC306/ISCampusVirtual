@@ -107,8 +107,18 @@ public class SAUsuario {
 		return ret;
 	}
 
-	public void crearUsuarioConAsignatura(TransferUsuario tUsuario, TransferAsignatura tAsignatura) {
-		// TODO Auto-generated method stub
-		
+	public boolean crearUsuarioConAsignatura(TransferUsuario tUsuario, TransferAsignatura tAsignatura) {
+		DAOUsuario dao= FactoriaUsuario.getInstance().crearDAO(tUsuario.getId());
+		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransferById(tUsuario.getId());
+		tUsuario.getAsignaturas().add(tAsignatura.getID());
+
+		//como no existe se añade a la bd
+		if(transfer==null) {
+			
+			dao.create(tUsuario);
+			
+			return true;
+		}
+		return false;		
 	}
 }
