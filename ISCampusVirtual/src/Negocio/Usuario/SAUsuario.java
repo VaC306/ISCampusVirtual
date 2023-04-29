@@ -106,4 +106,9 @@ public class SAUsuario {
 
 		return ret;
 	}
+
+	public void crearUsuarioConAsignatura(TransferUsuario tUsuario, TransferAsignatura tAsignatura) {
+		// TODO Auto-generated method stub
+		
+	}
 }

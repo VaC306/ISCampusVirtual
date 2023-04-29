@@ -42,10 +42,10 @@ public class FactoriaVistas {
 			return new VCalendarioTareas();
 			
 		case Events.ABRIR_VISTA_USUARIO:
-			return new VPerfil();
+			return new VUsuario();
 			
 		case Events.ABRIR_VISTA_EDITAR_USUARIO:
-			return new VPerfilEditar();
+			return new VUsuarioEditar();
 			
 		case Events.ABRIR_VISTA_EDITAR_ASIGNATURA:
 			return new VAsignaturaEditar();
@@ -70,6 +70,9 @@ public class FactoriaVistas {
 		
 		case Events.ABRIR_VISTA_TEMA:
 			return new VTema();
+		
+		case Events.ABRIR_VISTA_CREAR_USUARIO:
+			return new VUsuarioCrear();
 
 		}
 		return null;

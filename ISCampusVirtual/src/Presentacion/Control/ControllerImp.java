@@ -244,26 +244,14 @@ public class ControllerImp extends Controller{
 			
 			tAsignatura=(TransferAsignatura) datos;
 			
-			currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_EDITAR_USUARIO, datos);
-			currentIGUI.update(Events.ABRIR_VISTA_EDITAR_USUARIO, tAsignatura);
+			currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_CREAR_USUARIO, datos);
+			currentIGUI.update(Events.ABRIR_VISTA_CREAR_USUARIO, tAsignatura);
 			
 
 			
 			break;
 			
 			
-		case Events.ANADIR_USUARIO_CREADO_NUEVO:
-
-			tUsuario = (TransferUsuario) datos;
-
-			if (saUsuario.crearUsuario(tUsuario)) {
-				currentIGUI.update(Events.EDITAR_USUARIO_EXITO, tUsuario);
-			} else {
-				currentIGUI.update(Events.EDITAR_USUARIO_ERROR, tUsuario);
-
-			}
-			
-			break;
 
 		case Events.ABRIR_VISTA_ELIMINAR_USUARIO:
 			tUsuario = (TransferUsuario) datos;
@@ -338,10 +326,34 @@ public class ControllerImp extends Controller{
 			
 			break;
 			
+		case Events.ABRIR_VISTA_CREAR_USUARIO:
+			
+			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, datos);
 			
 			
+			break;
+	
 			
+		case Events.CREAR_USUARIO:
+			Pair <TransferAsignatura, TransferUsuario> info2 =(Pair<TransferAsignatura, TransferUsuario>) datos;
+
+			tUsuario= info2.right;
+			tAsignatura=info2.left;
+			saUsuario.crearUsuarioConAsignatura(tUsuario,tAsignatura );
 			
+			if(saUsuario.crearUsuario(tUsuario)) {
+				
+				currentIGUI.update(Events.CREAR_USUARIO_EXITO, null);
+				currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, null);
+
+			}
+			else {
+				
+				currentIGUI.update(Events.CREAR_USUARIO_ERROR, null);
+
+			}
+
+			break;
 			
 			
 			

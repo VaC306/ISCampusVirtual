@@ -11,7 +11,7 @@ import Presentacion.Control.Controller;
 import Presentacion.Control.Events;
 import Presentacion.Control.IGUI;
 
-public class VPerfil extends JFrame implements IGUI{
+public class VUsuario extends JFrame implements IGUI{
 	
 	/**
 	 * 
@@ -28,7 +28,7 @@ public class VPerfil extends JFrame implements IGUI{
 
 	
 	
-	public VPerfil() {
+	public VUsuario() {
 		super();
 		ctrl = Controller.obtenerInstancia();
 
