@@ -16,6 +16,14 @@ import Negocio.Usuario.TransferUsuario;
 
 public class SAAsignatura {
 	
+	public TransferAsignatura getById(String id) {
+		
+		DAOAsignatura dao = new DAOAsignaturaImpl();
+		TransferAsignatura transfer = dao.read(id);
+		
+		return transfer;
+	}
+	
 	public boolean eliminarAsignatura(String id){
 
 		DAOAsignatura dao = new DAOAsignaturaImpl();

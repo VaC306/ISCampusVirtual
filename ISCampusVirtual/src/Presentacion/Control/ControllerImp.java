@@ -66,7 +66,7 @@ public class ControllerImp extends Controller{
 			break;
 			
 		case Events.MOSTRAR_ALUMNOS_ASIGNATURA:
-			tAsignatura=(TransferAsignatura) datos;
+			tAsignatura=saAsignatura.getById((String) datos);
 
 			if(tAsignatura!=null)
 				currentIGUI.update(evento, tAsignatura.getAlumno());
