@@ -39,7 +39,58 @@ public class DAOAlumnoImpl implements DAOAlumno{
 	
 	@Override
 	public TransferUsuario readById(String id) {
-		return null;
+		TransferAlumno TA =null;
+		try {
+			
+			String s = "SELECT * FROM alumnos WHERE IdAlumno = ?;" ;
+			Connection connection = DriverManager.getConnection(url, login, password);
+			PreparedStatement ps = connection.prepareStatement(s);
+			ps.setString(1,  id);
+			
+			ResultSet r = ps.executeQuery();
+			
+			if(r.next()) {
+				TA = new TransferAlumno();
+				TA.setId(r.getString("IdAlumno"));
+				TA.setDelegado(r.getBoolean("Delegado"));
+				TA.setNIF(r.getString("NIF"));
+				ArrayList asignaturas = new ArrayList<>();
+				
+				String s2 = "SELECT IdAsignatura FROM alumnos WHERE NIF = ?;";
+				PreparedStatement ps2 = connection.prepareStatement(s2);
+				ps2.setString(1, TA.getNIF());
+				
+				ResultSet r2 = ps2.executeQuery();
+				
+				while (r2.next()) {
+					DAOAsignatura dao = new DAOAsignaturaImpl();
+					asignaturas.add(r2.getString("IdAsignatura"));
+				}
+				
+				TA.setAsignaturas(asignaturas);
+			}
+			
+			s = "SELECT * FROM usuarios WHERE NIF = ?;";
+			
+			ps = connection.prepareStatement(s);
+			
+			ps.setString(1, TA.getNIF());
+			r = ps.executeQuery();
+			
+			if(r.next()) {
+				TA.setNombre_Apellidos(r.getString("Nombre") + " " + r.getString("Apellidos"));
+				TA.setCorreo_electronico(r.getString("Correo_electronico"));
+				TA.setPassword(r.getString("Contrasenia"));
+			}
+			
+			connection.close();
+			ps.close();
+			r.close();
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return TA;
 	}
 	
 	@Override
