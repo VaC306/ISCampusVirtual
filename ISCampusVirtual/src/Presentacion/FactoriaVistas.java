@@ -73,6 +73,9 @@ public class FactoriaVistas {
 		
 		case Events.ABRIR_VISTA_CREAR_USUARIO:
 			return new VUsuarioCrear();
+			
+		case Events.ABRIR_VISTA_FORO:
+			return new VForo();
 
 		}
 		return null;
