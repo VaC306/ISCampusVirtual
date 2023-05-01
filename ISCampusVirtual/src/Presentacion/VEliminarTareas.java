@@ -29,7 +29,6 @@ public class VEliminarTareas extends JFrame  implements IGUI{
 	public VEliminarTareas() {
 		super("Eliminar Tareas");
 		ctrl=Controller.obtenerInstancia();
-		initIGUI();
 
 	}
 
@@ -89,6 +88,8 @@ public class VEliminarTareas extends JFrame  implements IGUI{
 			 Pair <TransferAsignatura, List<TransferTarea>> info=(Pair<TransferAsignatura, List<TransferTarea>>) datos;
 			 tAsignatura=info.left;
 			 tareasList=info.right;
+				initIGUI();
+
 		 }
 		
 	}
