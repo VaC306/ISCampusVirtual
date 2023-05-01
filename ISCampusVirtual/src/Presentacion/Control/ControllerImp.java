@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.mysql.cj.conf.ConnectionUrlParser.Pair;
 
+import Negocio.Archivos.SAApuntes;
 import Negocio.Archivos.TransferApuntes;
 import Negocio.Archivos.TransferArchivo;
 import Negocio.Archivos.TransferTarea;
@@ -286,8 +287,9 @@ public class ControllerImp extends Controller{
 		case Events.ANADIR_APUNTES:
 			
 			
-			String idApuntes=(String) datos;
-			//TODO get tApuntes by id
+			TransferApuntes transferApuntes= (TransferApuntes) datos;
+			//TODO 
+			SAApuntes.createApuntesconCreador(transferApuntes, tUsuarioIniciado);
 			
 			currentIGUI.update(evento, null);
 

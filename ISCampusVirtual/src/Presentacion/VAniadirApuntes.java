@@ -56,7 +56,9 @@ public class VAniadirApuntes extends JFrame  implements IGUI{
 		ok = new JButton("OK");
 		ok.addActionListener((e) -> {
 			tApuntes= new TransferApuntes();
-			ctrl.accion( Events.ANADIR_APUNTES, fc.getSelectedFile().getName());
+			tApuntes.setNombre(nombre.getText());
+			tApuntes.setTemas(tema.getSelectedItem().toString());
+			ctrl.accion( Events.ANADIR_APUNTES, tApuntes);
 			
 		});
 		mainPanel.add(new JLabel("Nombre apuntes: "));

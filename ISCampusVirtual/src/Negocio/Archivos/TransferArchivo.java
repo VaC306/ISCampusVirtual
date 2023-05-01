@@ -16,7 +16,7 @@ public abstract class TransferArchivo {
 
 	private TransferUsuario usuario;
 
-	private TransferTema temas;
+	private String temas;
 
 
 	public String getNombre() {
@@ -43,11 +43,11 @@ public abstract class TransferArchivo {
 		this.usuario = usuario;
 	}
 
-	public TransferTema getTemas() {
+	public String getTemas() {
 		return temas;
 	}
 
-	public void setTemas(TransferTema temas) {
+	public void setTemas(String temas) {
 		this.temas = temas;
 	}
 	
