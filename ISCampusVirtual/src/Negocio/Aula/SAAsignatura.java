@@ -89,7 +89,7 @@ public class SAAsignatura {
 		List<TransferArchivo> ret= new ArrayList<>();
 
 		for(TransferTema tt: tAsignatura.getTemas()) {
-			
+			//tt.getApuntes();
 			ret.addAll(tt.getArchivo());
 		}
 		return ret;
