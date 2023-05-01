@@ -21,9 +21,8 @@ import Presentacion.FactoriaVistas;
 //siu
 public class ControllerImp extends Controller{
 	
-	private SAUsuario saUsuario= new SAUsuario();
+	private SAUsuario saUsuario=FactoriaSA.getInstancia().generarSAUsuario();
 	private SAAsignatura saAsignatura=FactoriaSA.getInstancia().generarSAAsignatura();
-	
 	private IGUI currentIGUI;
 
 	private TransferUsuario tUsuarioIniciado = null;

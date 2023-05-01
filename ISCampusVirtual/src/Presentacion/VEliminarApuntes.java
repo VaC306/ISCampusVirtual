@@ -29,7 +29,6 @@ public class VEliminarApuntes extends JFrame  implements IGUI{
 	public VEliminarApuntes() {
 		super("Eliminar Apuntes");
 		ctrl=Controller.obtenerInstancia();
-		initIGUI();
 
 	}
 
@@ -93,6 +92,8 @@ public class VEliminarApuntes extends JFrame  implements IGUI{
 			 Pair <TransferAsignatura, List<TransferApuntes>> info=(Pair<TransferAsignatura, List<TransferApuntes>>) datos;
 			 tAsignatura=info.left;
 			 listaApuntes=info.right;
+				initIGUI();
+
 		 }	
 	}
 }
