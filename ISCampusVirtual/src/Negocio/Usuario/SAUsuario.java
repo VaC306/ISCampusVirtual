@@ -110,12 +110,13 @@ public class SAUsuario {
 	public boolean crearUsuarioConAsignatura(TransferUsuario tUsuario, TransferAsignatura tAsignatura) {
 		DAOUsuario dao= FactoriaUsuario.getInstance().crearDAO(tUsuario.getId());
 		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransferById(tUsuario.getId());
-		tUsuario.getAsignaturas().add(tAsignatura.getID());
+		//tUsuario.getAsignaturas().add(tAsignatura.getID());
 
 		//como no existe se añade a la bd
 		if(transfer==null) {
 			
 			dao.create(tUsuario);
+			System.out.println("HOLA");
 			
 			return true;
 		}

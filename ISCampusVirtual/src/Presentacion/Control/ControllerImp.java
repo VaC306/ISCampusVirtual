@@ -66,7 +66,7 @@ public class ControllerImp extends Controller{
 			break;
 			
 		case Events.MOSTRAR_ALUMNOS_ASIGNATURA:
-			tAsignatura=(TransferAsignatura) datos;
+			tAsignatura=saAsignatura.getById((String) datos);
 
 			if(tAsignatura!=null)
 				currentIGUI.update(evento, tAsignatura.getAlumno());
@@ -327,8 +327,11 @@ public class ControllerImp extends Controller{
 			break;
 			
 		case Events.ABRIR_VISTA_CREAR_USUARIO:
+			tAsignatura =(TransferAsignatura) datos;
 			
 			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, datos);
+			currentIGUI.update(Events.ABRIR_VISTA_CREAR_USUARIO, datos);
+
 			
 			
 			break;
@@ -340,6 +343,8 @@ public class ControllerImp extends Controller{
 			tUsuario= info2.right;
 			tAsignatura=info2.left;
 			saUsuario.crearUsuarioConAsignatura(tUsuario,tAsignatura );
+			// Leer el usuario que hemos creado?
+			
 			saAsignatura.anadirUsuario(tAsignatura, tUsuario);
 			
 			if(saUsuario.crearUsuario(tUsuario)) {
