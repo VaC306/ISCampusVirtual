@@ -37,7 +37,6 @@ public class VAniadirApuntes extends JFrame  implements IGUI{
 		super("Anadir Apuntes");
 		fc = new JFileChooser();
 		ctrl=Controller.obtenerInstancia();
-		initIGUI();
 
 	}
 
@@ -55,7 +54,7 @@ public class VAniadirApuntes extends JFrame  implements IGUI{
 		ok = new JButton("OK");
 		ok.addActionListener((e) -> {
 			
-			
+			ctrl.accion( Events.ANADIR_APUNTES, mainPanel);
 			
 		});
 		mainPanel.add(new JLabel("Nombre apuntes: "));
@@ -105,6 +104,8 @@ public class VAniadirApuntes extends JFrame  implements IGUI{
 		switch (event) {
 		case Events.ABRIR_VISTA_ANADIR_APUNTES: 
 			tAsignatura=(TransferAsignatura) datos;
+			initIGUI();
+
 			
 		break;
 		
@@ -112,6 +113,7 @@ public class VAniadirApuntes extends JFrame  implements IGUI{
 			JOptionPane.showMessageDialog(this, "Apuntes Añadidos");
 			setVisible(false);
 			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA,tAsignatura );
+
 		}
 
 	}
