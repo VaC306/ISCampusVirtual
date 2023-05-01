@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Negocio.Archivos.TransferApuntes;
 import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.TransferAsignatura;
 import Negocio.Aula.TransferTema;
@@ -25,6 +26,7 @@ import Presentacion.Control.IGUI;
 public class VAniadirApuntes extends JFrame  implements IGUI{
 	
 	TransferAsignatura tAsignatura;
+	TransferApuntes tApuntes;
 	private JTextField nombre;
 	private JComboBox<String> tema;
 	private JButton load;
@@ -53,8 +55,8 @@ public class VAniadirApuntes extends JFrame  implements IGUI{
 		load.addActionListener((e) -> load());
 		ok = new JButton("OK");
 		ok.addActionListener((e) -> {
-			
-			ctrl.accion( Events.ANADIR_APUNTES, mainPanel);
+			tApuntes= new TransferApuntes();
+			ctrl.accion( Events.ANADIR_APUNTES, fc.getSelectedFile().getName());
 			
 		});
 		mainPanel.add(new JLabel("Nombre apuntes: "));
