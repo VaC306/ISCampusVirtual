@@ -50,7 +50,7 @@ public class VEliminarUsuario extends JFrame  implements IGUI{
 			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, tAsignatura);
 		});
 
-		mainPanel.add(new JLabel("Id del usuario: "));
+		mainPanel.add(new JLabel("Correo del usuario: "));
 		mainPanel.add(id);
 		mainPanel.add(ok);
 		mainPanel.add(cancel);

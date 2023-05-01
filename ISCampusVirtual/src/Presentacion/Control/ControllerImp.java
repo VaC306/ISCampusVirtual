@@ -225,7 +225,7 @@ public class ControllerImp extends Controller{
 		case Events.ANADIR_USUARIO:
 			
 			String id= (String) datos;
-			tUsuario=FactoriaUsuario.getInstance().crearTransferById(id);
+			tUsuario=FactoriaUsuario.getInstance().crearTransferByCorreo(id);
 			
 			
 			//se intenta editar el usuario
@@ -254,8 +254,6 @@ public class ControllerImp extends Controller{
 			
 
 		case Events.ABRIR_VISTA_ELIMINAR_USUARIO:
-			tUsuario = (TransferUsuario) datos;
-
 			
 			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
 			
@@ -342,12 +340,10 @@ public class ControllerImp extends Controller{
 
 			tUsuario= info2.right;
 			tAsignatura=info2.left;
-			saUsuario.crearUsuarioConAsignatura(tUsuario,tAsignatura );
+			
 			// Leer el usuario que hemos creado?
 			
-			saAsignatura.anadirUsuario(tAsignatura, tUsuario);
-			
-			if(saUsuario.crearUsuario(tUsuario)) {
+			if(saUsuario.crearUsuarioConAsignatura(tUsuario,tAsignatura )) {
 				
 				currentIGUI.update(Events.CREAR_USUARIO_EXITO, null);
 				currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, null);

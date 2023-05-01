@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import Integracion.DAOAlumnoImpl;
 import Integracion.DAOAsignatura;
 import Integracion.DAOAsignaturaImpl;
 import Integracion.DAOUsuario;
@@ -31,13 +32,13 @@ public class SAUsuario {
 	
 	public boolean eliminarUsuario(String id) {
 		
-		DAOUsuario dao= FactoriaUsuario.getInstance().crearDAO(id);
-		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransferById(id);
-
+		DAOUsuario dao= new DAOAlumnoImpl();
+		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransferByCorreo(id);
+		
 		//si no existe no se elimina
-		if(transfer!=null) {
-			
-			dao.eliminate(id);
+		if(transfer != null) {
+			System.out.println(transfer.getNIF());
+			dao.eliminate(transfer.getNIF());
 			
 			return true;
 		}
@@ -62,13 +63,13 @@ public class SAUsuario {
 	
 	public boolean editarUsuario (TransferUsuario aTNew) {
 		
-		DAOUsuario dao= FactoriaUsuario.getInstance().crearDAO(aTNew.getId());
-		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransferById(aTNew.getId());
+		DAOUsuario dao= FactoriaUsuario.getInstance().crearDAO(aTNew.getCorreo_electronico());
+		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransferByCorreo(aTNew.getCorreo_electronico());
 
 		//como no existe se edita la bd
-		if(transfer==null) {
+		if(transfer!=null) {
 			
-			dao.eliminate(aTNew.getId());
+			dao.eliminate(aTNew.getNIF());
 			dao.create(aTNew);
 			
 			return true;
@@ -108,18 +109,19 @@ public class SAUsuario {
 	}
 
 	public boolean crearUsuarioConAsignatura(TransferUsuario tUsuario, TransferAsignatura tAsignatura) {
-		DAOUsuario dao= FactoriaUsuario.getInstance().crearDAO(tUsuario.getId());
-		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransferById(tUsuario.getId());
-		//tUsuario.getAsignaturas().add(tAsignatura.getID());
-
+		
+		DAOUsuario dao= FactoriaUsuario.getInstance().crearDAO(tUsuario.getCorreo_electronico());
+		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransferByCorreo(tUsuario.getCorreo_electronico());
+		
 		//como no existe se añade a la bd
 		if(transfer==null) {
 			
 			dao.create(tUsuario);
-			System.out.println("HOLA");
 			
 			return true;
 		}
+		
+		tUsuario.getAsignaturas().add(tAsignatura.getID());
 		return false;		
 	}
 }

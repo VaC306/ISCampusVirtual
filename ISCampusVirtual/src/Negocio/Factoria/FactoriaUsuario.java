@@ -69,16 +69,16 @@ public class FactoriaUsuario {
 		return transfer;
 	}
 	
-	public DAOUsuario crearDAO (String id) {
+	public DAOUsuario crearDAO (String correo) {
 		DAOUsuario dao=null;
 
-		switch (id.charAt(0)) {
-		case ('a'): {
+		switch (correo.charAt(0)) {
+		case ('A'): {
 
 			dao = new DAOAlumnoImpl();
 			break;
 		}
-		case ('p'): {
+		case ('P'): {
 
 			dao = new DAOProfesorImpl();
 			break;

@@ -45,7 +45,7 @@ public class VAniadirUsuario extends JFrame  implements IGUI{
 			ctrl.accion(Events.ANADIR_USUARIO, id.getText());
 		});
 
-		mainPanel.add(new JLabel("Id del usuario: "));
+		mainPanel.add(new JLabel("Correo del usuario: "));
 		mainPanel.add(id);
 		mainPanel.add(ok);
 		JButton cancel= new JButton("Cancelar");

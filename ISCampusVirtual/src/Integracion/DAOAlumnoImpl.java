@@ -20,11 +20,17 @@ public class DAOAlumnoImpl implements DAOAlumno{
 	@Override
 	public void eliminate(String id) {
 		
-		try {				
-			String s = "DELETE FROM alumnos WHERE IdAlumno = ?";
+		try {		
 			
+			String s = "DELETE FROM alumnos WHERE NIF = ?";
+			 
 			Connection connection = DriverManager.getConnection(url, login, password);
 			PreparedStatement ps = connection.prepareStatement(s);
+			ps.setString(1, id);
+			ps.executeUpdate();
+			 
+			s = "DELETE FROM usuarios WHERE NIF = ?";
+			ps = connection.prepareStatement(s);
 			
 			ps.setString(1,id);
 			ps.executeUpdate();
@@ -33,6 +39,7 @@ public class DAOAlumnoImpl implements DAOAlumno{
 			ps.close();
 			
 		}catch(Exception e) {
+		 System.out.println(e.getMessage());
 		}
 		
 	}
@@ -42,7 +49,7 @@ public class DAOAlumnoImpl implements DAOAlumno{
 		TransferAlumno TA =null;
 		try {
 			
-			String s = "SELECT * FROM alumnos WHERE IdAlumno = ?;" ;
+			String s = "SELECT * FROM alumnos WHERE NIF = ?;" ;
 			Connection connection = DriverManager.getConnection(url, login, password);
 			PreparedStatement ps = connection.prepareStatement(s);
 			ps.setString(1,  id);
@@ -97,29 +104,34 @@ public class DAOAlumnoImpl implements DAOAlumno{
 	public void create(TransferAlumno aTNew) {
 		try {
 			
-			String s = "INSERT INTO usuarios (IdAlumno, NIF, Delegao, IdAsignatura) VALUES (?,?,?,?)";
-
+			String s = "INSERT INTO usuarios (NIF, Nombre, Apellidos, Correo_electronico, Contrasenia) VALUES (?,?,?,?,?)";
 			Connection connection = DriverManager.getConnection(url, login, password);
 			PreparedStatement ps = connection.prepareStatement(s);
+			
+			ps.setString(1, aTNew.getNIF());
+			ps.setString(2, aTNew.getNombre_Apellidos());
+			ps.setString(3, aTNew.getNombre_Apellidos());
+			ps.setString(4, aTNew.getCorreo_electronico());
+			ps.setString(5, aTNew.getPassword());
+			
+			ps.executeUpdate();	
+			
+			s = "INSERT INTO alumnos (IdAlumno, NIF, Delegado, IdAsignatura) VALUES (?,?,?,?)";
+
+			ps = connection.prepareStatement(s);
 			
 			ps.setString(1, aTNew.getId());
 			ps.setString(2, aTNew.getNIF());
 			ps.setBoolean(3, aTNew.isDelegado());
-			ps.setArray(4, null);
+			ps.setString(4, "A001");
 			ps.executeUpdate();
 			
 			connection.close();
 			ps.close();
 			
 		}catch(Exception e) {
-			
+			System.out.println(e.getMessage());
 		}
-	}
-
-	@Override
-	public void create(TransferUsuario aTNew) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -166,6 +178,8 @@ public class DAOAlumnoImpl implements DAOAlumno{
 				}
 				
 				TA.setAsignaturas(asignaturas);
+				ps2.close();
+				r2.close();
 			}
 			
 			connection.close();
@@ -176,5 +190,22 @@ public class DAOAlumnoImpl implements DAOAlumno{
 			System.out.println(e.getMessage());
 		}
 		return TA;
+	}
+
+	@Override
+	public void create(TransferUsuario aTNew) {
+		
+		TransferAlumno TA = new TransferAlumno();
+		
+		TA.setNIF(aTNew.getNIF());
+		TA.setNombre_Apellidos(aTNew.getNombre_Apellidos());
+		TA.setCorreo_electronico(aTNew.getCorreo_electronico());
+		TA.setPassword(aTNew.getPassword());
+		TA.setId("AL005");
+		
+		
+		this.create(TA);
+		
+		
 	}
 }

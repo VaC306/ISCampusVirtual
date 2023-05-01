@@ -96,16 +96,7 @@ public class SAAsignatura {
 	}
 
 	public void anadirUsuario(TransferAsignatura tAsignatura, TransferUsuario tUsuario) {
-		tAsignatura.getUsuarios().add(tUsuario);
-		
-		if(tUsuario.esProfesor()) {
-			
-			tAsignatura.getProfesor().add((TransferProfesor) tUsuario);
-		}
-		else {
-			
-			tAsignatura.getAlumno().add((TransferAlumno) tUsuario);
-		}
+		tUsuario.getAsignaturas().add(tAsignatura.getID());
 	}
 	
 }

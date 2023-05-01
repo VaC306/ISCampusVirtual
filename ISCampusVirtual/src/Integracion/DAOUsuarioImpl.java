@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import Negocio.Usuario.TransferProfesor;
 import Negocio.Usuario.TransferUsuario;
 
-public class DAOUsuarioImpl implements DAOUsuario {
+public abstract class DAOUsuarioImpl implements DAOUsuario {
 
 	static String bd = "campus_virtual";
 	static String login = "root";
@@ -34,12 +34,6 @@ public class DAOUsuarioImpl implements DAOUsuario {
 	}
 
 	@Override
-	public void create(TransferUsuario aTNew) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public TransferUsuario readById(String id) {
 		
 		return null;
@@ -51,6 +45,9 @@ public class DAOUsuarioImpl implements DAOUsuario {
 		
 		return null;
 	}
+
+	@Override
+	public abstract void create(TransferUsuario aTNew);
 
 	
 }

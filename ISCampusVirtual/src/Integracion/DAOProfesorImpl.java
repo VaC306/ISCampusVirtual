@@ -23,12 +23,17 @@ public class DAOProfesorImpl implements DAOProfesor {
 	public void eliminate(String id) {
 		
 	try {
-		String s = "DELETE FROM profesores WHERE IdProfesor = ?";
+		String s = "DELETE FROM profesores WHERE NIF = ?";
 		
 		Connection connection = DriverManager.getConnection(url, login, password);
 		PreparedStatement ps = connection.prepareStatement(s);
 		
 		ps.setString(1,id);
+		ps.executeUpdate();
+		
+		s = "DELETE FROM usuarios WHERE NIF = ?";
+		ps = connection.prepareStatement(s);
+		ps.setString(1, id);
 		ps.executeUpdate();
 		
 		connection.close();
@@ -47,10 +52,23 @@ public class DAOProfesorImpl implements DAOProfesor {
 	public void create(TransferProfesor aTNew) {
 
 		try {
-		String s = "INSERT INTO profesores (IdProfesor, NIF, IdAsignatura) VALUES (?,?,?)";
+			
+			String s = "INSERT INTO usuarios (NIF, Nombre, Apellidos, Correo_electronico, Contrasenia) VALUES (?,?,?,?,?)";
+			Connection connection = DriverManager.getConnection(url, login, password);
+			PreparedStatement ps = connection.prepareStatement(s);
+			
+			ps.setString(1, aTNew.getNIF());
+			ps.setString(2, aTNew.getNombre_Apellidos());
+			ps.setString(3, aTNew.getNombre_Apellidos());
+			ps.setString(4, aTNew.getCorreo_electronico());
+			ps.setString(5, aTNew.getPassword());
+			
+			ps.executeUpdate();
+		
+			
+		s = "INSERT INTO profesores (IdProfesor, NIF, IdAsignatura) VALUES (?,?,?)";
 
-		Connection connection = DriverManager.getConnection(url, login, password);
-		PreparedStatement ps = connection.prepareStatement(s);
+		ps = connection.prepareStatement(s);
 		
 		ps.setString(1, aTNew.getId());
 		ps.setString(2, aTNew.getNIF());
@@ -63,12 +81,6 @@ public class DAOProfesorImpl implements DAOProfesor {
 		}catch(Exception e) {
 			
 		}
-		
-	}
-
-	@Override
-	public void create(TransferUsuario aTNew) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -128,6 +140,20 @@ public class DAOProfesorImpl implements DAOProfesor {
 		}
 		
 		return TP;
+	}
+
+	@Override
+	public void create(TransferUsuario aTNew) {
+	TransferProfesor TP = new TransferProfesor();
+		
+		TP.setNIF(aTNew.getNIF());
+		TP.setNombre_Apellidos(aTNew.getNombre_Apellidos());
+		TP.setCorreo_electronico(aTNew.getCorreo_electronico());
+		TP.setPassword(aTNew.getPassword());
+		TP.setId("P005");
+		
+		
+		this.create(TP);
 	}
 
 }
