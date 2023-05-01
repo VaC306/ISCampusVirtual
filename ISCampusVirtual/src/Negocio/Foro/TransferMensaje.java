@@ -1,25 +1,22 @@
 package Negocio.Foro;
+
 import java.util.Date;
 
 import Negocio.Usuario.TransferUsuario;
 
 public class TransferMensaje {
-	
+
 	private Date Fecha;
 
 	private String Cuerpo;
 
-	private String Titulo;
+	private String usuario;
 
-	private TransferUsuario usuario;
-
-
-	
-	public TransferMensaje(Date fecha, String cuerpo, String titulo, TransferUsuario usuario) {
+	public TransferMensaje(Date fecha, String cuerpo, String usuario) {
 		super();
 		Fecha = fecha;
 		Cuerpo = cuerpo;
-		Titulo = titulo;
+
 		this.usuario = usuario;
 	}
 
@@ -39,22 +36,12 @@ public class TransferMensaje {
 		Cuerpo = cuerpo;
 	}
 
-	public String getTitulo() {
-		return Titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		Titulo = titulo;
-	}
-
-	public TransferUsuario getUsuario() {
+	public String getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(TransferUsuario usuario) {
+	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-	
-	
 
 }

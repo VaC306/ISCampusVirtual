@@ -13,6 +13,10 @@ import Negocio.Aula.SAAsignatura;
 import Negocio.Aula.TransferAsignatura;
 import Negocio.Factoria.FactoriaSA;
 import Negocio.Factoria.FactoriaUsuario;
+import Negocio.Foro.SAForo;
+import Negocio.Foro.SAMensaje;
+import Negocio.Foro.TransferForo;
+import Negocio.Foro.TransferMensaje;
 import Negocio.Usuario.SAUsuario;
 import Negocio.Usuario.TransferAlumno;
 import Negocio.Usuario.TransferProfesor;
@@ -24,6 +28,8 @@ public class ControllerImp extends Controller{
 	private SAUsuario saUsuario=FactoriaSA.getInstancia().generarSAUsuario();
 	private SAAsignatura saAsignatura=FactoriaSA.getInstancia().generarSAAsignatura();
 	private SAApuntes saApuntes=FactoriaSA.getInstancia().generarSAApuntes();
+	private SAMensaje saMensaje=FactoriaSA.getInstancia().generarSAMensaje();
+	private SAForo saForo=FactoriaSA.getInstancia().generarSAForo();
 	private IGUI currentIGUI;
 
 	private TransferUsuario tUsuarioIniciado = null;
@@ -355,17 +361,22 @@ public class ControllerImp extends Controller{
 			}
 
 			break;
+		
+		case Events.ABRIR_VISTA_FORO:
+			tAsignatura=(TransferAsignatura) datos;
 			
+			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
+			currentIGUI.update(evento, new Pair <TransferAsignatura, TransferUsuario>(tAsignatura, tUsuarioIniciado));
+
 			
+		case Events.ANADIR_MENSAJE:
+			Pair <TransferMensaje, TransferForo> info3 = (Pair<TransferMensaje, TransferForo>) datos;
+
+			saMensaje.crearMensaje(info3.left);
+			saForo.anadirMensaje(info3.right, info3.left);
 			
-			
-			
-			
-			
-			
-			
-			
-			
+			currentIGUI.update( Events.ANADIR_MENSAJE, null);
+
 
 		}
 		

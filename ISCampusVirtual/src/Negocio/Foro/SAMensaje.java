@@ -26,7 +26,7 @@ public class SAMensaje {
 	public boolean crearMensaje (TransferMensaje aTNew) {
 		
 		DAOMensaje dao= new DAOMensajeImpl();
-		TransferMensaje transfer = dao.read(aTNew.getUsuario().getId(), aTNew.getFecha());
+		TransferMensaje transfer = dao.read(aTNew.getUsuario(), aTNew.getFecha());
 
 		//como no existe se añade a la bd
 		if(transfer==null) {

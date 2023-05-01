@@ -6,6 +6,7 @@ import Negocio.Aula.SAAsignatura;
 import Negocio.Aula.SAClase;
 import Negocio.Aula.SACurso;
 import Negocio.Aula.SATema;
+import Negocio.Foro.SAForo;
 import Negocio.Foro.SAMensaje;
 import Negocio.Usuario.SAAlumno;
 import Negocio.Usuario.SAProfesor;
@@ -43,5 +44,7 @@ public abstract class FactoriaSA {
 	public abstract SAApuntes generarSAApuntes();
 	
 	public abstract SATarea generarSATarea();
+
+	public abstract SAForo generarSAForo();
 
 }

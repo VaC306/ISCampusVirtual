@@ -94,6 +94,10 @@ public class Events {
 	public static final int CREAR_USUARIO_EXITO = 46;
 
 	public static final int CREAR_USUARIO = 47;
+
+	public static final int ANADIR_MENSAJE = 48;
+
+	public static final int ABRIR_VISTA_FORO = 49;
 	
 	
 	

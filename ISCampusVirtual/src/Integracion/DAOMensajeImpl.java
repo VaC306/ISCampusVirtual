@@ -33,9 +33,9 @@ public class DAOMensajeImpl implements DAOMensaje{
 				TM = new TransferMensaje(
 						r.getDate("Fecha"), 
 						r.getString("Cuerpo"),
-						r.getString("Titulo"),
+						r.getString("Usuario")
 						//r.getUsuario()
-						null
+						//null
 					);
 			}
 			

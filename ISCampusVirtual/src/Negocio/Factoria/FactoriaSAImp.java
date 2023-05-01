@@ -6,6 +6,7 @@ import Negocio.Aula.SAAsignatura;
 import Negocio.Aula.SAClase;
 import Negocio.Aula.SACurso;
 import Negocio.Aula.SATema;
+import Negocio.Foro.SAForo;
 import Negocio.Foro.SAMensaje;
 import Negocio.Usuario.SAAlumno;
 import Negocio.Usuario.SAProfesor;
@@ -71,5 +72,11 @@ public class FactoriaSAImp extends FactoriaSA {
 	public SATarea generarSATarea() {
 		
 		return new SATarea();
+	}
+
+	@Override
+	public SAForo generarSAForo() {
+		
+		return new SAForo();
 	}
 }
