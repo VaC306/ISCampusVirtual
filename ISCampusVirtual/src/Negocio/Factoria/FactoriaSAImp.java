@@ -1,5 +1,7 @@
 package Negocio.Factoria;
 
+import Negocio.Archivos.SAApuntes;
+import Negocio.Archivos.SATarea;
 import Negocio.Aula.SAAsignatura;
 import Negocio.Aula.SAClase;
 import Negocio.Aula.SACurso;
@@ -57,5 +59,17 @@ public class FactoriaSAImp extends FactoriaSA {
 	public SAUsuario generarSAUsuario() {
 		
 		return new SAUsuario();
+	}
+
+	@Override
+	public SAApuntes generarSAApuntes() {
+
+		return new SAApuntes();
+	}
+
+	@Override
+	public SATarea generarSATarea() {
+		
+		return new SATarea();
 	}
 }

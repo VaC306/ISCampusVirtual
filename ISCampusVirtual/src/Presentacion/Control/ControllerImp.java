@@ -5,6 +5,7 @@ import java.util.List;
 import com.mysql.cj.conf.ConnectionUrlParser.Pair;
 
 import Negocio.Archivos.SAApuntes;
+import Negocio.Archivos.SATarea;
 import Negocio.Archivos.TransferApuntes;
 import Negocio.Archivos.TransferArchivo;
 import Negocio.Archivos.TransferTarea;
@@ -12,8 +13,6 @@ import Negocio.Aula.SAAsignatura;
 import Negocio.Aula.TransferAsignatura;
 import Negocio.Factoria.FactoriaSA;
 import Negocio.Factoria.FactoriaUsuario;
-import Negocio.Usuario.SAAlumno;
-import Negocio.Usuario.SAProfesor;
 import Negocio.Usuario.SAUsuario;
 import Negocio.Usuario.TransferAlumno;
 import Negocio.Usuario.TransferProfesor;
@@ -24,6 +23,7 @@ public class ControllerImp extends Controller{
 	
 	private SAUsuario saUsuario=FactoriaSA.getInstancia().generarSAUsuario();
 	private SAAsignatura saAsignatura=FactoriaSA.getInstancia().generarSAAsignatura();
+	private SAApuntes saApuntes=FactoriaSA.getInstancia().generarSAApuntes();
 	private IGUI currentIGUI;
 
 	private TransferUsuario tUsuarioIniciado = null;
@@ -174,8 +174,7 @@ public class ControllerImp extends Controller{
 		case Events.TAREA_ANADIR:
 			tTarea=(TransferTarea) datos;
 			
-			//TODO añadir tarea mediante sa
-			if(datos!=null) {
+			if(SATarea.add(tTarea)) {
 				
 				currentIGUI.update(Events.TAREA_ANADIDA_EXITO, tTarea);
 			}
@@ -199,16 +198,15 @@ public class ControllerImp extends Controller{
 		case Events.TAREA_ELIMINADA:
 			
 			
-			tTarea=(TransferTarea) datos;
-
-			//TODO eliminar tarea sa
-			if(datos!=null) {
+			String id1 = (String) datos;
+			
+			if(SATarea.eliminateById(id1)) {
 				
-				currentIGUI.update(Events.TAREA_ELIMINADA_EXITO, tTarea);
+				currentIGUI.update(Events.TAREA_ELIMINADA_EXITO, id1);
 			}
 			else {
 				
-				currentIGUI.update(Events.TAREA_ELIMINADA_ERROR, tTarea);
+				currentIGUI.update(Events.TAREA_ELIMINADA_ERROR, id1);
 
 			}
 			break;
@@ -261,14 +259,14 @@ public class ControllerImp extends Controller{
 			
 		case Events.ELIMINAR_USUARIO:
 			
-			String id1= (String) datos;
+			String id2= (String) datos;
 			
-			if(saUsuario.eliminarUsuario(id1)) {
+			if(saUsuario.eliminarUsuario(id2)) {
 				
-				currentIGUI.update(Events.ELIMINAR_USUARIO_ACIERTO, id1);
+				currentIGUI.update(Events.ELIMINAR_USUARIO_ACIERTO, id2);
 			}else {
 				
-				currentIGUI.update(Events.ELIMINAR_USUARIO_ERROR, id1);
+				currentIGUI.update(Events.ELIMINAR_USUARIO_ERROR, id2);
 			}
 			
 			break;
@@ -289,8 +287,7 @@ public class ControllerImp extends Controller{
 			
 			
 			TransferApuntes transferApuntes= (TransferApuntes) datos;
-			//TODO 
-			SAApuntes.createApuntesconCreador(transferApuntes, tUsuarioIniciado);
+			saApuntes.createApuntesconCreador(transferApuntes, tUsuarioIniciado);
 			
 			currentIGUI.update(evento, null);
 
@@ -311,9 +308,8 @@ public class ControllerImp extends Controller{
 		case Events.ELIMINAR_APUNTES:
 			
 			String idApuntes1= (String) datos;
-			//TODO eliminarapuntes(idTarea) SAApuntes
-					
-			if(true) {
+			
+			if(saApuntes.eliminarApuntes(idApuntes1)) {
 				
 				currentIGUI.update(Events.APUNTES_ELIMINADA_EXITO, null);
 
@@ -347,8 +343,9 @@ public class ControllerImp extends Controller{
 			
 			if(saUsuario.crearUsuarioConAsignatura(tUsuario,tAsignatura )) {
 				
+				saAsignatura.anadirUsuario(tAsignatura, tUsuario);
 				currentIGUI.update(Events.CREAR_USUARIO_EXITO, null);
-				currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, null);
+				currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, tAsignatura);
 
 			}
 			else {

@@ -122,6 +122,7 @@ public class SAUsuario {
 		}
 		
 		tUsuario.getAsignaturas().add(tAsignatura.getID());
+		
 		return false;		
 	}
 }

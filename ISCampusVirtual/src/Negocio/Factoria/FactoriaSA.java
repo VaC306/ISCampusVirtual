@@ -1,5 +1,7 @@
 package Negocio.Factoria;
 
+import Negocio.Archivos.SAApuntes;
+import Negocio.Archivos.SATarea;
 import Negocio.Aula.SAAsignatura;
 import Negocio.Aula.SAClase;
 import Negocio.Aula.SACurso;
@@ -37,4 +39,9 @@ public abstract class FactoriaSA {
 	public abstract SAProfesor generarSAProfesor();
 	
 	public abstract SAUsuario generarSAUsuario();
+
+	public abstract SAApuntes generarSAApuntes();
+	
+	public abstract SATarea generarSATarea();
+
 }
