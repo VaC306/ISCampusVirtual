@@ -60,8 +60,6 @@ public class DAOTareaImpl implements DAOTarea {
 			ps.setDate(3,null);
 			ps.executeUpdate();
 			
-			System.out.println("HOLA");
-			
 			connection.close();
 			ps.close();
 		}catch(Exception e) {

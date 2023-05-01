@@ -48,7 +48,7 @@ public class TransferTarea extends TransferArchivo {
 
 	@Override
 	public boolean matchFile(String idArchivo) {
-		return idArchivo.charAt(0) == 'P';
+		return idArchivo.charAt(0) == 'T';
 	}
 
 	@Override

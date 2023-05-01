@@ -190,7 +190,7 @@ public class ControllerImp extends Controller{
 			tAsignatura=(TransferAsignatura) datos;
 			Pair <TransferAsignatura, List<TransferTarea>> info = new Pair<>(tAsignatura, saAsignatura.getTareas(tAsignatura));
 		
-
+			
 			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
 			currentIGUI.update(evento, info);
 			
@@ -277,6 +277,7 @@ public class ControllerImp extends Controller{
 		case Events.ABRIR_VISTA_ANADIR_APUNTES:
 			
 			tAsignatura=(TransferAsignatura) datos;
+			
 			
 			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
 			currentIGUI.update(evento, tAsignatura);
