@@ -81,7 +81,7 @@ public class VTema extends JFrame  implements IGUI{
 		setVisible(true);
 	}
 
-	private void initPanelSup() {
+	public void initPanelSup() {
 		JPanel panelSup= new JPanel();
 		JLabel temaTitulo = new JLabel(tTema.getNombre(), SwingConstants.CENTER); 
 		temaTitulo.setSize(new Dimension(70, 70));

@@ -89,6 +89,7 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
         	JButton boton= new JButton(tA.getNombre());
 			
         	boton.addActionListener((e)->{
+    			ventana.setVisible(false);
 				ctrl.accion(Events.ABRIR_VISTA_ASIGNATURA, tA);
 			});            
 			listaDeBotones.add(boton);
