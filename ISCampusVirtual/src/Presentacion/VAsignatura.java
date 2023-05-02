@@ -97,7 +97,8 @@ public class VAsignatura implements IGUI {
         	JButton boton= new JButton(tt.getNombre());
         	
         	boton.addActionListener(e->	{
-        		
+                ventana.setVisible(true);
+
         		Pair <TransferAsignatura, TransferTema> info= new Pair<>(asignatura, tt) ;
         		ctrl.accion(Events.ABRIR_VISTA_TEMA, info);
         		
