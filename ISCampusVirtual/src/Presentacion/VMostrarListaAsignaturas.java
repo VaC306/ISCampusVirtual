@@ -50,7 +50,17 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
         });
         
         
-		ventana.add(cerrarSesion, BorderLayout.PAGE_START);
+        
+        JPanel PanelBotones= new JPanel();
+        JButton perfil= new JButton("Mi Perfil");
+        perfil.addActionListener(e->{
+        	
+        	ctrl.accion(Events.ABRIR_VISTA_PERFIL_PROPIO, null);
+        });
+        
+        panelDeBotones.add(perfil);
+        panelDeBotones.add(cerrarSesion);
+		ventana.add(panelDeBotones, BorderLayout.PAGE_START);
         
         // Mostrar la ventana principal
         ventana.setVisible(true);

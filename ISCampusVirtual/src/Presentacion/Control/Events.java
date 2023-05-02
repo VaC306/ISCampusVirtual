@@ -102,6 +102,8 @@ public class Events {
 	public static final int EDITAR_NOMBRE_TEMA = 50;
 
 	public static final int ABRIR_VISTA_TEMA_PROFESOR = 51;
+
+	public static final int ABRIR_VISTA_PERFIL_PROPIO = 52;
 	
 
 	

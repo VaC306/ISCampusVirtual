@@ -103,7 +103,13 @@ public class ControllerImp extends Controller{
 			currentIGUI.update(evento,  saUsuario.getAsignaturas(tUsuarioIniciado));
 			
 			break;
+		case Events.ABRIR_VISTA_PERFIL_PROPIO:
 			
+			currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_EDITAR_USUARIO, null);
+			currentIGUI.update(evento, tUsuarioIniciado);
+
+			
+			break;
 		case Events.ABRIR_VISTA_ASIGNATURA:
 			tAsignatura=(TransferAsignatura) datos;
 			
