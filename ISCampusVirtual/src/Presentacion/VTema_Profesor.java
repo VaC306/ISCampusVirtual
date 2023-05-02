@@ -20,8 +20,8 @@ public class VTema_Profesor extends VTema{
 		super();
 	}
 	
-	
-	private void initPanelSup() {
+	@Override
+	public void initPanelSup() {
 		JPanel panelSup= new JPanel();
 		temaTitulo = new JTextField(); 
 		temaTitulo.setSize(new Dimension(70, 70));
