@@ -14,7 +14,7 @@ public abstract class TransferArchivo {
 
 	private Tipos_archivo tipo_archivo;
 
-	private TransferUsuario usuario;
+	private String usuario;
 
 	private String temas;
 
@@ -35,11 +35,11 @@ public abstract class TransferArchivo {
 		this.tipo_archivo = tipo_archivo;
 	}
 
-	public TransferUsuario getUsuario() {
+	public String getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(TransferUsuario usuario) {
+	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
 

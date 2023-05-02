@@ -9,7 +9,7 @@ public class SAApuntes {
 	public void createApuntesconCreador(TransferApuntes transferApuntes, TransferUsuario tUsuarioIniciado) {
 		transferApuntes.setId("AAR00" + "");
 		transferApuntes.setIdApuntes("AP00"+"");
-		transferApuntes.setUsuario(tUsuarioIniciado);
+		transferApuntes.setUsuario(tUsuarioIniciado.getNIF());
 		DAOApuntes dao = new DAOApuntesImpl();
 		dao.create(transferApuntes);
 	

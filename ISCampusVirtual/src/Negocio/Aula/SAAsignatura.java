@@ -93,15 +93,12 @@ public class SAAsignatura {
 
 		for(TransferTema tt: tAsignatura.getTemas()) {
 			
-<<<<<<< HEAD
 			for(TransferArchivo t: tt.getArchivo()) {
 				if(t.addApuntes() != null) {
 					ret.add((TransferApuntes)t.addApuntes());
 				}
 			}
-=======
-			ret.addAll(tt.getArchivo());
->>>>>>> branch 'master' of https://github.com/VaC306/ISCampusVirtual.git
+
 		}
 		
 		return ret;

@@ -62,31 +62,30 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 		load.addActionListener((e) -> load());
 		ok = new JButton("OK");
 		ok.addActionListener((e) -> {
-<<<<<<< HEAD
+
 			TransferTarea tt= new TransferTarea();
 			
 			tt.setNombre(nombre.getText());
 			tt.setFecha_de_entrega(new Date(fecha.getText()));
 			tt.setTipo_archivo(Tipos_archivo.valueOf(tipo_archivo.getText()));
 			ctrl.accion(Events.TAREA_ANADIR, tt);
-=======
+
 
 			if (fecha.getText() != "") {
 
-				TransferTarea tt = new TransferTarea();
+				TransferTarea tt2 = new TransferTarea();
 				// new TransferTarea;
 
 				// Primero crear Archivo TODO
 				// tt.setNombre(nombre.getText());
-				tt.setId("AR010");
-				tt.setIdTarea("T004");
-				tt.setFecha_de_entrega(new Date(fecha.getText()));
-				tt.setTemas(tema.getSelectedItem().toString());
+				tt2.setId("AR010");
+				tt2.setIdTarea("T004");
+				tt2.setFecha_de_entrega(new Date(fecha.getText()));
+				tt2.setTemas(tema.getSelectedItem().toString());
 				// VER COMO AÑADIR ESTO TODO
-				ctrl.accion(Events.TAREA_ANADIR, tt);
+				ctrl.accion(Events.TAREA_ANADIR, tt2);
 			}
 
->>>>>>> branch 'master' of https://github.com/VaC306/ISCampusVirtual.git
 		});
 		
 		mainPanel.add(new JLabel("Nombre tarea: "));

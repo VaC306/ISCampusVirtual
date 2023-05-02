@@ -10,6 +10,7 @@ import Negocio.Archivos.Tipos_archivo;
 import Negocio.Archivos.TransferArchivo;
 import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.TransferTema;
+import Negocio.Factoria.FactoriaUsuario;
 
 public class DAOTareaImpl implements DAOTarea {
 	
@@ -46,6 +47,7 @@ public class DAOTareaImpl implements DAOTarea {
 				TT.setNombre(r.getString("Nombre"));
 				TT.setTipo_archivo(Tipos_archivo.valueOf(r.getString("tipo_archivo")));
 				TT.setTemas(r.getString("IdTema"));
+				TT.setUsuario(r.getString("NIF"));
 			}
 			connection.close();
 			ps.close();
