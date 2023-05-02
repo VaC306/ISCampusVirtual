@@ -98,6 +98,12 @@ public class Events {
 	public static final int ANADIR_MENSAJE = 48;
 
 	public static final int ABRIR_VISTA_FORO = 49;
+
+	public static final int EDITAR_NOMBRE_TEMA = 50;
+
+	public static final int ABRIR_VISTA_TEMA_PROFESOR = 51;
+	
+
 	
 	
 	

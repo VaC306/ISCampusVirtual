@@ -11,7 +11,9 @@ import Negocio.Archivos.TransferApuntes;
 import Negocio.Archivos.TransferArchivo;
 import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.SAAsignatura;
+import Negocio.Aula.SATema;
 import Negocio.Aula.TransferAsignatura;
+import Negocio.Aula.TransferTema;
 import Negocio.Factoria.FactoriaSA;
 import Negocio.Factoria.FactoriaUsuario;
 import Negocio.Foro.SAForo;
@@ -31,6 +33,8 @@ public class ControllerImp extends Controller{
 	private SAApuntes saApuntes=FactoriaSA.getInstancia().generarSAApuntes();
 	private SAMensaje saMensaje=FactoriaSA.getInstancia().generarSAMensaje();
 	private SAForo saForo=FactoriaSA.getInstancia().generarSAForo();
+	private SATema saTema=FactoriaSA.getInstancia().generarSATema();
+
 	private IGUI currentIGUI;
 
 	private TransferUsuario tUsuarioIniciado = null;
@@ -45,6 +49,7 @@ public class ControllerImp extends Controller{
 		TransferAsignatura tAsignatura;
 		TransferTarea tTarea;
 		TransferApuntes tApuntes;
+		TransferTema tTema;
 		
 		
 		
@@ -368,6 +373,7 @@ public class ControllerImp extends Controller{
 			
 			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
 			currentIGUI.update(evento, new Pair <TransferAsignatura, TransferUsuario>(tAsignatura, tUsuarioIniciado));
+			break;
 
 			
 		case Events.ANADIR_MENSAJE:
@@ -377,12 +383,35 @@ public class ControllerImp extends Controller{
 			saForo.anadirMensaje(info3.right, info3.left);
 			
 			currentIGUI.update( Events.ANADIR_MENSAJE, null);
+			break;
 
+		case Events.EDITAR_NOMBRE_TEMA:
+			
+			tTema =(TransferTema) datos;
+			saTema.editarTema(tTema);
+			break;
+			
+		case Events.ABRIR_VISTA_TEMA:
+					
+			tTema=(TransferTema) datos;
+			
+			if(!tUsuarioIniciado.esProfesor()) {
 
+				currentIGUI = FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_TEMA, null);
+
+			}
+			else {
+				
+				currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_TEMA_PROFESOR, null);
+
+			}
+			currentIGUI.update(evento, tTema);
+
+			break;
 		}
 		
 
-			
+
 			
 		
 	

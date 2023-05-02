@@ -25,9 +25,9 @@ import Presentacion.Control.IGUI;
 public class VTema extends JFrame  implements IGUI{
 	
 
-	private TransferTema tTema;
-	private Controller ctrl;
-	JPanel mainPanel;
+	protected TransferTema tTema;
+	protected Controller ctrl;
+	protected JPanel mainPanel;
 	
 	public VTema() {
 		super("Vista Tema");
@@ -44,12 +44,7 @@ public class VTema extends JFrame  implements IGUI{
 		mainPanel = new JPanel(new BorderLayout());
 		setContentPane(mainPanel);
 		
-		JPanel panelSup= new JPanel();
-		JLabel temaTitulo = new JLabel(tTema.getAsignaturas().getNombre() +" : "+ tTema.getNombre(), SwingConstants.CENTER); 
-		temaTitulo.setSize(new Dimension(70, 70));
-		panelSup.add(temaTitulo, BorderLayout.CENTER);
-		mainPanel.add(panelSup, BorderLayout.PAGE_START);	
-		
+		initPanelSup();
 		
 		
 		
@@ -83,6 +78,14 @@ public class VTema extends JFrame  implements IGUI{
 		panelInf.add(cerrar, BorderLayout.CENTER);
 		mainPanel.add(panelInf, BorderLayout.PAGE_END);
 		setVisible(true);
+	}
+
+	private void initPanelSup() {
+		JPanel panelSup= new JPanel();
+		JLabel temaTitulo = new JLabel(tTema.getAsignaturas().getNombre() +" : "+ tTema.getNombre(), SwingConstants.CENTER); 
+		temaTitulo.setSize(new Dimension(70, 70));
+		panelSup.add(temaTitulo, BorderLayout.CENTER);
+		mainPanel.add(panelSup, BorderLayout.PAGE_START);			
 	}
 
 	@Override

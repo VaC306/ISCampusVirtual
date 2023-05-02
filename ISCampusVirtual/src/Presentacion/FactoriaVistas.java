@@ -70,6 +70,9 @@ public class FactoriaVistas {
 		
 		case Events.ABRIR_VISTA_TEMA:
 			return new VTema();
+			
+		case Events.ABRIR_VISTA_TEMA_PROFESOR:
+			return new VTema_Profesor();
 		
 		case Events.ABRIR_VISTA_CREAR_USUARIO:
 			return new VUsuarioCrear();
