@@ -393,7 +393,7 @@ public class ControllerImp extends Controller{
 			
 		case Events.ABRIR_VISTA_TEMA:
 					
-			tTema=(TransferTema) datos;
+    		Pair <TransferAsignatura, TransferTema> info5= (Pair<TransferAsignatura, TransferTema>) datos ;
 			
 			if(!tUsuarioIniciado.esProfesor()) {
 
@@ -405,7 +405,7 @@ public class ControllerImp extends Controller{
 				currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_TEMA_PROFESOR, null);
 
 			}
-			currentIGUI.update(evento, tTema);
+			currentIGUI.update(evento, info5);
 
 			break;
 		}

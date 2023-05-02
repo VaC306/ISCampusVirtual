@@ -28,6 +28,7 @@ public class VTema extends JFrame  implements IGUI{
 	protected TransferTema tTema;
 	protected Controller ctrl;
 	protected JPanel mainPanel;
+	protected TransferAsignatura tAsignatura;
 	
 	public VTema() {
 		super("Vista Tema");
@@ -72,7 +73,7 @@ public class VTema extends JFrame  implements IGUI{
 		JButton cerrar = new JButton("Cerrar");
 		cerrar.addActionListener((e)-> {
 			setVisible(false);
-			ctrl.accion(Events.ABRIR_VISTA_ASIGNATURA, tTema.getAsignaturas());
+			ctrl.accion(Events.ABRIR_VISTA_ASIGNATURA, tAsignatura);
 		}
 		);
 		panelInf.add(cerrar, BorderLayout.CENTER);
@@ -94,8 +95,10 @@ public class VTema extends JFrame  implements IGUI{
 		switch(event) {
 		
 		case Events.ABRIR_VISTA_TEMA:
-			
-			tTema=(TransferTema) datos;
+    		Pair <TransferAsignatura, TransferTema> info= (Pair<TransferAsignatura, TransferTema>) datos ;
+
+			tTema=info.right;
+			tAsignatura=info.left;
 			initIGUI();
 			break;
 		}

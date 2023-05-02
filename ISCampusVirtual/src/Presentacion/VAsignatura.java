@@ -11,8 +11,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import com.mysql.cj.conf.ConnectionUrlParser.Pair;
+
 import Negocio.Aula.TransferAsignatura;
 import Negocio.Aula.TransferTema;
+import Negocio.Foro.TransferForo;
+import Negocio.Foro.TransferMensaje;
 import Presentacion.Control.Controller;
 import Presentacion.Control.Events;
 import Presentacion.Control.IGUI;
@@ -92,7 +96,12 @@ public class VAsignatura implements IGUI {
 			
         	JButton boton= new JButton(tt.getNombre());
         	
-        	boton.addActionListener(e->	ctrl.accion(Events.ABRIR_VISTA_TEMA, tt));
+        	boton.addActionListener(e->	{
+        		
+        		Pair <TransferAsignatura, TransferTema> info= new Pair<>(asignatura, tt) ;
+        		ctrl.accion(Events.ABRIR_VISTA_TEMA, info);
+        		
+        	});
         	
         	listaDeBotones.add(boton);
             panelDeTemas.add(boton);
