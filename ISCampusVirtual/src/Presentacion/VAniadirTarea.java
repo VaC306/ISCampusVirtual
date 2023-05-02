@@ -6,7 +6,6 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
-
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -15,7 +14,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerDateModel;
 import javax.swing.border.Border;
 
 import Integracion.DAOTarea;
@@ -32,14 +33,14 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 	
 	private TransferAsignatura tAsignatura;
 	private JTextField nombre;
-	private JTextField fecha;
 	private JTextField tipo_archivo;
 	private JButton load;
 	private JButton ok;
 	private JFileChooser fc;
 	private JLabel file_name;
-	JComboBox tema;
-	Controller ctrl;
+	private JSpinner spinnerFecha;
+	private JComboBox tema;
+	private Controller ctrl;
 
 	public VAniadirTarea() {
 		super("Anadir Tarea");
@@ -71,7 +72,7 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 			ctrl.accion(Events.TAREA_ANADIR, tt);
 */
 
-			if (fecha.getText() != "") {
+
 
 				TransferTarea tt2 = new TransferTarea();
 				// new TransferTarea;
@@ -80,11 +81,11 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 				// tt.setNombre(nombre.getText());
 				tt2.setId("AR010");
 				tt2.setIdTarea("T004");
-				tt2.setFecha_de_entrega(new Date(fecha.getText()));
+				tt2.setFecha_de_entrega((Date) spinnerFecha.getValue());
 				tt2.setTemas(tema.getSelectedItem().toString());
 				// VER COMO AÑADIR ESTO TODO
 				ctrl.accion(Events.TAREA_ANADIR, tt2);
-			}
+		
 
 		});
 		
@@ -95,8 +96,14 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 		tipo_archivo = new JTextField(4);
 		mainPanel.add(tipo_archivo);
 		mainPanel.add(new JLabel("Fecha entrega: "));
-		fecha = new JTextField(8);
-		mainPanel.add(fecha);
+		
+		Date fechaActual = new Date(System.currentTimeMillis());
+        SpinnerDateModel spinnerModel = new SpinnerDateModel(fechaActual, null, null, java.util.Calendar.DAY_OF_MONTH);
+         spinnerFecha = new JSpinner(spinnerModel);
+        spinnerFecha.setEditor(new JSpinner.DateEditor(spinnerFecha, "dd/MM/yyyy"));
+		
+		
+		mainPanel.add(spinnerFecha);
 		mainPanel.add(new JLabel("(Formato: dd/mm/yy)"));
 		
 		mainPanel.add(new JLabel("Tema:"));
@@ -158,7 +165,6 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 		break;
 			
 		case Events.TAREA_ANADIDA_ERROR:
-			fecha.setText("");
 			nombre.setText("");	
 		break;
 		
