@@ -48,9 +48,32 @@ public class DAOApuntesImpl implements DAOApuntes {
 	}
 
 	@Override
-	public void create(TransferArchivo aTNew) {
-		// TODO Auto-generated method stub
-		
+	public void create(TransferApuntes aTNew) {
+		try {
+			
+			String s = "INSERT INTO archivos (IdArchivo, Nombre, tipo_archivo) VALUES (?,?,?);";
+			
+			Connection connection = DriverManager.getConnection(url, login, password);
+			PreparedStatement ps = connection.prepareStatement(s);
+			
+			ps.setString(1, aTNew.getId());
+			ps.setString(2, aTNew.getNombre());
+			ps.setString(3, aTNew.getTipo_archivo().name());
+			ps.executeUpdate();
+			
+			s = "INSERT INTO Apuntes (IdApuntes, IdArchivo) VALUES (?,?);";
+			ps = connection.prepareStatement(s);
+			
+			ps.setString(1, aTNew.getIdApuntes());
+			ps.setString(2, aTNew.getId());
+			ps.executeUpdate();
+			
+			connection.close();
+			ps.close();
+			
+		}catch(Exception e) {
+			
+		}
 	}
 
 	@Override

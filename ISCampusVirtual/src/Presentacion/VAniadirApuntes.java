@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Negocio.Archivos.Tipos_archivo;
 import Negocio.Archivos.TransferApuntes;
 import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.TransferAsignatura;
@@ -28,6 +29,7 @@ public class VAniadirApuntes extends JFrame  implements IGUI{
 	TransferAsignatura tAsignatura;
 	TransferApuntes tApuntes;
 	private JTextField nombre;
+	private JTextField tipo_archivo;
 	private JComboBox<String> tema;
 	private JButton load;
 	private JButton ok;
@@ -58,12 +60,18 @@ public class VAniadirApuntes extends JFrame  implements IGUI{
 			tApuntes= new TransferApuntes();
 			tApuntes.setNombre(nombre.getText());
 			tApuntes.setTemas(tema.getSelectedItem().toString());
+			tApuntes.setTipo_archivo(Tipos_archivo.valueOf(tipo_archivo.getText()));
 			ctrl.accion( Events.ANADIR_APUNTES, tApuntes);
 			
 		});
 		mainPanel.add(new JLabel("Nombre apuntes: "));
 		nombre = new JTextField(8);
 		mainPanel.add(nombre);
+		
+		mainPanel.add(new JLabel("Tipo del archivo: "));
+		tipo_archivo = new JTextField(4);
+		mainPanel.add(tipo_archivo);
+		
 		mainPanel.add(new JLabel("Tema correspondiente: "));
 		
 		
