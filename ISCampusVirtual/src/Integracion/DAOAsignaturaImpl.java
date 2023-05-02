@@ -10,6 +10,8 @@ import java.util.List;
 import Negocio.Aula.TransferAsignatura;
 import Negocio.Aula.TransferTema;
 import Negocio.Foro.TransferForo;
+import Negocio.Usuario.TransferAlumno;
+import Negocio.Usuario.TransferProfesor;
 
 public class DAOAsignaturaImpl implements DAOAsignatura{
 	
@@ -49,8 +51,37 @@ public class DAOAsignaturaImpl implements DAOAsignatura{
 				}
 				
 				TA.setTemas(LT);
+				
 				DAOForo daoF = new DAOForoImpl();
 				TA.setAvisos(daoF.read(id));
+				
+				
+				s2 = "SELECT * FROM alumnos WHERE IdAsignatura = ?;";
+				ps2 = connection.prepareStatement(s2);
+				ps2.setString(1, id);
+				
+				r2 = ps2.executeQuery();
+				
+				List<TransferAlumno> LTA = new ArrayList<TransferAlumno>();
+				while (r2.next()) {
+					DAOAlumno daoA = new DAOAlumnoImpl();
+					LTA.add((TransferAlumno) daoA.readById(r2.getString("NIF")));
+				}
+				
+				TA.setAlumno(LTA);
+				
+				s2 = "SELECT * FROM profesores WHERE IdAsignatura = ?;";
+				ps2 = connection.prepareStatement(s2);
+				ps2.setString(1, id);
+				
+				r2 = ps2.executeQuery();
+				
+				List<TransferProfesor> LTP = new ArrayList<TransferProfesor>();
+				while (r2.next()) {
+					DAOProfesor daoP = new DAOProfesorImpl();
+					LTP.add((TransferProfesor) daoP.readById(r2.getString("NIF")));
+				}
+				TA.setProfesor(LTP);
 				
 				ps2.close();
 				r2.close();

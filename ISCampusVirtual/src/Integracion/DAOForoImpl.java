@@ -43,9 +43,8 @@ public class DAOForoImpl implements DAOForo{
 				while(r2.next()) {
 					
 					DAOMensaje daoM = new DAOMensajeImpl();
-					System.out.println(r2.getString("IdMensaje"));
 					TF.addMensaje(LTM, daoM.read(r2.getString("IdMensaje")));
-					System.out.println(TF.getMensaje().get(0).getCuerpo());
+					
 				}
 				ps2.close();
 				r2.close();

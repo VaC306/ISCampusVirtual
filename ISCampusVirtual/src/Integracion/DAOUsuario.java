@@ -12,4 +12,5 @@ public interface DAOUsuario {
 
 	public abstract void create(TransferUsuario aTNew);
 
+
 }

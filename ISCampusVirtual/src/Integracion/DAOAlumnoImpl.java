@@ -123,7 +123,7 @@ public class DAOAlumnoImpl implements DAOAlumno{
 			ps.setString(1, aTNew.getId());
 			ps.setString(2, aTNew.getNIF());
 			ps.setBoolean(3, aTNew.isDelegado());
-			ps.setString(4, "A001");
+			ps.setString(4, aTNew.getAsignaturas().get(0));
 			ps.executeUpdate();
 			
 			connection.close();
@@ -208,4 +208,5 @@ public class DAOAlumnoImpl implements DAOAlumno{
 		
 		
 	}
+
 }
