@@ -22,7 +22,7 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
 	private JScrollPane scrollPane;
 	private JFrame ventana;
 	private Controller ctrl;
-	
+	JPanel botonesAsignatras ;
     JButton cerrarSesion;
 	
 	
@@ -60,7 +60,9 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
         
         PanelBotones.add(perfil, BorderLayout.EAST);
         PanelBotones.add(cerrarSesion, BorderLayout.WEST);
-		ventana.add(PanelBotones, BorderLayout.CENTER);
+		ventana.add(PanelBotones, BorderLayout.PAGE_START);
+		ventana.add(botonesAsignatras, BorderLayout.CENTER);
+
         
         // Mostrar la ventana principal
         ventana.setVisible(true);
@@ -80,7 +82,7 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
 	private void updateScrollPane() {
 		
 		
-        JPanel botonesAsignatras = new JPanel(new GridLayout(0, 1)); // GridLayout con una columna y filas ilimitadas
+         botonesAsignatras = new JPanel(new GridLayout(0, 1)); // GridLayout con una columna y filas ilimitadas
         listaDeBotones.clear();
         
         for (TransferAsignatura tA: listaDeAsignaturas) {
