@@ -80,14 +80,14 @@ public class VForo extends JFrame implements IGUI{
         });
 
         // Agregar el panel del foro a la ventana principal
-        getContentPane().add(panelForo);
+        getContentPane().add(panelForo, BorderLayout.CENTER);
 		JButton cancel= new JButton("Cancelar");
 		cancel.addActionListener(e->{
 			
 			setVisible(false);
 			ctrl.accion(Events.ABRIR_VISTA_ASIGNATURA,tAsignatura );
 		});
-		getContentPane().add(cancel);
+		getContentPane().add(cancel, BorderLayout.PAGE_END);
         // Mostrar la ventana principal
         setVisible(true);
     }
