@@ -63,7 +63,7 @@ public abstract class TransferArchivo {
 
 	public abstract TransferArchivo read(String idArchivo);
 
-	
+
 	
 	
 }

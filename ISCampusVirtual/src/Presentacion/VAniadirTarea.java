@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 
 import Integracion.DAOTarea;
 import Integracion.DAOTareaImpl;
+import Negocio.Archivos.Tipos_archivo;
 import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.TransferAsignatura;
 import Presentacion.Control.Controller;
@@ -28,6 +29,7 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 	private TransferAsignatura tAsignatura;
 	private JTextField nombre;
 	private JTextField fecha;
+	private JTextField tipo_archivo;
 	private JButton load;
 	private JButton ok;
 	private JFileChooser fc;
@@ -52,28 +54,24 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 		file_name = new JLabel();
 		mainPanel.add(load);
 		mainPanel.add(file_name);
+		
 		load.addActionListener((e) -> load());
 		ok = new JButton("OK");
 		ok.addActionListener((e) -> {
 			TransferTarea tt= new TransferTarea();
-					//new TransferTarea;
 			
-			//Primero crear Archivo TODO
-			//tt.setNombre(nombre.getText());
-			tt.setId("AR010");
-			tt.setIdTarea("T004");
+			tt.setNombre(nombre.getText());
 			tt.setFecha_de_entrega(new Date(fecha.getText()));
-			// VER COMO AÑADIR ESTO TODO
+			tt.setTipo_archivo(Tipos_archivo.valueOf(tipo_archivo.getText()));
 			ctrl.accion(Events.TAREA_ANADIR, tt);
 		});
-		
-		
-		
-		
 		
 		mainPanel.add(new JLabel("Nombre tarea: "));
 		nombre = new JTextField(8);
 		mainPanel.add(nombre);
+		mainPanel.add(new JLabel("Tipo del Archivo: "));
+		tipo_archivo = new JTextField(4);
+		mainPanel.add(tipo_archivo);
 		mainPanel.add(new JLabel("Fecha entrega: "));
 		fecha = new JTextField(8);
 		mainPanel.add(fecha);

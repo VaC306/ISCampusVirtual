@@ -1,5 +1,8 @@
 package Negocio.Archivos;
 
+import Integracion.DAOTarea;
+import Integracion.DAOTareaImpl;
+
 public class SATarea {
 
 	public static boolean eliminateById(String id) {
@@ -8,8 +11,14 @@ public class SATarea {
 	}
 
 	public static boolean add(TransferTarea tTarea) {
-		// TODO Auto-generated method stub
-		return false;
+		tTarea.setId("TAR00"+"");
+		tTarea.setIdTarea("T00"+ "");
+		
+		
+		if(tTarea != null) {
+			return true;
+		}
+		else return false;
 	}
 
 }

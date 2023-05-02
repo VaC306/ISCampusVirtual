@@ -56,6 +56,7 @@ public class TransferTarea extends TransferArchivo {
 		DAOTarea dao = new DAOTareaImpl();
 		return dao.read(idArchivo);
 	}
+
 	
 	
 

@@ -28,5 +28,7 @@ public class TransferApuntes extends TransferArchivo {
 	public void setIdApuntes(String id) {
 		this.IdApuntes = id;
 	}
+
+
 	
 }
