@@ -1,6 +1,6 @@
 package Negocio.Foro;
 
-import java.util.Date;
+import java.sql.Date;
 
 import Negocio.Usuario.TransferUsuario;
 

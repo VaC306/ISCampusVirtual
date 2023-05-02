@@ -5,10 +5,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
+import java.sql.Date;
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 
@@ -142,7 +142,7 @@ public class VCalendarioTareas extends JFrame implements IGUI {
 
 			for (TransferTarea tt : listaTareas) {
 
-				if (tt.getFecha_de_entrega() == new Date(2023, mes, dia, 0, 0, 0)) {
+				if (tt.getFecha_de_entrega() == new Date(2023, mes, dia)) {
 
 					JLabel etiquetaX = new JLabel(tt.getNombre(), JLabel.CENTER);
 					etiquetaX.setForeground(Color.RED);

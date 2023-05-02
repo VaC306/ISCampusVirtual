@@ -5,7 +5,7 @@ import java.awt.FlowLayout;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Date;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -64,12 +64,12 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 		ok.addActionListener((e) -> {
 
 			TransferTarea tt= new TransferTarea();
-			
+/*			
 			tt.setNombre(nombre.getText());
-			tt.setFecha_de_entrega(new Date(fecha.getText()));
+			tt.setFecha_de_entrega(new Date(fecha));
 			tt.setTipo_archivo(Tipos_archivo.valueOf(tipo_archivo.getText()));
 			ctrl.accion(Events.TAREA_ANADIR, tt);
-
+*/
 
 			if (fecha.getText() != "") {
 

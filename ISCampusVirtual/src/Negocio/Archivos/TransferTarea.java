@@ -1,5 +1,6 @@
 package Negocio.Archivos;
-import java.util.Date;
+
+import java.sql.Date;
 
 import Integracion.DAOTarea;
 import Integracion.DAOTareaImpl;
