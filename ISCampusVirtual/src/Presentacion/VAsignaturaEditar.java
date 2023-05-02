@@ -4,11 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
@@ -47,7 +50,19 @@ public class VAsignaturaEditar extends JFrame  implements IGUI{
 		
 		JPanel panelSup= new JPanel();
 
-		JLabel asignatura = new JLabel("EDITAR ", SwingConstants.CENTER); // + tAsignatura.getNombre() TODO
+		JLabel asignatura = new JLabel("EDITAR ", SwingConstants.WEST); 
+		JTextField nombreAsignatura=new JTextField();
+		nombreAsignatura.setText(tAsignatura.getNombre());
+		nombreAsignatura.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				tAsignatura.setNombre(nombreAsignatura.getText());
+
+				ctrl.accion(Events.EDITAR_NOMBRE_ASIGNATURA,tAsignatura );
+			}
+		});
+		
 		asignatura.setSize(new Dimension(70, 70));
 		
 		

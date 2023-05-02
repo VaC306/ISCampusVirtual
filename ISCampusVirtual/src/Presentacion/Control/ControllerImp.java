@@ -422,6 +422,13 @@ public class ControllerImp extends Controller{
 			currentIGUI.update(evento, info5);
 
 			break;
+			
+			
+		case Events.EDITAR_NOMBRE_ASIGNATURA:
+			tAsignatura=(TransferAsignatura) datos;
+			saAsignatura.editarAsignatura(tAsignatura);
+			
+			break;
 		}
 		
 
