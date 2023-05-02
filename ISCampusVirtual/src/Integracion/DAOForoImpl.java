@@ -34,7 +34,7 @@ public class DAOForoImpl implements DAOForo{
 				List<TransferMensaje> LTM = new ArrayList<TransferMensaje>();
 				TF.setNumero_mensajes_totales(r.getInt("Num_mensajes"));
 				TF.setId(r.getString("IdForo"));
-				String s2 = "SELECT * FROM mensajes WHERE IdForo = ?;";
+				String s2 = "SELECT IdMensaje FROM mensajes WHERE IdForo = ?;";
 				PreparedStatement ps2 = connection.prepareStatement(s2);
 				ps2.setString(1, r.getString("IdForo"));
 				
@@ -43,7 +43,9 @@ public class DAOForoImpl implements DAOForo{
 				while(r2.next()) {
 					
 					DAOMensaje daoM = new DAOMensajeImpl();
-					TF.addMensaje(LTM, daoM.read(r.getString("IdMensaje")));
+					System.out.println(r2.getString("IdMensaje"));
+					TF.addMensaje(LTM, daoM.read(r2.getString("IdMensaje")));
+					System.out.println(TF.getMensaje().get(0).getCuerpo());
 				}
 				ps2.close();
 				r2.close();
@@ -54,7 +56,7 @@ public class DAOForoImpl implements DAOForo{
 			connection.close();
 			
 		}catch(Exception e) {
-			
+			System.out.println(e.getMessage());
 		}
 		return TF;
 	}

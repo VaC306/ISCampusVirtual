@@ -38,14 +38,11 @@ public class SATema {
 	public boolean editarTema(TransferTema aTNew) {
 
 		DAOTema dao = new DAOTemaImpl();
-		TransferTema transfer = dao.read(aTNew.getAsignaturas().getID());
 
 		// como no existe se edita la bd
-		if (transfer == null) {
+		if (aTNew != null) {
 
-			dao.eliminate(aTNew.getAsignaturas().getID());
-			dao.create(aTNew);
-
+			dao.updateName(aTNew.getId(), aTNew.getNombre());
 			return true;
 		}
 		return false;

@@ -11,12 +11,13 @@ public class TransferMensaje {
 	private String Cuerpo;
 
 	private String usuario;
+	
+	private String titulo;
 
 	public TransferMensaje(Date fecha, String cuerpo, String usuario) {
 		super();
 		Fecha = fecha;
 		Cuerpo = cuerpo;
-
 		this.usuario = usuario;
 	}
 

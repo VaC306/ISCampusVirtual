@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import Integracion.DAOTema;
+import Integracion.DAOTemaImpl;
 import Presentacion.Control.Events;
 
 public class VTema_Profesor extends VTema{

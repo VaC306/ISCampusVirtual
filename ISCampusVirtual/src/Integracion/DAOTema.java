@@ -9,4 +9,6 @@ public interface DAOTema {
 	public void create(TransferTema aTNew);
 
 	public void eliminate(String idTema);
+
+	public void updateName(String id, String nombre);
 }

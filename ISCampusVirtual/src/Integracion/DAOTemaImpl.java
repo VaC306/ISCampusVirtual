@@ -114,4 +114,24 @@ public class DAOTemaImpl implements DAOTema{
 		}
 	}
 
+	@Override
+	public void updateName(String id, String nombre) {
+		try {
+		String s = "UPDATE temas SET Nombre = ? WHERE IdTema = ?;";
+		
+		Connection connection = DriverManager.getConnection(url, login, password);
+		PreparedStatement ps = connection.prepareStatement(s);
+		
+		ps.setString(1, nombre);
+		ps.setString(2, id);
+		
+		ps.executeUpdate();
+		
+		connection.close();
+		ps.close();
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
 }

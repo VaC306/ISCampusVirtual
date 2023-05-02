@@ -87,7 +87,7 @@ public class VForo extends JFrame implements IGUI{
 			setVisible(false);
 			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA,tAsignatura );
 		});
-		getContentPane().add(cancel, BorderLayout.PAGE_END);
+		getContentPane().add(cancel);
         // Mostrar la ventana principal
         setVisible(true);
     }

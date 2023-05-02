@@ -32,7 +32,7 @@ public class DAOMensajeImpl implements DAOMensaje{
 				TM = new TransferMensaje(
 						r.getDate("Fecha"), 
 						r.getString("Cuerpo"),
-						r.getString("Usuario")
+						null
 						//r.getUsuario()
 						//null
 					);
@@ -43,7 +43,7 @@ public class DAOMensajeImpl implements DAOMensaje{
 			r.close();
 			
 		}catch(Exception e) {
-			
+			System.out.println(e.getMessage());
 		}
 		
 		return TM;
