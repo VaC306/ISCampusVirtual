@@ -50,7 +50,7 @@ public class VAsignaturaEditar extends JFrame  implements IGUI{
 		
 		JPanel panelSup= new JPanel();
 
-		JLabel asignatura = new JLabel("EDITAR ", SwingConstants.WEST); 
+		JLabel asignatura = new JLabel(); 
 		JTextField nombreAsignatura=new JTextField();
 		nombreAsignatura.setText(tAsignatura.getNombre());
 		nombreAsignatura.addActionListener(new ActionListener()
@@ -62,7 +62,7 @@ public class VAsignaturaEditar extends JFrame  implements IGUI{
 				ctrl.accion(Events.EDITAR_NOMBRE_ASIGNATURA,tAsignatura );
 			}
 		});
-		
+		asignatura.add(nombreAsignatura, BorderLayout.CENTER);
 		asignatura.setSize(new Dimension(70, 70));
 		
 		
