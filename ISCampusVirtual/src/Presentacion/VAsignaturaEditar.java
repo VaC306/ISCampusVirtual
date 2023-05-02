@@ -35,7 +35,7 @@ public class VAsignaturaEditar extends JFrame  implements IGUI{
 	public VAsignaturaEditar() {
 		super("Editar Asignatura");
 		ctrl=Controller.obtenerInstancia();
-		initIGUI();
+		
 
 
 	}
@@ -135,5 +135,6 @@ public class VAsignaturaEditar extends JFrame  implements IGUI{
 	@Override
 	public void update(int event, Object datos) {
 		tAsignatura=(TransferAsignatura) datos;
+		initIGUI();
 	}
 }

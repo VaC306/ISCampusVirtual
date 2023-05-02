@@ -102,9 +102,10 @@ public class VForo extends JFrame implements IGUI{
 	@Override
 	public void update(int event, Object datos) {
 		switch(event) {
+		
 		case  Events.ANADIR_MENSAJE: 
 			JOptionPane.showMessageDialog(this, "Mensaje enviado");
-
+		break;
 		
 		default:
 			

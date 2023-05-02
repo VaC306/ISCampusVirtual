@@ -5,6 +5,7 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+import Negocio.Aula.TransferAsignatura;
 import Negocio.Usuario.TransferAlumno;
 import Negocio.Usuario.TransferProfesor;
 import Negocio.Usuario.TransferUsuario;
@@ -129,24 +130,41 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 		//if seleccionado combobox 0 alumnos 1 profes 2 todos
 		filtroRoles.addActionListener((e) -> 
 		{
-			if(filtroRoles.getSelectedIndex() == 0)
+			if(filtroRoles.getSelectedIndex() == 1)
 			{
 				for(int i =0; i< alumnosMostrar.size();i++)
 				{
-					tableAlumnos.add(alumnosMostrar.get(i).getNombre_Apellidos(), null);
+					tableAlumnos.setValueAt(alumnosMostrar.get(i).getNombre_Apellidos(), i, 0);
 					
 				}
-			}
-			else if(filtroRoles.getSelectedIndex() == 1)
-			{
-				for(int i =0; i< profesorMostrar.size();i++) 
-				{
-					tableAlumnos.add(profesorMostrar.get(i).getNombre_Apellidos(), null);
-				}
+				
+				numUsuarios = alumnosMostrar.size();
 			}
 			else if(filtroRoles.getSelectedIndex() == 2)
 			{
-				//mostrar todos
+				for(int i =0; i< profesorMostrar.size();i++) 
+				{
+					tableAlumnos.setValueAt(profesorMostrar.get(i).getNombre_Apellidos(), i, 0);
+					
+				}
+				
+				numUsuarios = profesorMostrar.size();
+			}
+			else if(filtroRoles.getSelectedIndex() == 0)
+			{
+				for(int i =0; i< alumnosMostrar.size();i++)
+				{
+					tableAlumnos.setValueAt(alumnosMostrar.get(i).getNombre_Apellidos(), i, 0);
+					
+				}
+				int j= 0;
+				for(int i = alumnosMostrar.size(); i< profesorMostrar.size()+alumnosMostrar.size();i++) 
+				{
+					tableAlumnos.setValueAt(profesorMostrar.get(j).getNombre_Apellidos(), i, 0);
+					j++;
+				}
+				numUsuarios = alumnosMostrar.size() + profesorMostrar.size();
+				
 			}
 		});
 
@@ -155,8 +173,6 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.pack();
 		this.setVisible(true);
-		
-		ctrl.accion(Events.MOSTRAR_ALUMNOS_ASIGNATURA, null);
 		
 	}
 
@@ -172,10 +188,9 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 	//dependiendo del event, devuelve una lista con alumnos o profesors (datos puede ser null)
 	@Override
 	public void update(int event, Object datos) {
-		List<TransferUsuario> lista=(List<TransferUsuario>) datos;
 		
-		//profesorMostrar = datos;//transferAsigunatura.profesor (Lista de profesores)
-		//alumnosMostrar = datos;//transferAsigunatura.profesor (Lista de profesores)
+		profesorMostrar = ((TransferAsignatura)datos).getProfesor();//transferAsigunatura.profesor (Lista de profesores)
+		alumnosMostrar = ((TransferAsignatura)datos).getAlumno();//transferAsigunatura.profesor (Lista de profesores)
 
 		
 	}

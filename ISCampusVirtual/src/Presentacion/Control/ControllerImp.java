@@ -81,7 +81,7 @@ public class ControllerImp extends Controller{
 		case Events.ABRIR_VMOSTRAR_PARTICIPANTES_ASIGNATURA:
 			tAsignatura=(TransferAsignatura) datos;
 			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
-			currentIGUI.update(Events.MOSTRAR_USUARIOS_ASIGNATURA, tAsignatura.getUsuarios());
+			currentIGUI.update(Events.MOSTRAR_USUARIOS_ASIGNATURA, tAsignatura);
 			
 			break;
 			
@@ -89,7 +89,7 @@ public class ControllerImp extends Controller{
 			tAsignatura=saAsignatura.getById((String) datos);
 
 			if(tAsignatura!=null)
-				currentIGUI.update(evento, tAsignatura.getAlumno());
+				currentIGUI.update(evento, tAsignatura);
 			else
 				currentIGUI.update(evento, null);
 
@@ -393,7 +393,6 @@ public class ControllerImp extends Controller{
 		case Events.ANADIR_MENSAJE:
 			Pair <TransferMensaje, TransferForo> info3 = (Pair<TransferMensaje, TransferForo>) datos;
 
-			saMensaje.crearMensaje(info3.left);
 			saForo.anadirMensaje(info3.right, info3.left);
 			
 			currentIGUI.update( Events.ANADIR_MENSAJE, null);
