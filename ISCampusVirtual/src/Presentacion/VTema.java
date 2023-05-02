@@ -59,7 +59,7 @@ public class VTema extends JFrame  implements IGUI{
 		
 		
 		for(TransferArchivo tA:tTema.getArchivo()) {
-		
+			if(tA!=null)
 			modeloArchivos.addRow(new String[] { tA.getNombre(), tA.getUsuario()});	
 		}
 
