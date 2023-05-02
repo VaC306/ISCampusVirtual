@@ -93,7 +93,6 @@ public class VAsignatura implements IGUI {
         	JButton boton= new JButton(tt.getNombre());
         	
         	boton.addActionListener(e->	ctrl.accion(Events.ABRIR_VISTA_TEMA, tt));
-			ctrl.accion(Events.ABRIR_VISTA_TEMA, tt);
         	
         	listaDeBotones.add(boton);
             panelDeTemas.add(boton);
