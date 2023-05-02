@@ -132,7 +132,7 @@ public class VUsuarioEditar extends JFrame implements IGUI{
 		
 		switch(event) {
 		
-		case Events.ABRIR_VISTA_EDITAR_USUARIO:
+		default :
 			usuario = (TransferUsuario) datos;
 			initIGUI();	
 			break;

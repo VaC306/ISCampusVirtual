@@ -11,6 +11,8 @@ import Negocio.Archivos.TransferApuntes;
 import Negocio.Archivos.TransferArchivo;
 import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.SAAsignatura;
+import Negocio.Aula.SAClase;
+import Negocio.Aula.SACurso;
 import Negocio.Aula.SATema;
 import Negocio.Aula.TransferAsignatura;
 import Negocio.Aula.TransferTema;
@@ -20,6 +22,8 @@ import Negocio.Foro.SAForo;
 import Negocio.Foro.SAMensaje;
 import Negocio.Foro.TransferForo;
 import Negocio.Foro.TransferMensaje;
+import Negocio.Usuario.SAAlumno;
+import Negocio.Usuario.SAProfesor;
 import Negocio.Usuario.SAUsuario;
 import Negocio.Usuario.TransferAlumno;
 import Negocio.Usuario.TransferProfesor;
@@ -28,12 +32,16 @@ import Presentacion.FactoriaVistas;
 //siu
 public class ControllerImp extends Controller{
 	
-	private SAUsuario saUsuario=FactoriaSA.getInstancia().generarSAUsuario();
-	private SAAsignatura saAsignatura=FactoriaSA.getInstancia().generarSAAsignatura();
-	private SAApuntes saApuntes=FactoriaSA.getInstancia().generarSAApuntes();
-	private SAMensaje saMensaje=FactoriaSA.getInstancia().generarSAMensaje();
-	private SAForo saForo=FactoriaSA.getInstancia().generarSAForo();
-	private SATema saTema=FactoriaSA.getInstancia().generarSATema();
+	private SAUsuario saUsuario = FactoriaSA.getInstancia().generarSAUsuario();
+	private SAAsignatura saAsignatura = FactoriaSA.getInstancia().generarSAAsignatura();
+	private SAApuntes saApuntes = FactoriaSA.getInstancia().generarSAApuntes();
+	private SAMensaje saMensaje = FactoriaSA.getInstancia().generarSAMensaje();
+	private SAForo saForo = FactoriaSA.getInstancia().generarSAForo();
+	private SATema saTema = FactoriaSA.getInstancia().generarSATema();
+	private SAAlumno saAlumno = FactoriaSA.getInstancia().generarSAAlumno();
+	private SAProfesor saProfesor = FactoriaSA.getInstancia().generarSAProfesor();
+	private SACurso saCurso = FactoriaSA.getInstancia().generarSACurso();
+	private SATarea saTarea = FactoriaSA.getInstancia().generarSATarea();
 
 	private IGUI currentIGUI;
 
