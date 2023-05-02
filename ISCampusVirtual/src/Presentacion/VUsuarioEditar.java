@@ -53,7 +53,7 @@ public class VUsuarioEditar extends JFrame implements IGUI{
 		JPanel nifpanel = new JPanel(new FlowLayout());
 		
 		nifpanel.add(new JLabel("DNI: "));
-		nifE = new JTextField();
+		nifE = new JTextField(usuario.getNIF());
 		nifE.setPreferredSize(new Dimension(100, 20));
 		nifE.addActionListener(new ActionListener()
 		{
@@ -69,7 +69,7 @@ public class VUsuarioEditar extends JFrame implements IGUI{
 		JPanel nombrepanel = new JPanel(new FlowLayout());
 		
 		nombrepanel.add(new JLabel("Nombre: "));
-		nombreE = new JTextField();
+		nombreE = new JTextField(usuario.getNombre_Apellidos());
 		nombreE.setPreferredSize(new Dimension(100, 20));
 		nombreE.addActionListener(new ActionListener()
 		{
@@ -87,7 +87,7 @@ public class VUsuarioEditar extends JFrame implements IGUI{
 		JPanel correopanel = new JPanel(new FlowLayout());
 		
 		correopanel.add(new JLabel("Correo: "));
-		correoE = new JTextField();
+		correoE = new JTextField(usuario.getCorreo_electronico());
 		correoE.setPreferredSize(new Dimension(300, 20));
 		correoE.addActionListener(new ActionListener()
 		{
