@@ -5,6 +5,8 @@ import java.util.List;
 public class TransferForo {
 	
 	private int Numero_mensajes_totales=0;
+	
+	private String id;
 
 	private List<TransferMensaje> mensaje = new ArrayList<TransferMensaje> ();
 
@@ -22,6 +24,14 @@ public class TransferForo {
 
 	public void addMensaje(List<TransferMensaje> mensaje, TransferMensaje m) {
 		this.mensaje.add(m);
+	}
+	
+	public String getID() {
+		return this.id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 }

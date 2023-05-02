@@ -16,7 +16,7 @@ public class DAOMensajeImpl implements DAOMensaje{
 	static String url = "jdbc:mysql://127.0.0.1:3306/" + bd;
 
 	@Override
-	public TransferMensaje read(String idUsuario, Date date) {
+	public TransferMensaje read(String idMensaje) {
 		TransferMensaje TM = null;
 		
 		try {
@@ -24,8 +24,7 @@ public class DAOMensajeImpl implements DAOMensaje{
 			String s = "SELECT * FROM mensajes WHERE IdMensaje = ?;";
 			Connection connection = DriverManager.getConnection(url, login, password);
 			PreparedStatement ps = connection.prepareStatement(s);
-			// NO TENGO ID USUARIO EN CADA MENSAJE, CAMBIAR TODO
-			//ps.setString(1, id);
+			ps.setString(1, idMensaje);
 			
 			ResultSet r = ps.executeQuery();
 			
@@ -62,14 +61,14 @@ public class DAOMensajeImpl implements DAOMensaje{
 	}
 
 	@Override
-	public void eliminate(String idUsuario, Date date) {
+	public void eliminate(String idMensaje) {
 		try {
-			String s = "DELETE FROM mensajes WHERE IdUsuario = ?;";
+			String s = "DELETE FROM mensajes WHERE IdMensaje = ?;";
 			
 			Connection connection = DriverManager.getConnection(url, login, password);
 			PreparedStatement ps = connection.prepareStatement(s);
 			
-			ps.setString(1, idUsuario);
+			ps.setString(1, idMensaje);
 			ps.executeUpdate();
 			
 			connection.close();

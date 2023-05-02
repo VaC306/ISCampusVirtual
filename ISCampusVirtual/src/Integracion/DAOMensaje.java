@@ -6,9 +6,9 @@ import Negocio.Foro.TransferMensaje;
 
 public interface DAOMensaje {
 
-	public TransferMensaje read(String idUsuario, Date date);
+	public TransferMensaje read(String idMensaje);
 
 	public void create(TransferMensaje aTNew);
 
-	public void eliminate(String idUsuario, Date date);
+	public void eliminate(String idMensaje);
 }

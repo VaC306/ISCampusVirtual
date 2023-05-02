@@ -9,6 +9,7 @@ import java.util.List;
 
 import Negocio.Aula.TransferAsignatura;
 import Negocio.Aula.TransferTema;
+import Negocio.Foro.TransferForo;
 
 public class DAOAsignaturaImpl implements DAOAsignatura{
 	
@@ -48,8 +49,13 @@ public class DAOAsignaturaImpl implements DAOAsignatura{
 				}
 				
 				TA.setTemas(LT);
+				DAOForo daoF = new DAOForoImpl();
+				TA.setAvisos(daoF.read(id));
+				
 				ps2.close();
 				r2.close();
+				
+			
 			}
 				
 			connection.close();
