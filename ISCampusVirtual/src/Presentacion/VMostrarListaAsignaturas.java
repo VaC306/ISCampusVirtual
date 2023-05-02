@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 
 import Negocio.Aula.TransferAsignatura;
 import Presentacion.Control.Controller;
@@ -58,9 +59,9 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
         	ctrl.accion(Events.ABRIR_VISTA_PERFIL_PROPIO, null);
         });
         
-        panelDeBotones.add(perfil);
-        panelDeBotones.add(cerrarSesion);
-		ventana.add(panelDeBotones, BorderLayout.PAGE_START);
+        panelDeBotones.add(perfil, BorderLayout.EAST);
+        panelDeBotones.add(cerrarSesion, BorderLayout.WEST);
+		ventana.add(panelDeBotones, BorderLayout.CENTER);
         
         // Mostrar la ventana principal
         ventana.setVisible(true);
