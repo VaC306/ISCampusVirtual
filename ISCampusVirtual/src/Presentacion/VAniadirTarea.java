@@ -104,7 +104,6 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 		
 		
 		mainPanel.add(spinnerFecha);
-		mainPanel.add(new JLabel("(Formato: dd/mm/yy)"));
 		
 		mainPanel.add(new JLabel("Tema:"));
 
