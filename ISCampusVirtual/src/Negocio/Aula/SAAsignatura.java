@@ -90,7 +90,7 @@ public class SAAsignatura {
 
 		for(TransferTema tt: tAsignatura.getTemas()) {
 			
-			
+			ret.addAll(tt.getArchivo());
 		}
 		return ret;
 	}
