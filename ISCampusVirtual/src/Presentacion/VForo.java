@@ -15,7 +15,7 @@ import Presentacion.Control.IGUI;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
-import java.util.Date;
+import java.sql.Date;
 
 
 public class VForo extends JFrame implements IGUI{
@@ -71,7 +71,7 @@ public class VForo extends JFrame implements IGUI{
                     areaTexto.append("Usuario: " + mensaje + "\n");
                     campoTexto.setText("");
                     
-                    TransferMensaje tm=new TransferMensaje(new Date(), mensaje, tUsuario.getNombre_Apellidos());
+                    TransferMensaje tm=new TransferMensaje(new Date(System.currentTimeMillis()), mensaje, tUsuario.getNombre_Apellidos());
         			Pair <TransferMensaje, TransferForo> info = new Pair<>(tm, tAsignatura.getAvisos());
 
                     ctrl.accion(Events.ANADIR_MENSAJE, info);
