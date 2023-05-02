@@ -29,6 +29,15 @@ public class TransferApuntes extends TransferArchivo {
 		this.IdApuntes = id;
 	}
 
+	@Override
+	public TransferArchivo addTareas() {
+		return null;
+	}
+
+	@Override
+	public TransferArchivo addApuntes() {
+		return this;
+	}
 
 	
 }

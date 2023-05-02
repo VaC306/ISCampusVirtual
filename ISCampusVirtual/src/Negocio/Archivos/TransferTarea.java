@@ -57,6 +57,16 @@ public class TransferTarea extends TransferArchivo {
 		return dao.read(idArchivo);
 	}
 
+	@Override
+	public TransferArchivo addTareas() {
+		return this;
+	}
+
+	@Override
+	public TransferArchivo addApuntes() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

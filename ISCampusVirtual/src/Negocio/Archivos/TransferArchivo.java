@@ -63,6 +63,8 @@ public abstract class TransferArchivo {
 
 	public abstract TransferArchivo read(String idArchivo);
 
+	public abstract TransferArchivo addTareas();
+	public abstract TransferArchivo addApuntes();
 
 	
 	

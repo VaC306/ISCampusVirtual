@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import Negocio.Archivos.Tipos_archivo;
 import Negocio.Archivos.TransferApuntes;
 import Negocio.Archivos.TransferArchivo;
 import Negocio.Aula.TransferTema;
@@ -34,6 +35,17 @@ public class DAOApuntesImpl implements DAOApuntes {
 				TA.setIdApuntes(r.getString("IdApuntes"));
 				TA.setId(r.getString("IdArchivo"));
 				
+			}
+			
+			s = "SELECT * FROM archivos WHERE IdArchivo = ?";
+			ps = connection.prepareStatement(s);
+			ps.setString(1, titulo);
+			r = ps.executeQuery();
+			
+			if(r.next()) {
+				TA.setNombre(r.getString("Nombre"));
+				TA.setTipo_archivo(Tipos_archivo.valueOf(r.getString("tipo_archivo")));
+				TA.setTemas(r.getString("IdTema"));
 			}
 			
 			connection.close();

@@ -48,6 +48,8 @@ public class DAOTemaImpl implements DAOTema{
 				ps2.close();
 				r2.close();
 				
+				
+				
 				TT = new TransferTema(
 						r.getString("IdTema"),
 						r.getString("Nombre"),
@@ -55,7 +57,10 @@ public class DAOTemaImpl implements DAOTema{
 						LT, // Lista de Archivo
 						r.getString("IdAsignatura") // Asignatura		
 						);
+				System.out.println("El tema " + TT.getNombre() + " tiene " + LT.size() + " archivos " + LT.get(0).getNombre());
 			}
+			
+			
 			
 			connection.close();
 			ps.close();

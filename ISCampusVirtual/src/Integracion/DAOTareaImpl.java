@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import Negocio.Archivos.Tipos_archivo;
 import Negocio.Archivos.TransferArchivo;
 import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.TransferTema;
@@ -32,16 +33,26 @@ public class DAOTareaImpl implements DAOTarea {
 				TT = new TransferTarea(
 						r.getString("IdTarea"),
 						r.getString("IdArchivo"),
-						r.getDate("Fecha_entrega")	
+						null //r.getDate("Fecha_entrega")	
 					);
 			}
 			
+			s = "SELECT * FROM archivos WHERE IdArchivo = ?";
+			ps = connection.prepareStatement(s);
+			ps.setString(1, titulo);
+			r = ps.executeQuery();
+			
+			if(r.next()) {
+				TT.setNombre(r.getString("Nombre"));
+				TT.setTipo_archivo(Tipos_archivo.valueOf(r.getString("tipo_archivo")));
+				TT.setTemas(r.getString("IdTema"));
+			}
 			connection.close();
 			ps.close();
 			r.close();
 			
 		}catch (Exception e){
-			
+			System.out.println(e.getMessage());
 		}
 		return TT;
 	}

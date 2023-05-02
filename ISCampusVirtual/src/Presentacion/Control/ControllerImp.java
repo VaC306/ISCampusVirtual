@@ -305,7 +305,7 @@ public class ControllerImp extends Controller{
 			
 			
 			tAsignatura=(TransferAsignatura) datos;
-			Pair <TransferAsignatura, List<TransferArchivo>> infoApuntes = new Pair<>(tAsignatura, saAsignatura.getApuntes(tAsignatura));
+			Pair <TransferAsignatura, List<TransferApuntes>> infoApuntes = new Pair<>(tAsignatura, saAsignatura.getApuntes(tAsignatura));
 
 			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
 			currentIGUI.update(evento,infoApuntes);

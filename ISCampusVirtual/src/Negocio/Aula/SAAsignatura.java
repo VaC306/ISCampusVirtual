@@ -76,22 +76,31 @@ public class SAAsignatura {
 		List<TransferTarea> ret= new ArrayList<>();
 		
 		for(TransferTema tt: aTNew.getTemas()) {
-			
-			ret.addAll(tt.getTareas());
+			System.out.println(tt.getArchivo().size());
+			for(TransferArchivo t: tt.getArchivo()) {
+				if(t.addTareas() != null) {
+					ret.add((TransferTarea)t.addTareas());
+				}
+			}
 		}
 		
 
 		return ret;
 	}
 
-	public List<TransferArchivo> getApuntes(TransferAsignatura tAsignatura) {
+	public List<TransferApuntes> getApuntes(TransferAsignatura tAsignatura) {
 		
-		List<TransferArchivo> ret= new ArrayList<>();
+		List<TransferApuntes> ret= new ArrayList<>();
 
 		for(TransferTema tt: tAsignatura.getTemas()) {
 			
-			
+			for(TransferArchivo t: tt.getArchivo()) {
+				if(t.addApuntes() != null) {
+					ret.add((TransferApuntes)t.addApuntes());
+				}
+			}
 		}
+		
 		return ret;
 	}
 
