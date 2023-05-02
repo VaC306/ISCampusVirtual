@@ -21,7 +21,6 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
 	private List<TransferAsignatura> listaDeAsignaturas;
 	private JScrollPane scrollPane;
 	private JFrame ventana;
-	private JPanel panelDeBotones;
 	private Controller ctrl;
 	
     JButton cerrarSesion;
@@ -59,9 +58,9 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
         	ctrl.accion(Events.ABRIR_VISTA_PERFIL_PROPIO, null);
         });
         
-        panelDeBotones.add(perfil, BorderLayout.EAST);
-        panelDeBotones.add(cerrarSesion, BorderLayout.WEST);
-		ventana.add(panelDeBotones, BorderLayout.CENTER);
+        PanelBotones.add(perfil, BorderLayout.EAST);
+        PanelBotones.add(cerrarSesion, BorderLayout.WEST);
+		ventana.add(PanelBotones, BorderLayout.CENTER);
         
         // Mostrar la ventana principal
         ventana.setVisible(true);
@@ -81,7 +80,7 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
 	private void updateScrollPane() {
 		
 		
-        panelDeBotones = new JPanel(new GridLayout(0, 1)); // GridLayout con una columna y filas ilimitadas
+        JPanel botonesAsignatras = new JPanel(new GridLayout(0, 1)); // GridLayout con una columna y filas ilimitadas
         listaDeBotones.clear();
         
         for (TransferAsignatura tA: listaDeAsignaturas) {
@@ -93,9 +92,9 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
 				ctrl.accion(Events.ABRIR_VISTA_ASIGNATURA, tA);
 			});            
 			listaDeBotones.add(boton);
-            panelDeBotones.add(boton);
+            botonesAsignatras.add(boton);
         }
-        scrollPane = new JScrollPane(panelDeBotones);
+        scrollPane = new JScrollPane(botonesAsignatras);
 
                
 	}
