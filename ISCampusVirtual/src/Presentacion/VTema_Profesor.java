@@ -23,9 +23,9 @@ public class VTema_Profesor extends VTema{
 	
 	private void initPanelSup() {
 		JPanel panelSup= new JPanel();
-		temaTitulo = new JTextField(tTema.getAsignaturas().getNombre() +" : "+ tTema.getNombre()); 
+		temaTitulo = new JTextField(); 
 		temaTitulo.setSize(new Dimension(70, 70));
-		
+		temaTitulo.setText(tTema.getAsignaturas().getNombre() +" : "+ tTema.getNombre());
 		temaTitulo.addActionListener(new ActionListener()
 		{
 			@Override
