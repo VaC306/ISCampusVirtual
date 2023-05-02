@@ -7,18 +7,22 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 import Integracion.DAOTarea;
 import Integracion.DAOTareaImpl;
 import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.TransferAsignatura;
+import Negocio.Aula.TransferTema;
 import Presentacion.Control.Controller;
 import Presentacion.Control.Events;
 import Presentacion.Control.IGUI;
@@ -32,13 +36,13 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 	private JButton ok;
 	private JFileChooser fc;
 	private JLabel file_name;
+	JComboBox tema;
 	Controller ctrl;
 
 	public VAniadirTarea() {
 		super("Anadir Tarea");
 		fc = new JFileChooser();
 		ctrl=Controller.obtenerInstancia();
-		initIGUI();
 
 	}
 
@@ -46,7 +50,7 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 		JPanel mainPanel = new JPanel(new FlowLayout());
 		setContentPane(mainPanel);
 		setResizable(false);
-		setSize(700, 100);
+		setSize(700, 125);
 		setLocationRelativeTo(null);
 		load = new JButton("Archivo");
 		file_name = new JLabel();
@@ -55,16 +59,22 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 		load.addActionListener((e) -> load());
 		ok = new JButton("OK");
 		ok.addActionListener((e) -> {
-			TransferTarea tt= new TransferTarea();
-					//new TransferTarea;
-			
-			//Primero crear Archivo TODO
-			//tt.setNombre(nombre.getText());
-			tt.setId("AR010");
-			tt.setIdTarea("T004");
-			tt.setFecha_de_entrega(new Date(fecha.getText()));
-			// VER COMO AÑADIR ESTO TODO
-			ctrl.accion(Events.TAREA_ANADIR, tt);
+
+			if (fecha.getText() != "") {
+
+				TransferTarea tt = new TransferTarea();
+				// new TransferTarea;
+
+				// Primero crear Archivo TODO
+				// tt.setNombre(nombre.getText());
+				tt.setId("AR010");
+				tt.setIdTarea("T004");
+				tt.setFecha_de_entrega(new Date(fecha.getText()));
+				tt.setTemas(tema.getSelectedItem().toString());
+				// VER COMO AÑADIR ESTO TODO
+				ctrl.accion(Events.TAREA_ANADIR, tt);
+			}
+
 		});
 		
 		
@@ -78,14 +88,33 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 		fecha = new JTextField(8);
 		mainPanel.add(fecha);
 		mainPanel.add(new JLabel("(Formato: dd/mm/yy)"));
-		mainPanel.add(ok);
+		
+		mainPanel.add(new JLabel("Tema:"));
+
+		DefaultComboBoxModel<String> temas_d = new DefaultComboBoxModel<>();
+		
+		for(TransferTema tt: tAsignatura.getTemas()) {
+			
+			temas_d.addElement(tt.getId());
+
+		}
+		
+		tema = new JComboBox<String>(temas_d);
+		mainPanel.add(tema);
+		
+		
+		JPanel panelOkCancel =new JPanel();
+		
 		JButton cancel= new JButton("Cancelar");
 		cancel.addActionListener(e->{
 			
 			setVisible(false);
 			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA,tAsignatura );
 		});
-		mainPanel.add(cancel);
+		panelOkCancel.add(ok);
+		panelOkCancel.add(cancel);
+		
+		mainPanel.add(panelOkCancel, BorderLayout.PAGE_END);
 		setVisible(true);
 	}
 
@@ -125,7 +154,8 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 		
 		default:
 			tAsignatura=(TransferAsignatura) datos;
-			
+			initIGUI();
+
 		}
 
 		
