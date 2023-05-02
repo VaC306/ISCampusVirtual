@@ -22,7 +22,7 @@ public class TransferTema {
     	this.Id = id;
     	this.Nombre = nombre;
     	this.Numero = numero;
-    	this.archivo = null;
+    	this.archivo = idAr;
     	this.asignatura = null;
     }
 

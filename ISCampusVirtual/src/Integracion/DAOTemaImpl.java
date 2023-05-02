@@ -57,7 +57,6 @@ public class DAOTemaImpl implements DAOTema{
 						LT, // Lista de Archivo
 						r.getString("IdAsignatura") // Asignatura		
 						);
-				System.out.println("El tema " + TT.getNombre() + " tiene " + LT.size() + " archivos " + LT.get(0).getNombre());
 			}
 			
 			

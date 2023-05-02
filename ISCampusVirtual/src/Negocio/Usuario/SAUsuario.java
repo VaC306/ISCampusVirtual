@@ -79,7 +79,6 @@ public class SAUsuario {
 	
 	public List<TransferAsignatura> getAsignaturas(TransferUsuario aTNew){
 		List<TransferAsignatura> LT = new ArrayList();
-		TransferAsignatura TA = new TransferAsignatura();
 		DAOAsignatura dao = new DAOAsignaturaImpl();
 		for (String s: aTNew.getAsignaturas()) {
 			LT.add(dao.read(s));

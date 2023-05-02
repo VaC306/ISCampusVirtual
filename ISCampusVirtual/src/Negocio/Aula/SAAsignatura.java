@@ -76,7 +76,6 @@ public class SAAsignatura {
 		List<TransferTarea> ret= new ArrayList<>();
 		
 		for(TransferTema tt: aTNew.getTemas()) {
-			System.out.println(tt.getArchivo().size());
 			for(TransferArchivo t: tt.getArchivo()) {
 				if(t.addTareas() != null) {
 					ret.add((TransferTarea)t.addTareas());

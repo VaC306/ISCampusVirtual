@@ -53,7 +53,7 @@ public class DAOApuntesImpl implements DAOApuntes {
 			r.close();
 			
 		}catch (Exception e) {
-			
+			System.out.println(e.getMessage());
 		}
 		
 		return TA;
