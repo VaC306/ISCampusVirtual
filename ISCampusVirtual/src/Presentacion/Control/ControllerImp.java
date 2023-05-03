@@ -247,10 +247,11 @@ public class ControllerImp extends Controller{
 
 			
 		case Events.ANADIR_USUARIO:
-			//TODO
-			String id= (String) datos;
+			Pair<String, TransferAsignatura> info6=(Pair<String, TransferAsignatura>) datos;
+			String id= info6.left;
+			tAsignatura=info6.right;
 			tUsuario=FactoriaUsuario.getInstance().crearTransferByCorreo(id);
-			
+			saAsignatura.anadirUsuario(tAsignatura, tUsuario);
 			
 			//se intenta editar el usuario
 			if(tUsuario!=null && saUsuario.editarAsignaturaUsuario(tUsuario,null)) {

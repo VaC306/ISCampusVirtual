@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.mysql.cj.conf.ConnectionUrlParser.Pair;
+
 import Negocio.Aula.TransferAsignatura;
 import Presentacion.Control.Controller;
 import Presentacion.Control.Events;
@@ -41,8 +43,9 @@ public class VAniadirUsuario extends JFrame  implements IGUI{
 		id = new JTextField(30);
 		ok = new JButton("OK");
 		ok.addActionListener((e) -> {
+			Pair<String, TransferAsignatura> info= new Pair<>(id.getText(),tAsignatura );
 			
-			ctrl.accion(Events.ANADIR_USUARIO, id.getText());
+			ctrl.accion(Events.ANADIR_USUARIO, info);
 		});
 
 		mainPanel.add(new JLabel("Correo del usuario: "));
