@@ -18,7 +18,6 @@ public class SAUsuarioTest {
     TransferUsuario tU1 = new TransferAlumno();
     tU1.setId("s");
     tU1.setPassword("s");
-    saUsuario.crearUsuario(tU1);
     assertEquals(true, saUsuario.crearUsuario(tU1));
 
     TransferUsuario tU2 = new TransferAlumno();
