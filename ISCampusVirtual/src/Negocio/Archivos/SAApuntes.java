@@ -2,6 +2,7 @@ package Negocio.Archivos;
 
 import Integracion.DAOApuntes;
 import Integracion.DAOApuntesImpl;
+import Negocio.Aula.TransferTema;
 import Negocio.Usuario.TransferUsuario;
 
 public class SAApuntes {
@@ -10,6 +11,8 @@ public class SAApuntes {
 		transferApuntes.setUsuario(tUsuarioIniciado.getNIF());
 		DAOApuntes dao = new DAOApuntesImpl();
 		dao.create(transferApuntes);
+		
+		
 	
 	}
 

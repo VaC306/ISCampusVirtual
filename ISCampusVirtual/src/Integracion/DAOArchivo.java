@@ -9,4 +9,5 @@ public interface DAOArchivo {
 
 	public void eliminate(String titulo);
 	public abstract int num();
+
 }

@@ -251,11 +251,11 @@ public class ControllerImp extends Controller{
 			String id= info6.left;
 			tAsignatura=info6.right;
 			tUsuario=FactoriaUsuario.getInstance().crearTransferByCorreo(id);
-			saAsignatura.anadirUsuario(tAsignatura, tUsuario);
+			
 			
 			//se intenta editar el usuario
 			if(tUsuario!=null && saUsuario.editarAsignaturaUsuario(tUsuario,null)) {
-				
+				saAsignatura.anadirUsuario(tAsignatura, tUsuario);
 				currentIGUI.update(Events.ANADIR_USUARIO_EXITO, tUsuario);
 			}
 			else {
@@ -317,7 +317,7 @@ public class ControllerImp extends Controller{
 			TransferApuntes transferApuntes= (TransferApuntes) datos;
 			saApuntes.createApuntesconCreador(transferApuntes, tUsuarioIniciado);
 			
-			currentIGUI.update(evento, null);
+			currentIGUI.update(evento, datos);
 
 			
 			break;
@@ -368,9 +368,9 @@ public class ControllerImp extends Controller{
 			tAsignatura=info2.left;
 			
 			// Leer el usuario que hemos creado?
-			saAsignatura.anadirUsuario(tAsignatura, tUsuario);
+		
 			if(saUsuario.crearUsuarioConAsignatura(tUsuario,tAsignatura )) {
-				
+				saAsignatura.anadirUsuario(tAsignatura, tUsuario);
 				currentIGUI.update(Events.CREAR_USUARIO_EXITO, null);
 				currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, tAsignatura);
 

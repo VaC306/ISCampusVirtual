@@ -122,6 +122,7 @@ public class VAniadirApuntes extends JFrame  implements IGUI{
 		switch (event) {
 		case Events.ABRIR_VISTA_ANADIR_APUNTES: 
 			tAsignatura=(TransferAsignatura) datos;
+		
 			initIGUI();
 
 			
@@ -130,6 +131,11 @@ public class VAniadirApuntes extends JFrame  implements IGUI{
 		case Events.ANADIR_APUNTES:
 			JOptionPane.showMessageDialog(this, "Apuntes Añadidos");
 			setVisible(false);
+			for (TransferTema tt: tAsignatura.getTemas() ) {
+				if (tt.getId().equals(((TransferApuntes) datos).getTemas())){
+					tt.getArchivo().add((TransferApuntes) datos);
+				}
+			}
 			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA,tAsignatura );
 
 		}

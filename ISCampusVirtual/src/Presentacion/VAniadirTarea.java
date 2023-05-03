@@ -155,7 +155,11 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 		case Events.TAREA_ANADIDA_EXITO:
 			DAOTarea dao = new DAOTareaImpl();
 			dao.create((TransferTarea) datos);
-			
+			for (TransferTema tt: tAsignatura.getTemas() ) {
+				if (tt.getId().equals(((TransferTarea) datos).getTemas())){
+					tt.getArchivo().add((TransferTarea) datos);
+				}
+			}
 			setVisible(false);
 			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, tAsignatura);
 		break;
