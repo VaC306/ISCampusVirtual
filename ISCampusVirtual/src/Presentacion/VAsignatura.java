@@ -116,7 +116,8 @@ public class VAsignatura implements IGUI {
         
         JButton botonForo= new JButton("Foro");
         botonForo.addActionListener(e->{
-        	
+            ventana.setVisible(false);
+
         	ctrl.accion(Events.ABRIR_VISTA_FORO, asignatura);
         });
         panelDeBotonesInf.add(botonForo);
