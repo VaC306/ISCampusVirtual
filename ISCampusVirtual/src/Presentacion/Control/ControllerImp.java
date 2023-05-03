@@ -354,7 +354,7 @@ public class ControllerImp extends Controller{
 			tAsignatura =(TransferAsignatura) datos;
 			
 			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, datos);
-			currentIGUI.update(Events.ABRIR_VISTA_CREAR_USUARIO, datos);
+			currentIGUI.update(Events.ABRIR_VISTA_CREAR_USUARIO, tAsignatura);
 
 			
 			
