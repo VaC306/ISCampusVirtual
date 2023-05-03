@@ -52,6 +52,15 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
         
         
         JPanel PanelBotones= new JPanel();
+        
+        JButton calendario=new JButton("Calendario");
+        calendario.addActionListener(e->{
+        	
+        	ctrl.accion(Events.ABRIR_VISTA_CALENDARIO, null );
+            ventana.setVisible(false);
+
+
+        });
         JButton perfil= new JButton("Mi Perfil");
         perfil.addActionListener(e->{
         	
@@ -59,6 +68,7 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
         });
         
         PanelBotones.add(perfil, BorderLayout.EAST);
+        PanelBotones.add(calendario, BorderLayout.CENTER);
         PanelBotones.add(cerrarSesion, BorderLayout.WEST);
 		ventana.add(PanelBotones, BorderLayout.PAGE_START);
 		ventana.add(botonesAsignatras, BorderLayout.CENTER);

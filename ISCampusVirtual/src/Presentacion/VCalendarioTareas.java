@@ -142,7 +142,7 @@ public class VCalendarioTareas extends JFrame implements IGUI {
 
 			for (TransferTarea tt : listaTareas) {
 
-				if (tt.getFecha_de_entrega() == new Date(2023, mes, dia)) {
+				if (tt.getFecha_de_entrega().equals(new Date(2023, mes, dia))) {
 
 					JLabel etiquetaX = new JLabel(tt.getNombre(), JLabel.CENTER);
 					etiquetaX.setForeground(Color.RED);
