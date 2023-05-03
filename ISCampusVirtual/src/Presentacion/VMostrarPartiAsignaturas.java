@@ -199,6 +199,8 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 		
 		profesorMostrar = ((TransferAsignatura)datos).getProfesor();//transferAsigunatura.profesor (Lista de profesores)
 		alumnosMostrar = ((TransferAsignatura)datos).getAlumno();//transferAsigunatura.profesor (Lista de profesores)
+
+		initGUI();
 		for(int i =0; i< alumnosMostrar.size();i++)
 		{
 			tableAlumnos.setValueAt(alumnosMostrar.get(i).getNombre_Apellidos(), i, 0);
@@ -206,8 +208,6 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 		}
 		
 		numUsuarios = alumnosMostrar.size();
-		initGUI();
-
 	}
 
 }
