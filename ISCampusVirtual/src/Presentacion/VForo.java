@@ -70,7 +70,7 @@ public class VForo extends JFrame implements IGUI{
             public void actionPerformed(ActionEvent e) {
                 String mensaje = campoTexto.getText();
                 if (!mensaje.equals("")) {
-                    areaTexto.append("Usuario: " + mensaje + "\n");
+                    areaTexto.append("Usuario: " + mensaje +" at "+  new Date(System.currentTimeMillis()).toString()+"\n");
                     campoTexto.setText("");
                     
                     TransferMensaje tm=new TransferMensaje(new Date(System.currentTimeMillis()), mensaje, tUsuario.getNombre_Apellidos());
