@@ -57,7 +57,6 @@ public class VMostrarListaAsignaturas extends JFrame implements IGUI{
         calendario.addActionListener(e->{
         	
         	ctrl.accion(Events.ABRIR_VISTA_CALENDARIO, null );
-            ventana.setVisible(false);
 
 
         });
