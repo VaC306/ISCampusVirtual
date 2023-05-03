@@ -199,7 +199,7 @@ public class ControllerImp extends Controller{
 			
 		case Events.TAREA_ANADIR:
 			tTarea=(TransferTarea) datos;
-			
+			tTarea.setUsuario(tUsuarioIniciado.getNIF());
 			if(SATarea.add(tTarea)) {
 				
 				currentIGUI.update(Events.TAREA_ANADIDA_EXITO, tTarea);
@@ -247,7 +247,7 @@ public class ControllerImp extends Controller{
 
 			
 		case Events.ANADIR_USUARIO:
-			
+			//TODO
 			String id= (String) datos;
 			tUsuario=FactoriaUsuario.getInstance().crearTransferByCorreo(id);
 			

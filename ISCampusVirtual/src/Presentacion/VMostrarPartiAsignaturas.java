@@ -53,7 +53,6 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 	{
 		super ("Participantes de " + nombreAs );
 		ctrl=Controller.obtenerInstancia();
-		initGUI();
 		
 	}
 	
@@ -75,7 +74,7 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 		
 		
 		JPanel panelInfo = new JPanel();
-		JLabel infoUsuatios = new JLabel("Usuarios: " + numUsuarios);
+		JLabel infoUsuatios = new JLabel("Usuarios: " + alumnosMostrar.size()+profesorMostrar.size());
 		panelInfo.add(infoUsuatios);
 		panelInfo.setAlignmentX(LEFT_ALIGNMENT);
 		botPanel.add(panelInfo);
@@ -165,6 +164,14 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 		});
 
 		mainPanel.add(scroll);
+		
+		JButton cerrar = new JButton("Cerrar");
+		cerrar.addActionListener((e)-> {
+			setVisible(false);
+		}
+		);
+		
+		mainPanel.add(cerrar, BorderLayout.PAGE_END);
 		this.setContentPane(mainPanel);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.pack();
@@ -187,8 +194,9 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 		
 		profesorMostrar = ((TransferAsignatura)datos).getProfesor();//transferAsigunatura.profesor (Lista de profesores)
 		alumnosMostrar = ((TransferAsignatura)datos).getAlumno();//transferAsigunatura.profesor (Lista de profesores)
-
 		
+		initGUI();
+
 	}
 
 }
