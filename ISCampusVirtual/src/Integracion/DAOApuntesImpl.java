@@ -46,6 +46,7 @@ public class DAOApuntesImpl implements DAOApuntes {
 				TA.setNombre(r.getString("Nombre"));
 				TA.setTipo_archivo(Tipos_archivo.valueOf(r.getString("tipo_archivo")));
 				TA.setTemas(r.getString("IdTema"));
+				TA.setUsuario(r.getString("NIF"));
 			}
 			
 			connection.close();
@@ -63,7 +64,7 @@ public class DAOApuntesImpl implements DAOApuntes {
 	public void create(TransferApuntes aTNew) {
 		try {
 			
-			String s = "INSERT INTO archivos (IdArchivo, Nombre, tipo_archivo) VALUES (?,?,?);";
+			String s = "INSERT INTO archivos (IdArchivo, Nombre, tipo_archivo, IdTema,NIF) VALUES (?,?,?,?,?);";
 			
 			Connection connection = DriverManager.getConnection(url, login, password);
 			PreparedStatement ps = connection.prepareStatement(s);
@@ -71,6 +72,8 @@ public class DAOApuntesImpl implements DAOApuntes {
 			ps.setString(1, aTNew.getId());
 			ps.setString(2, aTNew.getNombre());
 			ps.setString(3, aTNew.getTipo_archivo().name());
+			ps.setString(4, aTNew.getTemas());
+			ps.setString(5, aTNew.getUsuario());
 			ps.executeUpdate();
 			
 			s = "INSERT INTO Apuntes (IdApuntes, IdArchivo) VALUES (?,?);";
@@ -89,8 +92,27 @@ public class DAOApuntesImpl implements DAOApuntes {
 	}
 
 	@Override
-	public void eliminate(TransferTema tema, String titulo) {
-		// TODO Auto-generated method stub
+	public void eliminate(String titulo) {
+		try {
+			
+			String s = "DELETE FROM apuntes WHERE IdArchivo = ?";
+			 
+			Connection connection = DriverManager.getConnection(url, login, password);
+			PreparedStatement ps = connection.prepareStatement(s);
+			ps.setString(1, titulo);
+			ps.executeUpdate();
+			
+			s = "DELETE FROM archivos WHERE IdArchivo = ?;";
+			ps = connection.prepareStatement(s);
+			ps.setString(1, titulo);
+			ps.executeUpdate();
+			
+			connection.close();
+			ps.close();
+		
+		}catch(Exception e) {
+			
+		}
 		
 	}
 

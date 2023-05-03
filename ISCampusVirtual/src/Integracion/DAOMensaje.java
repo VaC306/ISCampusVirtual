@@ -11,4 +11,6 @@ public interface DAOMensaje {
 	public void create(TransferMensaje aTNew);
 
 	public void eliminate(String idMensaje);
+	
+	public int count();
 }

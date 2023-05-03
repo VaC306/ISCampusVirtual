@@ -195,18 +195,22 @@ public class DAOAlumnoImpl implements DAOAlumno{
 	@Override
 	public void create(TransferUsuario aTNew) {
 		
-		TransferAlumno TA = new TransferAlumno();
-		
-		TA.setNIF(aTNew.getNIF());
-		TA.setNombre_Apellidos(aTNew.getNombre_Apellidos());
-		TA.setCorreo_electronico(aTNew.getCorreo_electronico());
-		TA.setPassword(aTNew.getPassword());
-		TA.setId("AL005");
-		
-		
-		this.create(TA);
-		
-		
+	}
+	public void updateAsignatura(String NIF, String IdAsignatura) {
+		try {
+			
+			String s = "UPDATE alumnos SET IdAsignatura = ? WHERE NIF = ?;" ;
+			Connection connection = DriverManager.getConnection(url, login, password);
+			PreparedStatement ps = connection.prepareStatement(s);
+			ps.setString(1,  IdAsignatura);
+			ps.setString(2,NIF);
+			ps.executeUpdate();
+			
+			connection.close();
+			ps.close();
+		}catch(Exception e) {
+			
+		}
 	}
 
 }

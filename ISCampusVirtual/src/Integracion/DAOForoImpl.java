@@ -72,4 +72,21 @@ public class DAOForoImpl implements DAOForo{
 		
 	}
 
+	@Override
+	public void updateNum(int x, String id) {
+		try {
+		String s = "UPDATE foros SET Num_mensajes = ? WHERE IdForo = ?;";
+		Connection connection = DriverManager.getConnection(url, login, password);
+		PreparedStatement ps = connection.prepareStatement(s);
+		ps.setInt(1, x);
+		ps.setString(2, id);
+		ps.executeUpdate();
+		
+		connection.close();
+		ps.close();
+		}catch(Exception e) {
+			
+		}
+	}
+
 }

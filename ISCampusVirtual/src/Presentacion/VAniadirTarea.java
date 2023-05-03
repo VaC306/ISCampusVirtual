@@ -72,9 +72,9 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 			TransferTarea tt2 = new TransferTarea();
 				
 			DAOTarea daoT = new DAOTareaImpl();
-			DAOApuntes daoA = new DAOApuntesImpl();
-				tt2.setId("TAR00" + daoT.num());
-				tt2.setIdTarea("T00"+ daoT.num());
+			
+				tt2.setId("TAR00" + (daoT.num()+1));
+				tt2.setIdTarea("T00"+ (daoT.num()+1));
 				//tt2.setFecha_de_entrega((Date) spinnerFecha.getValue());
 				tt2.setTemas((String) tema.getSelectedItem());
 				tt2.setNombre(nombre.getText());

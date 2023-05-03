@@ -253,7 +253,7 @@ public class ControllerImp extends Controller{
 			
 			
 			//se intenta editar el usuario
-			if(tUsuario!=null && saUsuario.editarUsuario(tUsuario)) {
+			if(tUsuario!=null && saUsuario.editarAsignaturaUsuario(tUsuario,null)) {
 				
 				currentIGUI.update(Events.ANADIR_USUARIO_EXITO, tUsuario);
 			}
@@ -366,10 +366,9 @@ public class ControllerImp extends Controller{
 			tAsignatura=info2.left;
 			
 			// Leer el usuario que hemos creado?
-			
+			saAsignatura.anadirUsuario(tAsignatura, tUsuario);
 			if(saUsuario.crearUsuarioConAsignatura(tUsuario,tAsignatura )) {
 				
-				saAsignatura.anadirUsuario(tAsignatura, tUsuario);
 				currentIGUI.update(Events.CREAR_USUARIO_EXITO, null);
 				currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, tAsignatura);
 

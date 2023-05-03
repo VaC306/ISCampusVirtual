@@ -37,7 +37,6 @@ public class SAUsuario {
 		
 		//si no existe no se elimina
 		if(transfer != null) {
-			System.out.println(transfer.getNIF());
 			dao.eliminate(transfer.getNIF());
 			
 			return true;
@@ -77,6 +76,18 @@ public class SAUsuario {
 		return false;
 	}	
 	
+	public boolean editarAsignaturaUsuario (TransferUsuario aTNew,String idAsignatura) {
+		
+		
+		if(aTNew!=null) {
+			DAOUsuario dao= FactoriaUsuario.getInstance().crearDAO(aTNew.getCorreo_electronico());
+			dao.updateAsignatura(aTNew.getNIF(), idAsignatura );
+			
+			return true;
+		}
+		return false;
+	}	
+	
 	public List<TransferAsignatura> getAsignaturas(TransferUsuario aTNew){
 		List<TransferAsignatura> LT = new ArrayList();
 		DAOAsignatura dao = new DAOAsignaturaImpl();
@@ -110,10 +121,9 @@ public class SAUsuario {
 	public boolean crearUsuarioConAsignatura(TransferUsuario tUsuario, TransferAsignatura tAsignatura) {
 		
 		DAOUsuario dao= FactoriaUsuario.getInstance().crearDAO(tUsuario.getCorreo_electronico());
-		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransferByCorreo(tUsuario.getCorreo_electronico());
 		
 		//como no existe se añade a la bd
-		if(transfer==null) {
+		if(tUsuario != null) {
 			
 			dao.create(tUsuario);
 			

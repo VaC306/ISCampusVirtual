@@ -32,10 +32,11 @@ public class DAOMensajeImpl implements DAOMensaje{
 				TM = new TransferMensaje(
 						r.getDate("Fecha"), 
 						r.getString("Cuerpo"),
-						null
-						//r.getUsuario()
-						//null
+						r.getString("Nombre_User")
 					);
+				
+				TM.setIdMensaje(r.getString("IdMensaje"));
+				TM.setIdForo(r.getString("IdForo"));
 			}
 			
 			connection.close();
@@ -53,10 +54,19 @@ public class DAOMensajeImpl implements DAOMensaje{
 	public void create(TransferMensaje aTNew) {
 		try {
 			
-			String s = "INSERT INTO mensajes () VALUES (?,?,?,?)";
+			String s = "INSERT INTO mensajes (IdMensaje, Fecha, Cuerpo, IdForo, Nombre_User) VALUES (?,?,?,?,?)";
+			Connection connection = DriverManager.getConnection(url, login, password);
+			PreparedStatement ps = connection.prepareStatement(s);
+			ps.setString(1, aTNew.getIdMensaje());
+			ps.setString(2, null);
+			ps.setString(3, aTNew.getCuerpo());
+			ps.setString(4, aTNew.getIdForo());
+			ps.setString(5, aTNew.getUsuario());
+			
+			ps.executeUpdate();
 			
 		}catch(Exception e) {
-			
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -77,6 +87,29 @@ public class DAOMensajeImpl implements DAOMensaje{
 		}catch(Exception e) {
 			
 		}
+	}
+
+	@Override
+	public int count() {
+		int x = 0;
+		try {
+		String s ="SELECT count(*) FROM mensajes";
+		
+		Connection connection = DriverManager.getConnection(url, login, password);
+		PreparedStatement ps = connection.prepareStatement(s);
+		ResultSet r = ps.executeQuery();
+		if (r.next()) {
+			x = r.getInt(1);
+		}
+
+		connection.close();
+		ps.close();
+		r.close();
+		
+		}catch (Exception e) {
+			
+		}
+		return x;
 	}
 
 }

@@ -63,7 +63,7 @@ public class DAOTareaImpl implements DAOTarea {
 	public void create(TransferTarea aTNew) {
 		try {
 			
-			String s = "INSERT INTO archivos (IdArchivo, Nombre, tipo_archivo) VALUES (?,?,?);";
+			String s = "INSERT INTO archivos (IdArchivo, Nombre, tipo_archivo, IdTema, NIF) VALUES (?,?,?,?,?);";
 			
 			Connection connection = DriverManager.getConnection(url, login, password);
 			PreparedStatement ps = connection.prepareStatement(s);
@@ -71,10 +71,12 @@ public class DAOTareaImpl implements DAOTarea {
 			ps.setString(1, aTNew.getId());
 			ps.setString(2, aTNew.getNombre());
 			ps.setString(3, aTNew.getTipo_archivo().name());
+			ps.setString(4, aTNew.getTemas());
+			ps.setString(5, aTNew.getUsuario());
 			ps.executeUpdate();
 			
 			
-			s ="INSERT INTO tareas (IdTarea, IdArchivo, Fecha_entrega, IdTema, NIF) VALUES (?,?,?,?,?);";
+			s ="INSERT INTO tareas (IdTarea, IdArchivo, Fecha_entrega) VALUES (?,?,?);";
 			
 			ps = connection.prepareStatement(s);
 			
@@ -82,8 +84,6 @@ public class DAOTareaImpl implements DAOTarea {
 			ps.setString(2, aTNew.getId());
 			//ps.setDate(3, aTNew.getFecha_de_entrega());
 			ps.setDate(3,null);
-			ps.setString(4, aTNew.getTemas());
-			ps.setString(5, null); // NIF
 			ps.executeUpdate();
 			
 			connection.close();
@@ -117,12 +117,6 @@ public class DAOTareaImpl implements DAOTarea {
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
-	}
-
-	@Override
-	public void eliminate(TransferTema tema, String titulo) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

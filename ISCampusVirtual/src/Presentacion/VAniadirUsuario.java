@@ -38,7 +38,7 @@ public class VAniadirUsuario extends JFrame  implements IGUI{
 		setContentPane(mainPanel);
 		setLocationRelativeTo(null);
 
-		id = new JTextField(8);
+		id = new JTextField(30);
 		ok = new JButton("OK");
 		ok.addActionListener((e) -> {
 			

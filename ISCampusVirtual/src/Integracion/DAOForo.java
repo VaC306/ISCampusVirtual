@@ -12,4 +12,6 @@ public interface DAOForo {
 	public void create(TransferForo aTNew);
 
 	public void eliminate(String idForo);
+
+	public void updateNum(int x, String id);
 }

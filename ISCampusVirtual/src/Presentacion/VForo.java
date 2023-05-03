@@ -4,6 +4,8 @@ import javax.swing.*;
 
 import com.mysql.cj.conf.ConnectionUrlParser.Pair;
 
+import Integracion.DAOMensaje;
+import Integracion.DAOMensajeImpl;
 import Negocio.Aula.TransferAsignatura;
 import Negocio.Foro.TransferForo;
 import Negocio.Foro.TransferMensaje;
@@ -72,6 +74,9 @@ public class VForo extends JFrame implements IGUI{
                     campoTexto.setText("");
                     
                     TransferMensaje tm=new TransferMensaje(new Date(System.currentTimeMillis()), mensaje, tUsuario.getNombre_Apellidos());
+                    tm.setIdForo(tAsignatura.getAvisos().getID());
+                    DAOMensaje daoM = new DAOMensajeImpl();
+                    tm.setIdMensaje("M00"+ (daoM.count()+1));
         			Pair <TransferMensaje, TransferForo> info = new Pair<>(tm, tAsignatura.getAvisos());
 
                     ctrl.accion(Events.ANADIR_MENSAJE, info);
@@ -94,7 +99,7 @@ public class VForo extends JFrame implements IGUI{
 
 	private void updateForo() {
 		for(TransferMensaje tm: mensajes) {
-            areaTexto.append("Usuario: " + tm.getUsuario() +" at "+ tm.getFecha().toString() + "\n");
+            areaTexto.append("Usuario: " + tm.getUsuario() +" at "+ tm.getFecha().toString()+ "\n");
             areaTexto.append(tm.getCuerpo() + "\n"+ "\n");
 		}
 	}

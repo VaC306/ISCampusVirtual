@@ -36,7 +36,7 @@ public class VEliminarUsuario extends JFrame  implements IGUI{
 		JPanel mainPanel = new JPanel(new FlowLayout());
 		setContentPane(mainPanel);
 
-		id = new JTextField(8);
+		id = new JTextField(30);
 		ok = new JButton("OK");
 		ok.addActionListener((e) -> {
 			

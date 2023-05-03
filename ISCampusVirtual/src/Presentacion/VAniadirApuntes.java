@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Integracion.DAOApuntes;
+import Integracion.DAOApuntesImpl;
 import Negocio.Archivos.Tipos_archivo;
 import Negocio.Archivos.TransferApuntes;
 import Negocio.Archivos.TransferTarea;
@@ -58,6 +60,10 @@ public class VAniadirApuntes extends JFrame  implements IGUI{
 		ok = new JButton("OK");
 		ok.addActionListener((e) -> {
 			tApuntes= new TransferApuntes();
+			DAOApuntes daoA = new DAOApuntesImpl();
+			
+			tApuntes.setId("AAR00"+(daoA.num()+1));
+			tApuntes.setIdApuntes("AP00"+(daoA.num()+1));
 			tApuntes.setNombre(nombre.getText());
 			tApuntes.setTemas(tema.getSelectedItem().toString());
 			tApuntes.setTipo_archivo(Tipos_archivo.valueOf(tipo_archivo.getText()));

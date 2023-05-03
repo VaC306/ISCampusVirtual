@@ -206,4 +206,23 @@ public class DAOProfesorImpl implements DAOProfesor {
 		this.create(TP);
 	}
 
+	@Override
+	public void updateAsignatura(String NIF, String IdAsignatura) {
+try {
+			
+			String s = "UPDATE profesores SET IdAsignatura = ? WHERE NIF = ?;" ;
+			Connection connection = DriverManager.getConnection(url, login, password);
+			PreparedStatement ps = connection.prepareStatement(s);
+			ps.setString(1,  IdAsignatura);
+			ps.setString(2,NIF);
+			ps.executeUpdate();
+			
+			connection.close();
+			ps.close();
+		}catch(Exception e) {
+			
+		}
+		
+	}
+
 }

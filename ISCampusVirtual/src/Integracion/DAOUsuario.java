@@ -12,5 +12,7 @@ public interface DAOUsuario {
 
 	public abstract void create(TransferUsuario aTNew);
 
+	public abstract void updateAsignatura(String NIF, String IdAsignatura);
+
 
 }

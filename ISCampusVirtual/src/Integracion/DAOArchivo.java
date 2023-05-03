@@ -7,6 +7,6 @@ public interface DAOArchivo {
 	
 	public TransferArchivo read(String titulo);
 
-	public void eliminate(TransferTema tema, String titulo);
+	public void eliminate(String titulo);
 	public abstract int num();
 }

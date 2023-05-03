@@ -7,8 +7,6 @@ import Negocio.Usuario.TransferUsuario;
 public class SAApuntes {
 	//TODO
 	public void createApuntesconCreador(TransferApuntes transferApuntes, TransferUsuario tUsuarioIniciado) {
-		transferApuntes.setId("AAR00" + "");
-		transferApuntes.setIdApuntes("AP00"+"");
 		transferApuntes.setUsuario(tUsuarioIniciado.getNIF());
 		DAOApuntes dao = new DAOApuntesImpl();
 		dao.create(transferApuntes);
@@ -16,8 +14,12 @@ public class SAApuntes {
 	}
 
 	public boolean eliminarApuntes(String idApuntes1) {
-		// TODO Auto-generated method stub
-		return false;
+		DAOApuntes dao = new DAOApuntesImpl();
+		if (!idApuntes1.equals(null)) {
+			dao.eliminate(idApuntes1);
+			return true;
+		}else
+			return false;
 	}
 
 }

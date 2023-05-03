@@ -41,7 +41,7 @@ public class DAOArchivoImpl implements DAOArchivo{
 	}
 
 	@Override
-	public void eliminate(TransferTema tema, String titulo) {
+	public void eliminate(String titulo) {
 		try {
 			
 			String s = "DELETE FROM archivos WHERE Nombre = ?;";

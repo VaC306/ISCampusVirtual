@@ -13,6 +13,10 @@ public class TransferMensaje {
 	private String usuario;
 	
 	private String titulo;
+	
+	private String IdMensaje;
+	
+	private String IdForo;
 
 	public TransferMensaje(Date fecha, String cuerpo, String usuario) {
 		super();
@@ -43,6 +47,22 @@ public class TransferMensaje {
 
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+	
+	public String getIdMensaje() {
+		return this.IdMensaje;
+	}
+	
+	public void setIdMensaje(String id) {
+		this.IdMensaje = id;
+	}
+	
+	public String getIdForo() {
+		return this.IdForo;
+	}
+	
+	public void setIdForo(String id) {
+		this.IdForo = id;
 	}
 
 }
