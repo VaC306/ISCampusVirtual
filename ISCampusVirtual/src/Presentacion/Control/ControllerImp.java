@@ -279,9 +279,10 @@ public class ControllerImp extends Controller{
 			
 
 		case Events.ABRIR_VISTA_ELIMINAR_USUARIO:
+			tAsignatura=(TransferAsignatura) datos;
 			
 			currentIGUI=FactoriaVistas.getInstance().crearVista(evento, null);
-			
+			currentIGUI.update(evento, tAsignatura);
 			break;
 			
 		case Events.ELIMINAR_USUARIO:
