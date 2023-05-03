@@ -1,3 +1,5 @@
+package Negocio.Usuario;
+
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,7 +10,7 @@ import Negocio.Usuario.SAUsuario;
 import Negocio.Usuario.TransferAlumno;
 import Negocio.Usuario.TransferUsuario;
 
-public class UsuarioTest {
+public class SAUsuarioTest {
 
   @Test
   public void test() {
