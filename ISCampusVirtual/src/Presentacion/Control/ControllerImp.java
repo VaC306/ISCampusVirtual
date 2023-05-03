@@ -254,7 +254,7 @@ public class ControllerImp extends Controller{
 			
 			
 			//se intenta editar el usuario
-			if(tUsuario!=null && saUsuario.editarAsignaturaUsuario(tUsuario,null)) {
+			if(tUsuario!=null && saUsuario.editarAsignaturaUsuario(tUsuario,tAsignatura.getID())) {
 				saAsignatura.anadirUsuario(tAsignatura, tUsuario);
 				currentIGUI.update(Events.ANADIR_USUARIO_EXITO, tUsuario);
 			}
