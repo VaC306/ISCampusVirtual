@@ -84,14 +84,11 @@ public class VAniadirUsuario extends JFrame  implements IGUI{
 		
 		case Events.ANADIR_USUARIO_EXITO:
 			setVisible(false);
-<<<<<<< HEAD
 			DAOAlumno daoA = new DAOAlumnoImpl();
 			((TransferAlumno)datos).setId("AL00"+ (daoA.count()+1));
 			daoA.createStudent((TransferAlumno)datos, tAsignatura.getID());
-=======
 
 			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, tAsignatura);
->>>>>>> branch 'master' of https://github.com/VaC306/ISCampusVirtual.git
 			
 			tAsignatura.getAlumno().add((TransferAlumno)datos);
 

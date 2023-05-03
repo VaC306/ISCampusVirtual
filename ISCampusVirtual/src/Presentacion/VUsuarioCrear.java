@@ -183,6 +183,8 @@ public class VUsuarioCrear extends JFrame implements IGUI{
 		case Events.CREAR_USUARIO_EXITO:
 			setVisible(false);
 			JOptionPane.showMessageDialog(this, "Usuario creado");
+			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, tAsignatura);
+
 			break;
 		}
 	
