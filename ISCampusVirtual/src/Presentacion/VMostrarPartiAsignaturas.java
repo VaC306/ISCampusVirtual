@@ -149,21 +149,7 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 			}
 			else if(filtroRoles.getSelectedIndex() == 0)
 			{
-				for(int i =0; i< alumnosMostrar.size();i++)
-				{
-					tableAlumnos.setValueAt(alumnosMostrar.get(i).getNombre_Apellidos(), i, 0);
-					tableAlumnos.setValueAt("Alumno", i, 1);
-
-				}
-				int j= 0;
-				for(int i = alumnosMostrar.size(); i< profesorMostrar.size()+alumnosMostrar.size();i++) 
-				{
-					tableAlumnos.setValueAt(profesorMostrar.get(j).getNombre_Apellidos(), i, 0);
-					tableAlumnos.setValueAt("Profesor", i, 0);
-
-					j++;
-				}
-				numUsuarios = alumnosMostrar.size() + profesorMostrar.size();
+				mostrarAmbos();
 				
 			}
 		});
@@ -184,6 +170,25 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 		
 	}
 
+	private void mostrarAmbos() {
+		for(int i =0; i< alumnosMostrar.size();i++)
+		{
+			tableAlumnos.setValueAt(alumnosMostrar.get(i).getNombre_Apellidos(), i, 0);
+			tableAlumnos.setValueAt("Alumno", i, 1);
+
+		}
+		int j= 0;
+		for(int i = alumnosMostrar.size(); i< profesorMostrar.size()+alumnosMostrar.size();i++) 
+		{
+			tableAlumnos.setValueAt(profesorMostrar.get(j).getNombre_Apellidos(), i, 0);
+			tableAlumnos.setValueAt("Profesor", i, 0);
+
+			j++;
+		}
+		numUsuarios = alumnosMostrar.size() + profesorMostrar.size();		
+	}
+
+
 	private JPanel createPanel(Color color, int x, int y) {
 
 		JPanel panel;
@@ -201,13 +206,7 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 		alumnosMostrar = ((TransferAsignatura)datos).getAlumno();//transferAsigunatura.profesor (Lista de profesores)
 
 		initGUI();
-		for(int i =0; i< alumnosMostrar.size();i++)
-		{
-			tableAlumnos.setValueAt(alumnosMostrar.get(i).getNombre_Apellidos(), i, 0);
-			
-		}
-		
-		numUsuarios = alumnosMostrar.size();
+		mostrarAmbos();
 	}
 
 }
