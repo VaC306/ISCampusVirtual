@@ -130,7 +130,8 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 				for(int i =0; i< alumnosMostrar.size();i++)
 				{
 					tableAlumnos.setValueAt(alumnosMostrar.get(i).getNombre_Apellidos(), i, 0);
-					
+					tableAlumnos.setValueAt("Alumno", i, 1);
+
 				}
 				
 				numUsuarios = alumnosMostrar.size();
@@ -140,7 +141,8 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 				for(int i =0; i< profesorMostrar.size();i++) 
 				{
 					tableAlumnos.setValueAt(profesorMostrar.get(i).getNombre_Apellidos(), i, 0);
-					
+					tableAlumnos.setValueAt("Profesor", i, 1);
+
 				}
 				
 				numUsuarios = profesorMostrar.size();
@@ -150,12 +152,15 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 				for(int i =0; i< alumnosMostrar.size();i++)
 				{
 					tableAlumnos.setValueAt(alumnosMostrar.get(i).getNombre_Apellidos(), i, 0);
-					
+					tableAlumnos.setValueAt("Alumno", i, 1);
+
 				}
 				int j= 0;
 				for(int i = alumnosMostrar.size(); i< profesorMostrar.size()+alumnosMostrar.size();i++) 
 				{
 					tableAlumnos.setValueAt(profesorMostrar.get(j).getNombre_Apellidos(), i, 0);
+					tableAlumnos.setValueAt("Profesor", i, 0);
+
 					j++;
 				}
 				numUsuarios = alumnosMostrar.size() + profesorMostrar.size();
