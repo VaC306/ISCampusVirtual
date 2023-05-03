@@ -46,8 +46,5 @@ public abstract class DAOUsuarioImpl implements DAOUsuario {
 		return null;
 	}
 
-	@Override
-	public abstract void create(TransferUsuario aTNew);
-
 	
 }

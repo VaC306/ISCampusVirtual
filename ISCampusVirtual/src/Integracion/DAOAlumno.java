@@ -13,5 +13,6 @@ public interface DAOAlumno extends DAOUsuario {
 	
 	//public abstract TransferAlumno readById(String id);
 
-	public abstract void create(TransferAlumno aTNew);	
+	public void createStudent(TransferAlumno aTNew, String asignatura);
+	public int count();
 }

@@ -1,5 +1,6 @@
 package Integracion;
 
+import Negocio.Usuario.TransferAlumno;
 import Negocio.Usuario.TransferUsuario;
 
 public interface DAOUsuario {
@@ -10,9 +11,9 @@ public interface DAOUsuario {
 
 	public abstract TransferUsuario readByCorreo(String id);
 
-	public abstract void create(TransferUsuario aTNew);
-
 	public abstract void updateAsignatura(String NIF, String IdAsignatura);
+
+	public abstract void create(TransferAlumno tUsuario);
 
 
 }

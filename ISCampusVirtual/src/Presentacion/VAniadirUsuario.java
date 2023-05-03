@@ -11,7 +11,12 @@ import javax.swing.JTextField;
 
 import com.mysql.cj.conf.ConnectionUrlParser.Pair;
 
+import Integracion.DAOAlumno;
+import Integracion.DAOAlumnoImpl;
+import Negocio.Archivos.TransferTarea;
 import Negocio.Aula.TransferAsignatura;
+import Negocio.Aula.TransferTema;
+import Negocio.Usuario.TransferAlumno;
 import Presentacion.Control.Controller;
 import Presentacion.Control.Events;
 import Presentacion.Control.IGUI;
@@ -73,15 +78,21 @@ public class VAniadirUsuario extends JFrame  implements IGUI{
 			setVisible(false);
 			JOptionPane.showMessageDialog(this, "Usuario no existente: crear usuario");
 
-			ctrl.accion(Events.ABRIR_VISTA_CREAR_USUARIO, datos);
+			ctrl.accion(Events.ABRIR_VISTA_CREAR_USUARIO, tAsignatura);
 
 		break;
 		
 		case Events.ANADIR_USUARIO_EXITO:
 			setVisible(false);
-
-			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, datos);
+			DAOAlumno daoA = new DAOAlumnoImpl();
+			((TransferAlumno)datos).setId("AL00"+ (daoA.count()+1));
+			daoA.createStudent((TransferAlumno)datos, tAsignatura.getID());
 			
+			tAsignatura.getAlumno().add((TransferAlumno)datos);
+
+			
+			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, tAsignatura);
+			break;
 		default:
 			tAsignatura=(TransferAsignatura) datos;
 			

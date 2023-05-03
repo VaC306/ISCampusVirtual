@@ -192,10 +192,6 @@ public class DAOAlumnoImpl implements DAOAlumno{
 		return TA;
 	}
 
-	@Override
-	public void create(TransferUsuario aTNew) {
-		
-	}
 	public void updateAsignatura(String NIF, String IdAsignatura) {
 		try {
 			
@@ -210,6 +206,50 @@ public class DAOAlumnoImpl implements DAOAlumno{
 			ps.close();
 		}catch(Exception e) {
 			
+		}
+	}
+
+	@Override
+	public int count() {
+		int x = 0;
+		try {
+		String s ="SELECT count(*) FROM alumnos";
+		
+		Connection connection = DriverManager.getConnection(url, login, password);
+		PreparedStatement ps = connection.prepareStatement(s);
+		ResultSet r = ps.executeQuery();
+		if (r.next()) {
+			x = r.getInt(1);
+		}
+
+		connection.close();
+		ps.close();
+		r.close();
+		
+		}catch (Exception e) {
+			
+		}
+		return x;
+	}
+
+	@Override
+	public void createStudent(TransferAlumno aTNew, String asignatura) {
+		try {
+			String s = "INSERT INTO alumnos (IdAlumno, NIF, Delegado, IdAsignatura) VALUES (?,?,?,?)";
+			Connection connection = DriverManager.getConnection(url, login, password);
+			PreparedStatement ps = connection.prepareStatement(s);
+			
+			ps.setString(1, aTNew.getId());
+			ps.setString(2, aTNew.getNIF());
+			ps.setBoolean(3, aTNew.isDelegado());
+			ps.setString(4, asignatura);
+			ps.executeUpdate();
+			
+			connection.close();
+			ps.close();
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
 		}
 	}
 

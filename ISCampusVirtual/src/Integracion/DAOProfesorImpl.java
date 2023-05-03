@@ -193,20 +193,6 @@ public class DAOProfesorImpl implements DAOProfesor {
 	}
 
 	@Override
-	public void create(TransferUsuario aTNew) {
-	TransferProfesor TP = new TransferProfesor();
-		
-		TP.setNIF(aTNew.getNIF());
-		TP.setNombre_Apellidos(aTNew.getNombre_Apellidos());
-		TP.setCorreo_electronico(aTNew.getCorreo_electronico());
-		TP.setPassword(aTNew.getPassword());
-		TP.setId("P005");
-		
-		
-		this.create(TP);
-	}
-
-	@Override
 	public void updateAsignatura(String NIF, String IdAsignatura) {
 try {
 			
@@ -222,6 +208,12 @@ try {
 		}catch(Exception e) {
 			
 		}
+		
+	}
+
+	@Override
+	public void create(TransferAlumno tUsuario) {
+		// TODO Auto-generated method stub
 		
 	}
 

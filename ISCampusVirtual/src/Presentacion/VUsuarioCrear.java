@@ -30,7 +30,7 @@ import Presentacion.Control.IGUI;
 public class VUsuarioCrear extends JFrame implements IGUI{
 	
 	protected Controller ctrl;
-	TransferUsuario usuario;
+	private TransferAlumno usuario;
 	private JPanel fieldsPanel;
 	private JPanel buttonsPanel;
 	private JLabel nombre;
@@ -181,10 +181,9 @@ public class VUsuarioCrear extends JFrame implements IGUI{
 			break;
 
 		case Events.CREAR_USUARIO_EXITO:
-			ctrl.accion(Events.ABRIR_VISTA_USUARIO, usuario);
 			setVisible(false);
 			JOptionPane.showMessageDialog(this, "Usuario creado");
-
+			break;
 		}
 	
 	}

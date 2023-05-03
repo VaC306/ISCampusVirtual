@@ -53,7 +53,6 @@ public class SAUsuario {
 		//como no existe se añade a la bd
 		if(transfer==null) {
 			
-			dao.create(aTNew);
 			
 			return true;
 		}
@@ -69,7 +68,6 @@ public class SAUsuario {
 		if(transfer!=null) {
 			
 			dao.eliminate(aTNew.getNIF());
-			dao.create(aTNew);
 			
 			return true;
 		}
@@ -124,8 +122,8 @@ public class SAUsuario {
 		
 		//como no existe se añade a la bd
 		if(tUsuario != null) {
-			
-			dao.create(tUsuario);
+			tUsuario.getAsignaturas().add(tAsignatura.getID());
+			dao.create((TransferAlumno)tUsuario);
 			
 			return true;
 		}

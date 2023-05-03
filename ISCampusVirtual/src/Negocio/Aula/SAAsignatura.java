@@ -106,6 +106,7 @@ public class SAAsignatura {
 
 	public void anadirUsuario(TransferAsignatura tAsignatura, TransferUsuario tUsuario) {
 		tUsuario.getAsignaturas().add(tAsignatura.getID());
+		tAsignatura.getAlumno().add((TransferAlumno)tUsuario);
 	}
 	
 }
