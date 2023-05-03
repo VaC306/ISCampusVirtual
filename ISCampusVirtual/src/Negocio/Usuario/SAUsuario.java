@@ -130,8 +130,6 @@ public class SAUsuario {
 			return true;
 		}
 		
-		tUsuario.getAsignaturas().add(tAsignatura.getID());
-		
 		return false;		
 	}
 }

@@ -15,6 +15,8 @@ import javax.swing.table.DefaultTableModel;
 
 import com.mysql.cj.conf.ConnectionUrlParser.Pair;
 
+import Integracion.DAOArchivo;
+import Integracion.DAOArchivoImpl;
 import Negocio.Archivos.TransferArchivo;
 import Negocio.Aula.TransferAsignatura;
 import Negocio.Aula.TransferTema;
@@ -56,8 +58,7 @@ public class VTema extends JFrame  implements IGUI{
 		DefaultTableModel modeloArchivos = new DefaultTableModel();
 		modeloArchivos.addColumn("Archivo");
 		modeloArchivos.addColumn("Usuario");
-		
-		
+				
 		for(TransferArchivo tA:tTema.getArchivo()) {
 			if(tA!=null)
 			modeloArchivos.addRow(new String[] { tA.getNombre(), tA.getUsuario()});	

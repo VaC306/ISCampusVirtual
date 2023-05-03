@@ -48,7 +48,6 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 
 	private String nombres[] = { "Alumno 1", "Alumno 2", "Profesor 1" };
 	
-	
 	public VMostrarPartiAsignaturas() 
 	{
 		super ("Participantes de " + nombreAs );
@@ -106,7 +105,7 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 		
 		//TextArea Nombres
 		tableModel = new DefaultTableModel(new Object[] { "Nombres: ", "Roles: " }, 10 /*pillar num de columnas de num de usuarios*/);
-        JTable tableAlumnos = new JTable(tableModel);
+        tableAlumnos = new JTable(tableModel);
         numUsuarios = tableAlumnos.getRowCount();
 		centerPanel.setBorder(BorderFactory.createTitledBorder(_blackBorder, "Usuarios: ", TitledBorder.LEFT, TitledBorder.TOP));
 		
@@ -127,6 +126,7 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 		{
 			if(filtroRoles.getSelectedIndex() == 1)
 			{
+				tableModel.setRowCount(alumnosMostrar.size());
 				for(int i =0; i< alumnosMostrar.size();i++)
 				{
 					tableAlumnos.setValueAt(alumnosMostrar.get(i).getNombre_Apellidos(), i, 0);
@@ -137,7 +137,8 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 				numUsuarios = alumnosMostrar.size();
 			}
 			else if(filtroRoles.getSelectedIndex() == 2)
-			{
+			{	
+				tableModel.setRowCount(profesorMostrar.size());
 				for(int i =0; i< profesorMostrar.size();i++) 
 				{
 					tableAlumnos.setValueAt(profesorMostrar.get(i).getNombre_Apellidos(), i, 0);
@@ -149,6 +150,7 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 			}
 			else if(filtroRoles.getSelectedIndex() == 0)
 			{
+				
 				mostrarAmbos();
 				
 			}
@@ -171,6 +173,9 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 	}
 
 	private void mostrarAmbos() {
+		
+		tableModel.setRowCount(profesorMostrar.size()+alumnosMostrar.size());
+		
 		for(int i =0; i< alumnosMostrar.size();i++)
 		{
 			tableAlumnos.setValueAt(alumnosMostrar.get(i).getNombre_Apellidos(), i, 0);
@@ -181,7 +186,7 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 		for(int i = alumnosMostrar.size(); i< profesorMostrar.size()+alumnosMostrar.size();i++) 
 		{
 			tableAlumnos.setValueAt(profesorMostrar.get(j).getNombre_Apellidos(), i, 0);
-			tableAlumnos.setValueAt("Profesor", i, 0);
+			tableAlumnos.setValueAt("Profesor", i, 1);
 
 			j++;
 		}
