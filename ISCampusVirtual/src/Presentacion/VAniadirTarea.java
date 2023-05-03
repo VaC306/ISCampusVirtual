@@ -19,6 +19,10 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
 import javax.swing.border.Border;
 
+import Integracion.DAOApuntes;
+import Integracion.DAOApuntesImpl;
+import Integracion.DAOArchivo;
+import Integracion.DAOArchivoImpl;
 import Integracion.DAOTarea;
 import Integracion.DAOTareaImpl;
 import Negocio.Archivos.Tipos_archivo;
@@ -64,26 +68,18 @@ public class VAniadirTarea extends JFrame  implements IGUI{
 		ok = new JButton("OK");
 		ok.addActionListener((e) -> {
 
-			TransferTarea tt= new TransferTarea();
-/*			
-			tt.setNombre(nombre.getText());
-			tt.setFecha_de_entrega(new Date(fecha));
-			tt.setTipo_archivo(Tipos_archivo.valueOf(tipo_archivo.getText()));
-			ctrl.accion(Events.TAREA_ANADIR, tt);
-*/
 
-
-
-				TransferTarea tt2 = new TransferTarea();
-				// new TransferTarea;
-
-				// Primero crear Archivo TODO
-				// tt.setNombre(nombre.getText());
-				tt2.setId("AR010");
-				tt2.setIdTarea("T004");
-				tt2.setFecha_de_entrega((Date) spinnerFecha.getValue());
-				tt2.setTemas(tema.getSelectedItem().toString());
-				// VER COMO AÑADIR ESTO TODO
+			TransferTarea tt2 = new TransferTarea();
+				
+			DAOTarea daoT = new DAOTareaImpl();
+			DAOApuntes daoA = new DAOApuntesImpl();
+				tt2.setId("TAR00" + daoT.num());
+				tt2.setIdTarea("T00"+ daoT.num());
+				//tt2.setFecha_de_entrega((Date) spinnerFecha.getValue());
+				tt2.setTemas((String) tema.getSelectedItem());
+				tt2.setNombre(nombre.getText());
+				tt2.setTipo_archivo(Tipos_archivo.valueOf(tipo_archivo.getText()));
+				
 				ctrl.accion(Events.TAREA_ANADIR, tt2);
 		
 

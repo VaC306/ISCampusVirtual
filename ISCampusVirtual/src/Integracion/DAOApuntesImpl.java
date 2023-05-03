@@ -94,4 +94,27 @@ public class DAOApuntesImpl implements DAOApuntes {
 		
 	}
 
+	@Override
+	public int num() {
+		int x = 0;
+		try {
+		String s ="SELECT count(*) FROM apuntes";
+		
+		Connection connection = DriverManager.getConnection(url, login, password);
+		PreparedStatement ps = connection.prepareStatement(s);
+		ResultSet r = ps.executeQuery();
+		if (r.next()) {
+			x = r.getInt(1);
+		}
+
+		connection.close();
+		ps.close();
+		r.close();
+		
+		}catch (Exception e) {
+			
+		}
+		return x;
+	}
+
 }

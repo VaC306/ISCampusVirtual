@@ -60,4 +60,10 @@ public class DAOArchivoImpl implements DAOArchivo{
 		}
 	}
 
+	@Override
+	public int num() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

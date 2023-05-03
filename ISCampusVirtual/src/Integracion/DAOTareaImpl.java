@@ -74,7 +74,7 @@ public class DAOTareaImpl implements DAOTarea {
 			ps.executeUpdate();
 			
 			
-			s ="INSERT INTO tareas (IdTarea, IdArchivo, Fecha_entrega) VALUES (?,?,?);";
+			s ="INSERT INTO tareas (IdTarea, IdArchivo, Fecha_entrega, IdTema, NIF) VALUES (?,?,?,?,?);";
 			
 			ps = connection.prepareStatement(s);
 			
@@ -82,6 +82,8 @@ public class DAOTareaImpl implements DAOTarea {
 			ps.setString(2, aTNew.getId());
 			//ps.setDate(3, aTNew.getFecha_de_entrega());
 			ps.setDate(3,null);
+			ps.setString(4, aTNew.getTemas());
+			ps.setString(5, null); // NIF
 			ps.executeUpdate();
 			
 			connection.close();
@@ -93,22 +95,27 @@ public class DAOTareaImpl implements DAOTarea {
 	}
 
 	@Override
-	public void eliminate(String IdTarea) {
+	public void eliminate(String IdArchivo) {
 		
 		try {
-			String s ="DELETE FROM tareas WHERE IdTarea = ?;";
+			String s ="DELETE FROM tareas WHERE IdArchivo = ?;";
 			
 			Connection connection = DriverManager.getConnection(url, login, password);
 			PreparedStatement ps = connection.prepareStatement(s);
+			ps.setString(1, IdArchivo);
+			ps.executeUpdate();
 			
-			ps.setString(1, IdTarea);
+			s = "DELETE FROM archivos WHERE IdArchivo = ?;";
+		
+			ps = connection.prepareStatement(s);
+			ps.setString(1, IdArchivo);
 			ps.executeUpdate();
 			
 			connection.close();
 			ps.close();
 			
 		}catch(Exception e) {
-			
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -116,6 +123,28 @@ public class DAOTareaImpl implements DAOTarea {
 	public void eliminate(TransferTema tema, String titulo) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int num() {
+		int x = 0;
+		try {
+		String s ="SELECT count(*) FROM tareas";
+		
+		Connection connection = DriverManager.getConnection(url, login, password);
+		PreparedStatement ps = connection.prepareStatement(s);
+		ResultSet r = ps.executeQuery();
+		if (r.next()) {
+			x = r.getInt(1);
+		}
+		
+		connection.close();
+		ps.close();
+		r.close();
+		}catch (Exception e) {
+			
+		}
+		return x;
 	}
 
 }

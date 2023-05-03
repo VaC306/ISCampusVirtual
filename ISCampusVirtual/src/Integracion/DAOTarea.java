@@ -13,6 +13,6 @@ import Negocio.Aula.TransferCurso;
 public interface DAOTarea extends DAOArchivo{
 	
 	public void create(TransferTarea aTNew);
-	public void eliminate(String IdTarea);
+	public void eliminate(String IdArchivo);
 	
 }

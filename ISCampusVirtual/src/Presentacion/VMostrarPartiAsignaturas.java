@@ -95,10 +95,6 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 		topPanel.add(Etiquetas, LEFT_ALIGNMENT);
 		
 		
-		//mainPanel.add(buttonPanel);
-		//mainPanel.add(Box.createRigidArea(new Dimension(20, 0)));
-		//mainPanel.add(Box.createRigidArea(new Dimension(10, 0)));
-		
 		//Rol Label
 		rol = new JLabel("Roles: ");
 		topPanel.add(rol);

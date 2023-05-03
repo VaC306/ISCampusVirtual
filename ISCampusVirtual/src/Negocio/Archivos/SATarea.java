@@ -6,14 +6,12 @@ import Integracion.DAOTareaImpl;
 public class SATarea {
 
 	public static boolean eliminateById(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		DAOTarea daoT = new DAOTareaImpl();
+		daoT.eliminate(id);
+		return true;
 	}
 
-	public static boolean add(TransferTarea tTarea) {
-		tTarea.setId("TAR00"+"");
-		tTarea.setIdTarea("T00"+ "");
-		
+	public static boolean add(TransferTarea tTarea) {		
 		
 		if(tTarea != null) {
 			return true;
