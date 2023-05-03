@@ -368,9 +368,9 @@ public class ControllerImp extends Controller{
 			tAsignatura=info2.left;
 			
 			// Leer el usuario que hemos creado?
-			saAsignatura.anadirUsuario(tAsignatura, tUsuario);
 			if(saUsuario.crearUsuarioConAsignatura(tUsuario,tAsignatura )) {
-				
+				saAsignatura.anadirUsuario(tAsignatura, tUsuario);
+
 				currentIGUI.update(Events.CREAR_USUARIO_EXITO, null);
 				currentIGUI=FactoriaVistas.getInstance().crearVista(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, tAsignatura);
 

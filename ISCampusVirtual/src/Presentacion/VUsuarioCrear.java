@@ -167,7 +167,7 @@ public class VUsuarioCrear extends JFrame implements IGUI{
 	public void update(int event, Object datos) {
 
 		switch (event) {
-		case Events.ABRIR_VISTA_CREAR_USUARIO:
+		default:
 			tAsignatura = (TransferAsignatura) datos;
 
 			break;
