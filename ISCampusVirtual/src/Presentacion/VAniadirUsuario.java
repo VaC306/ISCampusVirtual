@@ -73,14 +73,14 @@ public class VAniadirUsuario extends JFrame  implements IGUI{
 			setVisible(false);
 			JOptionPane.showMessageDialog(this, "Usuario no existente: crear usuario");
 
-			ctrl.accion(Events.ABRIR_VISTA_CREAR_USUARIO, datos);
+			ctrl.accion(Events.ABRIR_VISTA_CREAR_USUARIO, tAsignatura);
 
 		break;
 		
 		case Events.ANADIR_USUARIO_EXITO:
 			setVisible(false);
 
-			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, datos);
+			ctrl.accion(Events.ABRIR_VISTA_EDITAR_ASIGNATURA, tAsignatura);
 			
 		default:
 			tAsignatura=(TransferAsignatura) datos;
