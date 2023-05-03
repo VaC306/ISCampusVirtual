@@ -34,7 +34,7 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 	private int numUsuarios;
 	private static DefaultTableModel tableModel;
 	private Border _blackBorder = BorderFactory.createLineBorder(Color.black, 2);
-	
+	private JTable tableAlumnos;
 	JPanel centerPanel, leftPanel, rightPanel, topPanel, botPanel;
 	
 	private int numParticipantes = 3;
@@ -194,7 +194,13 @@ public class VMostrarPartiAsignaturas extends JFrame implements IGUI{
 		
 		profesorMostrar = ((TransferAsignatura)datos).getProfesor();//transferAsigunatura.profesor (Lista de profesores)
 		alumnosMostrar = ((TransferAsignatura)datos).getAlumno();//transferAsigunatura.profesor (Lista de profesores)
+		for(int i =0; i< alumnosMostrar.size();i++)
+		{
+			tableAlumnos.setValueAt(alumnosMostrar.get(i).getNombre_Apellidos(), i, 0);
+			
+		}
 		
+		numUsuarios = alumnosMostrar.size();
 		initGUI();
 
 	}
