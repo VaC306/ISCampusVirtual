@@ -115,6 +115,21 @@ public class SAUsuario {
 
 		return ret;
 	}
+	
+	public boolean eliminarDeAsignatura(String idAlumno, TransferAsignatura tA) {
+
+		TransferUsuario transfer= FactoriaUsuario.getInstance().crearTransferByCorreo(idAlumno);
+		
+		if(transfer != null) {
+			
+			transfer.getAsignaturas().remove(tA.getID());		
+			editarUsuario(transfer);
+			return true;
+		}
+		
+		
+		return false;
+	}
 
 	public boolean crearUsuarioConAsignatura(TransferUsuario tUsuario, TransferAsignatura tAsignatura) {
 		
@@ -129,5 +144,13 @@ public class SAUsuario {
 		}
 		
 		return false;		
+	}
+
+	public void anadirAsignatura(TransferAsignatura tAsignatura, TransferUsuario tUsuario) {
+		if(!tUsuario.getAsignaturas().contains(tAsignatura.getID())) {
+			tUsuario.getAsignaturas().add(tAsignatura.getID());
+			editarUsuario(tUsuario);
+
+		}
 	}
 }

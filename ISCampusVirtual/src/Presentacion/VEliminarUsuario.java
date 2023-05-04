@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import com.mysql.cj.conf.ConnectionUrlParser.Pair;
+
 import Negocio.Aula.TransferAsignatura;
 import Presentacion.Control.Controller;
 import Presentacion.Control.Events;
@@ -39,8 +41,8 @@ public class VEliminarUsuario extends JFrame  implements IGUI{
 		id = new JTextField(30);
 		ok = new JButton("OK");
 		ok.addActionListener((e) -> {
-			
-			ctrl.accion(Events.ELIMINAR_USUARIO, id.getText());
+			Pair <String, TransferAsignatura> info= new Pair<>(id.getText(), tAsignatura);
+			ctrl.accion(Events.ELIMINAR_USUARIO, info);
 		});
 		
 		cancel= new JButton("Cancelar");

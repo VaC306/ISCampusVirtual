@@ -105,8 +105,25 @@ public class SAAsignatura {
 	}
 
 	public void anadirUsuario(TransferAsignatura tAsignatura, TransferUsuario tUsuario) {
-		tUsuario.getAsignaturas().add(tAsignatura.getID());
-		tAsignatura.getAlumno().add((TransferAlumno)tUsuario);
+		if(!tAsignatura.getAlumno().contains(tUsuario)) {
+			tAsignatura.getAlumno().add((TransferAlumno)tUsuario);
+			editarAsignatura(tAsignatura);
+		}
+	}
+	
+	public boolean eliminarUsuario(TransferAsignatura tAsignatura, String id) {
+		
+		for(TransferAlumno ta: tAsignatura.getAlumno()) {
+			
+			if(ta.getId().equals(id)) {
+				
+				tAsignatura.getAlumno().remove(ta);
+				editarAsignatura(tAsignatura);
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 }

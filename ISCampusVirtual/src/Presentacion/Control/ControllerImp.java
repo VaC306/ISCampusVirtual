@@ -256,6 +256,7 @@ public class ControllerImp extends Controller{
 			//se intenta editar el usuario
 			if(tUsuario!=null && saUsuario.editarAsignaturaUsuario(tUsuario,tAsignatura.getID())) {
 				saAsignatura.anadirUsuario(tAsignatura, tUsuario);
+				saUsuario.anadirAsignatura(tAsignatura, tUsuario);
 				currentIGUI.update(Events.ANADIR_USUARIO_EXITO, tUsuario);
 			}
 			else {
@@ -286,11 +287,14 @@ public class ControllerImp extends Controller{
 			break;
 			
 		case Events.ELIMINAR_USUARIO:
+			Pair <String, TransferAsignatura> info7= (Pair<String, TransferAsignatura>) datos;
+
+			String id2= info7.left;
+			tAsignatura=info7.right;
 			
-			String id2= (String) datos;
-			
-			if(saUsuario.eliminarUsuario(id2)) {
+			if(saAsignatura.eliminarUsuario(tAsignatura, id2)) {
 				
+				saUsuario.eliminarDeAsignatura(id2, tAsignatura);
 				currentIGUI.update(Events.ELIMINAR_USUARIO_ACIERTO, id2);
 			}else {
 				

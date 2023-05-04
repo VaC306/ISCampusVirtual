@@ -75,16 +75,15 @@ public class VCalendarioTareas extends JFrame implements IGUI {
 			mes = mapaMeses.get(mesSeleccionadoString);
 			
 			
-			this.remove(panelCalendario);
 			panelCalendario = crearPanelCalendario();
-			add(panelCalendario, BorderLayout.CENTER);
+			panelCalendario.revalidate();
+			panelCalendario.repaint();
 
-			initIGUI();
 
 		});
 		
 		add(comboBox, BorderLayout.PAGE_START);
-
+		
 		// TODO añadir boton
 		JButton botonCerrar = new JButton("Cerrar");
 		botonCerrar.addActionListener(e -> {
@@ -141,8 +140,11 @@ public class VCalendarioTareas extends JFrame implements IGUI {
 			
 
 			for (TransferTarea tt : listaTareas) {
+				
+				java.util.Date utilDate1 = new java.util.Date(tt.getFecha_de_entrega().getTime());
+				java.util.Date utilDate2 = new java.util.Date(new Date(2023, mes, dia).getTime());
 
-				if (tt.getFecha_de_entrega().equals(new Date(2023, mes, dia))) {
+				if ((utilDate1.equals(utilDate2))) {
 
 					JLabel etiquetaX = new JLabel(tt.getNombre(), JLabel.CENTER);
 					etiquetaX.setForeground(Color.RED);
